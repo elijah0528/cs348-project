@@ -1,5 +1,4 @@
-### Waterloo Instagram
-
+### Waterloo Reddit (Weddit?)
 
 Pages
 
