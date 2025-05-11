@@ -2,8 +2,11 @@ import { Pool } from "pg";
 import fs from "fs";
 import path from "path";
 
+console.log("postgres url: ", process.env.POSTGRES_URL);
+
 const db = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  connectionString:
+    process.env.POSTGRES_URL || "postgres://postgres:@127.0.0.1:5432/cs348",
 });
 
 async function main() {
