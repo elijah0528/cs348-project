@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 type TestData = {
   id: number;
   name: string;
+  country: string;
 };
 
 export default function Home() {
@@ -24,11 +25,12 @@ export default function Home() {
 
   return (
     <div className="p-4">
-      <h1 className="text-lg font-medium mb-4">Test Data</h1>
+      <h1 className="font-medium mb-4">Test Data</h1>
       <div className="space-y-2">
         {data?.map((item) => (
-          <div key={item.id} className="p-2 border rounded">
-            {item.name}
+          <div key={item.id}>
+            <div>{item.name}</div>
+            <div className="text-gray-500">{item.country}</div>
           </div>
         ))}
       </div>
