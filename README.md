@@ -19,3 +19,26 @@ Create a `.env` file in the project root with the following connection string:
 ```
 POSTGRES_URL="postgres://postgres:@127.0.0.1:5432/cs348"
 ```
+
+Run the initial migration
+
+```bash
+cd lib/sql
+npm run sql -- --file=migrations/init.sql
+````
+
+Run the seed file to populate the database with sample data
+
+```bash
+cd lib/sql
+npm run sql -- --file=scripts/init-seed.sql
+```
+
+Start the local development server
+
+```bash
+npm i
+npm run dev
+```
+
+Open localhost:3000 in your browser. The sample data from the database will be displayed.
