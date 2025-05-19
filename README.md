@@ -41,4 +41,4 @@ npm i
 npm run dev
 ```
 
-Open localhost:3000 in your browser. The sample data from the database will be displayed.
+Open `localhost:3000` in your browser. The sample data from the database will be displayed.
