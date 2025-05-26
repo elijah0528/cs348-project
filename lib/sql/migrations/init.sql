@@ -48,7 +48,7 @@ CREATE TABLE votes (
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     post_id UUID REFERENCES posts(post_id) ON DELETE CASCADE,
     vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1)),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE votes_comments (
@@ -56,5 +56,5 @@ CREATE TABLE votes_comments (
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     comment_id UUID REFERENCES comments(comment_id) ON DELETE CASCADE,
     vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1)),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
