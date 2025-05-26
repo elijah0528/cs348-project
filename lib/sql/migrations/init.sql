@@ -1,3 +1,9 @@
+CREATE TABLE test (
+    id UUID PRIMARY KEY,
+    content TEXT NOT NULL,
+    country TEXT NOT NULL
+);
+
 CREATE TABLE profiles (
     user_id UUID PRIMARY KEY,
     name TEXT NOT NULL,
