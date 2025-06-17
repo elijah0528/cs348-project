@@ -1,5 +1,5 @@
 CREATE TABLE profiles (
-    user_id UUID PRIMARY KEY,
+    user_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     pw_hash TEXT NOT NULL,
@@ -7,14 +7,14 @@ CREATE TABLE profiles (
 );
 
 CREATE TABLE subreddits (
-    subreddit_id UUID PRIMARY KEY,
+    subreddit_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     subreddit_name TEXT NOT NULL UNIQUE,
     user_id UUID NOT NULL REFERENCES profiles(user_id) ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE posts (
-    post_id UUID PRIMARY KEY, 
+    post_id UUID PRIMARY KEY DEFAULT gen_random_uuid(), 
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE comments (
-    comment_id UUID PRIMARY KEY,
+    comment_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     content TEXT NOT NULL,
     post_id UUID REFERENCES posts(post_id) ON DELETE CASCADE,
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
