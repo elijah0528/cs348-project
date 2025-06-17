@@ -18,7 +18,6 @@ CREATE TABLE posts (
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
-    subreddit_id UUID REFERENCES subreddits(subreddit_id),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
