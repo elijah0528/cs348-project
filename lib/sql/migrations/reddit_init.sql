@@ -37,15 +37,15 @@ CREATE TABLE subreddit_membership (
 );
 
 CREATE TABLE votes (
-    vote_id UUID PRIMARY KEY,
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     post_id UUID REFERENCES posts(post_id) ON DELETE CASCADE,
-    vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1))
+    vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1)),
+    PRIMARY KEY (user_id, post_id)
 );
 
 CREATE TABLE votes_comments (
-    vote_id UUID PRIMARY KEY,
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     comment_id UUID REFERENCES comments(comment_id) ON DELETE CASCADE,
-    vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1))
+    vote_type INTEGER NOT NULL CHECK (vote_type IN (-1, 1)),
+    PRIMARY KEY (user_id, comment_id)
 );
