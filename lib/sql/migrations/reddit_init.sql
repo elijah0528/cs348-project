@@ -18,6 +18,7 @@ CREATE TABLE posts (
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
+    subreddit_id UUID REFERENCES subreddits(subreddit_id),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -25,7 +26,6 @@ CREATE TABLE comments (
     comment_id UUID PRIMARY KEY,
     content TEXT NOT NULL,
     post_id UUID REFERENCES posts(post_id) ON DELETE CASCADE,
-    subreddit_id UUID REFERENCES subreddits(subreddit_id) ON DELETE CASCADE,
     user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
