@@ -9,7 +9,7 @@ CREATE TABLE profiles (
 CREATE TABLE subreddits (
     subreddit_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     subreddit_name TEXT NOT NULL UNIQUE,
-    user_id UUID NOT NULL REFERENCES profiles(user_id) ON DELETE CASCADE,
+    admin_id UUID NOT NULL REFERENCES profiles(user_id) ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
