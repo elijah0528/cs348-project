@@ -1,11 +1,11 @@
-INSERT INTO profiles (user_id, name, email, pw_hash) VALUES
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES
     ('00000000-0000-0000-0000-000000000001', 'Ian', 'ikorovin@uwaterloo.ca', 'pass'),
-    ('00000000-0000-0000-0000-000000000002', 'Elijah', 'ekurien@uwaterloo.ca', 'word'),
-    ('00000000-0000-0000-0000-000000000003', 'Elijah', 'ekuren@uwaterloo.ca', 'word'),
+    ('00000000-0000-0000-0000-000000000002', 'Guy', 'guy@uwaterloo.ca', 'guy'),
+    ('00000000-0000-0000-0000-000000000003', 'Elijah', 'ekurien@uwaterloo.ca', 'word'),
     ('00000000-0000-0000-0000-000000000004', 'Rajan', 'r2agarwal@uwaterloo.ca', 'foo'),
     ('00000000-0000-0000-0000-000000000005', 'Ishaan', 'i2dey@uwaterloo.ca', 'bar');
 
-INSERT INTO subreddits (subreddit_id, subreddit_name, user_id) VALUES
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES
     ('00000000-0000-0000-0000-100000000000', 'uwaterloo', '00000000-0000-0000-0000-000000000001'),
     ('00000000-0000-0000-0000-100000000001', 'cs', '00000000-0000-0000-0000-000000000002'),
     ('00000000-0000-0000-0000-100000000002', 'music', '00000000-0000-0000-0000-000000000003'),
