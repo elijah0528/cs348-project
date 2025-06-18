@@ -1,39 +1,24 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import AuthPage from "@/components/auth/AuthPage";
+import Dashboard from "@/components/dashboard/Dashboard";
+import { User } from "@/components/types";
 
-type TestData = {
-  id: number;
-  content: string;
-  country: string;
-};
+export default function App() {
+  const [user, setUser] = useState<User | null>(null);
 
-export default function Home() {
-  const { data, isLoading, error } = useQuery<TestData[]>({
-    queryKey: ["test-data"],
-    queryFn: async () => {
-      const response = await fetch("/api/test");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    },
-  });
+  const handleLogin = (userData: User) => {
+    setUser(userData);
+  };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {(error as Error).message}</div>;
+  const handleLogout = () => {
+    setUser(null);
+  };
 
-  return (
-    <div className="p-4">
-      <h1 className="font-medium mb-4">Test Data</h1>
-      <div className="space-y-2">
-        {data?.map((item) => (
-          <div key={item.id}>
-            <div className="text-gray-900">{item.content}</div>
-            <div className="text-gray-500">{item.country}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  if (!user) {
+    return <AuthPage onUserLogin={handleLogin} />;
+  }
+
+  return <Dashboard user={user} onLogout={handleLogout} />;
 }
