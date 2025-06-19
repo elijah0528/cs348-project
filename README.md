@@ -24,14 +24,14 @@ Run the initial migration
 
 ```bash
 cd lib/sql
-npm run sql -- --file=migrations/init.sql
+npm run sql -- --file=migrations/reddit_init.sql
 ````
 
 Run the seed file to populate the database with sample data
 
 ```bash
 cd lib/sql
-npm run sql -- --file=scripts/init-seed.sql
+npm run sql -- --file=scripts/seed_reddit.sql
 ```
 
 Start the local development server
@@ -41,4 +41,20 @@ npm i
 npm run dev
 ```
 
-Open `localhost:3000` in your browser. The sample data from the database will be displayed.
+Open `localhost:3000` in your browser. The log in page for Weddit will be displayed.
+
+## Milestone 1 Features
+
+You can view the `m1` folder for the SQl queries for each feature, where features 1, 2 and 4 have before and after logic to show the effect of the feature on the tables. These are in `.out` files.
+
+To test a SQL feature, run the following command:
+
+```bash
+npm run sql -- --file=../../m1/feature1.sql
+```
+
+### Implementation of features
+
+We have `api` endpoints for each core feature seen in the `app/api/reddit` folder. We implemented two of the four features from the milestone 1 list, the ability to create and delete a user. These can be found in `app/api/reddit/auth/register` and `app/api/reddit/auth/delete` respectively.
+
+We also implemented the ability to select, create and delete a subreddit, which can be found in `app/api/reddit/subreddits/create`. This is the first feature that requires a user to be logged in.
