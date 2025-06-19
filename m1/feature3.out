@@ -1,6 +1,6 @@
 
 > cs348-project@0.1.0 sql
-> tsx lib/sql/exec.ts --file=../../m0/feature3.sql
+> tsx lib/sql/exec.ts --file=../../m1/feature3.sql
 
 postgres url:  postgres://postgres:@127.0.0.1:5432/cs348
 ┌─────────┬────────────────────────────────────────┬────────────────────────┬─────────────────┬────────────┐
