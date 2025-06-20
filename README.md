@@ -58,3 +58,9 @@ npm run sql -- --file=../../m1/feature1.sql
 We have `api` endpoints for each core feature seen in the `app/api/reddit` folder. We implemented two of the four features from the milestone 1 list, the ability to create and delete a user. These can be found in `app/api/reddit/auth/register` and `app/api/reddit/auth/delete` respectively.
 
 We also implemented the ability to select, create and delete a subreddit, which can be found in `app/api/reddit/subreddits/create`. This is the first feature that requires a user to be logged in.
+
+### Current Interface (will be updated)
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/bc916cbd-f0c2-44b1-bbc3-17e6d030b1ae" />
+<img width="500" alt="IMG_3171" src="https://github.com/user-attachments/assets/96546c7a-4013-4c49-8bab-abbda453ac1a" />
+
