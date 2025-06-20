@@ -31,7 +31,7 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE subreddit_membership (
-    user_id UUID REFERENCES profiles(user_id) ON DELETE CASCADE,
+    user_id UUID NOT NULL REFERENCES profiles(user_id) ON DELETE CASCADE,
     subreddit_id UUID NOT NULL REFERENCES subreddits(subreddit_id) ON DELETE CASCADE,
     PRIMARY KEY (user_id, subreddit_id)
 );
