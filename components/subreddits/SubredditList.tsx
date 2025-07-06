@@ -1,4 +1,5 @@
 import { Subreddit } from "../types";
+import Link from "next/link";
 
 type SubredditListTypes = {
   subreddits: Subreddit[];
@@ -39,7 +40,9 @@ export default function SubredditList({
             {userSubreddits.map((subreddit) => (
               <div key={subreddit.subreddit_id} className="flex justify-between items-center border p-3 mb-2">
                 <div>
-                  <h3>r/{subreddit.subreddit_name}</h3>
+                  <Link href={`/subreddit/${subreddit.subreddit_id}`} className="text-blue-600 underline">
+                    r/{subreddit.subreddit_name}
+                  </Link>
                 </div>
                 <button
                   onClick={() => handleDeleteSubreddit(subreddit.subreddit_id)}
@@ -57,7 +60,9 @@ export default function SubredditList({
         <div>
             {subreddits.map((subreddit) => (
               <div key={subreddit.subreddit_id} className="border p-3 mb-2">
-                <h3>r/{subreddit.subreddit_name}</h3>
+                <Link href={`/subreddit/${subreddit.subreddit_id}`} className="text-blue-600 underline">
+                  r/{subreddit.subreddit_name}
+                </Link>
                 <p className="text-sm text-gray-600">Admin: {subreddit.username}</p>
               </div>
             ))}

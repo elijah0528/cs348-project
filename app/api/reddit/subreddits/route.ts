@@ -31,14 +31,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await db.query(
-      "INSERT INTO subreddits (subreddit_name, admin_id) VALUES ($1, $2)",
+    const subRes = await db.query(
+      "INSERT INTO subreddits (subreddit_name, admin_id) VALUES ($1, $2) RETURNING subreddit_id, subreddit_name",
       [subreddit_name, admin_id]
     );
 
     return NextResponse.json({
       message: "Subreddit created successfully",
-      subreddit: result.rows[0]
+      subreddit: subRes.rows[0]
     });
   } catch (error: any) {
 
