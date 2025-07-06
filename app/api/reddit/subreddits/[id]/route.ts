@@ -44,7 +44,7 @@ export async function GET(
     const result = await db.query(
       `SELECT s.subreddit_id, s.subreddit_name, p.username AS admin_username,
         p.post_id, p.title, p.content, p.created_at, pr.username,
-        COALESCE(SUM(v.vote_type),0) AS score,
+        SUM(v.vote_type) AS score,
         COUNT(c.comment_id) AS comments_count
        FROM subreddits s
        LEFT OUTER JOIN profiles p ON s.admin_id = p.user_id
@@ -55,7 +55,7 @@ export async function GET(
        LEFT JOIN comments c ON c.post_id = p.post_id
        WHERE s.subreddit_id = $1
        GROUP BY s.subreddit_id, s.subreddit_name, admin_username, p.post_id, pr.username
-       ORDER BY p.created_at DESC NULLS LAST`,
+       ORDER BY p.created_at DESC`,
       [subredditId]
     );
 
@@ -86,7 +86,7 @@ export async function GET(
         content: r.content,
         created_at: r.created_at,
         username: r.username,
-        score: r.score,
+        score: r.score ?? 0,
         comments_count: r.comments_count,
         subreddit_name: r.subreddit_name,
       }));
