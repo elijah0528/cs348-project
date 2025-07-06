@@ -42,19 +42,18 @@ export async function GET(
     const { id: subredditId } = await context.params;
 
     const result = await db.query(
-      `SELECT s.subreddit_id, s.subreddit_name, p.username AS admin_username,
-        p.post_id, p.title, p.content, p.created_at, pr.username,
+      `SELECT s.subreddit_id, s.subreddit_name, admin.username AS admin_username,
+        p.post_id, p.title, p.content, p.created_at, author.username,
         SUM(v.vote_type) AS score,
         COUNT(c.comment_id) AS comments_count
        FROM subreddits s
-       LEFT OUTER JOIN profiles p ON s.admin_id = p.user_id
-       LEFT OUTER JOIN posts p2 ON p2.subreddit_id = s.subreddit_id
-       LEFT OUTER JOIN posts p ON p.post_id = p2.post_id
-       LEFT OUTER JOIN profiles pr ON pr.user_id = p.user_id
-       LEFT OUTER JOIN votes v ON v.post_id = p.post_id
+       LEFT JOIN profiles admin ON admin.user_id = s.admin_id
+       LEFT JOIN posts p ON p.subreddit_id = s.subreddit_id
+       LEFT JOIN profiles author ON author.user_id = p.user_id
+       LEFT JOIN votes v ON v.post_id = p.post_id
        LEFT JOIN comments c ON c.post_id = p.post_id
        WHERE s.subreddit_id = $1
-       GROUP BY s.subreddit_id, s.subreddit_name, admin_username, p.post_id, pr.username
+       GROUP BY s.subreddit_id, s.subreddit_name, admin.username, p.post_id, author.username
        ORDER BY p.created_at DESC`,
       [subredditId]
     );
