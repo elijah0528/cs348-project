@@ -113,13 +113,26 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
         <div>
           <h3 className="font-medium mb-2">All Subreddits</h3>
           {otherSubs.map((s) => (
-            <Link
-              key={s.subreddit_id}
-              href={`/subreddit/${s.subreddit_id}`}
-              className="block px-2 py-1 rounded hover:bg-gray-200 mb-1"
-            >
-              r/{s.subreddit_name}
-            </Link>
+            <div key={s.subreddit_id} className="flex items-center justify-between mb-1">
+              <Link href={`/subreddit/${s.subreddit_id}`} className="flex-1 px-2 py-1 rounded hover:bg-gray-200 text-left">
+                r/{s.subreddit_name}
+              </Link>
+              {user && (
+                <button
+                  onClick={async () => {
+                    await fetch(`/api/reddit/subreddits/${s.subreddit_id}/join`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ user_id: user.user_id }),
+                    });
+                    fetchMembership(user.user_id);
+                  }}
+                  className="text-xs bg-green-500 text-white px-2 py-0.5 rounded ml-2"
+                >
+                  Join
+                </button>
+              )}
+            </div>
           ))}
           {user && (
             <div className="mt-6">
