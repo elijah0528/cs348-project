@@ -6,6 +6,7 @@ import { Post } from "@/components/types";
 import CreatePost from "@/components/posts/CreatePost";
 import Link from "next/link";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import PostCard from "@/components/posts/PostCard";
 
 type Vote = -1 | 1;
 
@@ -100,37 +101,13 @@ export default function SubredditPage() {
       ) : (
         <div>
           {posts.map((p) => (
-            <div key={p.post_id} className="border p-4 mb-4">
-              <Link
-                href={`/post/${p.post_id}`}
-                className="text-xl mb-2 text-blue-600 underline block"
-              >
-                {p.title}
-              </Link>
-              <p className="mb-2">{p.content}</p>
-              <div className="flex items-center text-sm text-stone-600 space-x-4">
-                <span>Posted by {p.username}</span>
-                <span>{p.comments_count ?? 0} comments</span>
-                <div className="flex items-center space-x-1">
-                  <button 
-                  onClick={() => votePost(p.post_id, 1)} 
-                  className={` ${
-                    postVotes[p.post_id] === 1 ? 'text-red-500 hover:text-red-700' : 'text-gray-500 hover:text-gray-700'
-                  }`}>
-                    <ChevronUp />
-                  </button>
-                  <span>{p.score ?? 0}</span>
-                  <button
-                    onClick={() => votePost(p.post_id, -1)}
-                    className={` ${
-                        postVotes[p.post_id] === -1 ? 'text-blue-500 hover:text-blue-700' : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    <ChevronDown />
-                  </button>
-                </div>
-              </div>
-            </div>
+            <PostCard
+              key={p.post_id}
+              post={p}
+              currentVote={postVotes[p.post_id]}
+              onVote={user ? votePost : undefined}
+              showVoting={!!user}
+            />
           ))}
         </div>
       )}
