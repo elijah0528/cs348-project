@@ -7,6 +7,7 @@ import { Subreddit } from "@/components/types";
 import { Plus, Minus, Trash2 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export default function SidebarLayout({
   children,
@@ -55,7 +56,14 @@ export default function SidebarLayout({
   return (
     <div className="flex h-full bg-stone-100">
       <div className="w-64 py-4 px-2 max-h-full flex flex-col justify-between">
-        <div className="flex flex-col overflow-y-auto gap-6">
+        <div className="flex flex-col overflow-y-auto gap-6 items-start">
+          <Link href="/" className="flex items-center gap-1 select-none">
+            <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-[#81745C]">
+              Weddit
+            </div>
+            <Image src="/goose.png" alt="Logo" width={40} height={30} />
+          </Link>
+
           {user && (
             <CreateSubreddit
               userId={user.user_id}
@@ -67,7 +75,7 @@ export default function SidebarLayout({
           )}
 
           {mySubs.length > 0 && (
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 w-full">
               <div className="font-medium text-[13px] text-stone-500 px-2">
                 Your Subreddits
               </div>
@@ -123,10 +131,10 @@ export default function SidebarLayout({
                                   window.location.href = "/";
                                 }
                               }}
-                              className={`flex cursor-pointer items-center justify-center size-7 rounded-md ${
+                              className={`flex cursor-pointer items-center justify-center size-6 rounded-md ${
                                 s.username === user.username
-                                  ? "hover:bg-red-100"
-                                  : "hover:bg-stone-200"
+                                  ? "hover:bg-red-200"
+                                  : "hover:bg-stone-300/50"
                               }`}
                             >
                               {s.username === user.username ? (
@@ -137,7 +145,7 @@ export default function SidebarLayout({
                             </button>
                           </TooltipTrigger>
 
-                          <TooltipContent side="right" sideOffset={4}>
+                          <TooltipContent side="right" sideOffset={6}>
                             {s.username === user.username
                               ? "Delete Subreddit"
                               : "Leave Subreddit"}
@@ -151,7 +159,7 @@ export default function SidebarLayout({
             </div>
           )}
           {otherSubs.length > 0 && (
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 w-full">
               <div className="font-medium text-[13px] text-stone-500 px-2">
                 All Subreddits
               </div>
@@ -180,13 +188,13 @@ export default function SidebarLayout({
                                 );
                                 fetchMembership(user.user_id);
                               }}
-                              className="flex cursor-pointer items-center justify-center size-7 rounded-md hover:bg-stone-200"
+                              className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-300/50"
                             >
                               <Plus className="size-3.5" />
                             </button>
                           </TooltipTrigger>
 
-                          <TooltipContent side="right" sideOffset={4}>
+                          <TooltipContent side="right" sideOffset={6}>
                             Join Subreddit
                           </TooltipContent>
                         </Tooltip>
@@ -253,7 +261,7 @@ function SubredditButton({
       </div>
       <Link
         href={`/subreddit/${subreddit.subreddit_id}`}
-        className="flex w-full justify-start items-center h-full px-2 rounded-md hover:bg-stone-200/50 text-left cursor-pointer"
+        className="flex w-full justify-start items-center h-full px-2 rounded-md group-hover:bg-stone-200/50 text-left cursor-pointer"
       >
         r/{subreddit.subreddit_name}
       </Link>
