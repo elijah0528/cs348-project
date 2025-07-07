@@ -1,6 +1,7 @@
 import { Post } from "@/components/types";
 import { getUser } from "@/lib/auth";
 import SubredditClient from "@/components/subreddits/SubredditClient";
+import { redirect } from "next/navigation";
 
 interface SubredditPageProps {
   params: { id: string };
@@ -9,6 +10,10 @@ interface SubredditPageProps {
 export default async function SubredditPage({ params }: SubredditPageProps) {
   const { id } = params;
   const user = await getUser();
+
+  if (!user) {
+    redirect("/auth");
+  }
 
   let name = "";
   let posts: Post[] = [];

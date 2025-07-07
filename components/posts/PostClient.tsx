@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Comment, Post, User } from "@/components/types";
 import CreateComment from "@/components/comments/CreateComment";
+import CommentCard from "@/components/posts/CommentCard";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 type Vote = -1 | 1;
@@ -76,26 +77,26 @@ export default function PostClient({
     <div className="p-6 overflow-y-auto max-w-2xl mx-auto">
       <h1 className="text-2xl mb-2">{currentPost.title}</h1>
       <p className="mb-4">{currentPost.content}</p>
-      <div className="flex items-center text-sm text-stone-600 mb-6 space-x-2">
+      <div className="flex items-center justify-between text-sm text-stone-600 mb-6">
         <span>Posted by {currentPost.username}</span>
         {user && (
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-2">
             <button
               onClick={() => votePost(1)}
-              className={`hover:text-gray-700 ${
-                postVote === 1 ? "text-red-500" : "text-gray-500"
+              className={`p-2 rounded hover:bg-gray-100 transition-colors ${
+                postVote === 1 ? "text-orange-500 bg-orange-50" : "text-gray-500"
               }`}
             >
-              <ChevronUp />
+              <ChevronUp size={20} />
             </button>
-            <span>{currentPost.score ?? 0}</span>
+            <span className="font-medium text-gray-700 min-w-[2rem] text-center">{currentPost.score ?? 0}</span>
             <button
               onClick={() => votePost(-1)}
-              className={`hover:text-gray-700 ${
-                postVote === -1 ? "text-blue-500" : "text-gray-500"
+              className={`p-2 rounded hover:bg-gray-100 transition-colors ${
+                postVote === -1 ? "text-blue-500 bg-blue-50" : "text-gray-500"
               }`}
             >
-              <ChevronDown />
+              <ChevronDown size={20} />
             </button>
           </div>
         )}
@@ -109,42 +110,18 @@ export default function PostClient({
           onSuccess={refreshPost}
         />
       )}
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 space-y-3">
         {comments.length === 0 ? (
-          <p>No comments yet.</p>
+          <p className="text-gray-500 italic">No comments yet.</p>
         ) : (
           comments.map((c) => (
-            <div key={c.comment_id} className="border p-3">
-              <p className="mb-1">{c.content}</p>
-              <div className="text-sm text-stone-600 flex items-center space-x-2">
-                <span>{new Date(c.created_at).toLocaleString()}</span>
-                {user && (
-                  <>
-                    <button
-                      onClick={() => voteComment(c.comment_id, 1)}
-                      className={`hover:text-gray-700 ${
-                        commentVotes[c.comment_id] === 1
-                          ? "text-red-500"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      <ChevronUp />
-                    </button>
-                    <span>{c.score ?? 0}</span>
-                    <button
-                      onClick={() => voteComment(c.comment_id, -1)}
-                      className={`hover:text-gray-700 ${
-                        commentVotes[c.comment_id] === -1
-                          ? "text-blue-500"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      <ChevronDown />
-                    </button>
-                  </>
-                )}
-              </div>
-            </div>
+            <CommentCard
+              key={c.comment_id}
+              comment={c}
+              user={user}
+              commentVote={commentVotes[c.comment_id]}
+              onVote={voteComment}
+            />
           ))
         )}
       </div>

@@ -1,12 +1,12 @@
-import AuthPage from "@/components/auth/AuthPage";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { getUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function App() {
   const user = await getUser();
 
   if (!user) {
-    return <AuthPage />;
+    redirect("/auth");
   }
 
   return <Dashboard user={user} />;

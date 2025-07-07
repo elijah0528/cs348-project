@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import CreatePost from "../posts/CreatePost";
 import { User, Subreddit, Post } from "../types";
+import PostCard from "../posts/PostCard";
 
 type Vote = -1 | 1;
 
@@ -11,7 +12,6 @@ export default function Dashboard({ user }: { user: User }) {
   const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
   const [myIds, setMyIds] = useState<string[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
-  const [selected, setSelected] = useState<string | null>(null);
   const [sort, setSort] = useState<"recent" | "popular">("recent");
 
   const fetchSubreddits = async () => {
@@ -45,10 +45,6 @@ export default function Dashboard({ user }: { user: User }) {
     fetchMembership();
   }, []);
 
-  useEffect(() => {
-    fetchPosts(selected);
-  }, [sort]);
-
   const mySubs = subreddits.filter((s) => myIds.includes(s.subreddit_id));
   const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));
 
@@ -61,9 +57,7 @@ export default function Dashboard({ user }: { user: User }) {
     fetchMembership();
   };
 
-  const refreshPosts = () => fetchPosts(selected);
-
-  const votePost = async (postId: string, vote: Vote | 0) => {
+  const handleVote = async (postId: string, vote: Vote | 0) => {
     const res = await fetch(`/api/reddit/posts/${postId}/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -76,16 +70,9 @@ export default function Dashboard({ user }: { user: User }) {
   };
 
   return (
-    <div className="p-6 overflow-y-auto">
-      <div className="flex items-center mb-4 space-x-4">
-        <h2 className="text-xl">
-          {selected
-            ? `r/${
-                subreddits.find((s) => s.subreddit_id === selected)
-                  ?.subreddit_name
-              }`
-            : "Your Feed"}
-        </h2>
+    <div className="p-6 overflow-y-auto flex flex-col gap-4">
+      <div className="flex items-center gap-4">
+        <h2 className="text-xl">Your Feed</h2>
         <div className="text-sm space-x-2">
           <button
             className={sort === "recent" ? "underline" : ""}
@@ -102,41 +89,15 @@ export default function Dashboard({ user }: { user: User }) {
         </div>
       </div>
 
-      {selected && (
-        <CreatePost
-          subredditId={selected}
-          userId={user.user_id}
-          onSuccess={refreshPosts}
-        />
-      )}
-
       {/* Post list */}
       {posts.length === 0 ? (
         <p>No posts yet.</p>
       ) : (
-        posts.map((p) => (
-          <div key={p.post_id} className="border p-4 mb-4 rounded-md">
-            <Link
-              href={`/post/${p.post_id}`}
-              className="text-lg font-semibold mb-1 block hover:underline"
-            >
-              {p.title}
-            </Link>
-            <p className="mb-2">{p.content}</p>
-            <p className="text-xs text-stone-600">
-              r/{p.subreddit_name} • {p.username}
-            </p>
-            <div className="flex items-center mt-1 space-x-1 text-sm">
-              <button onClick={() => votePost(p.post_id, 1)} className="px-1">
-                ⬆️
-              </button>
-              <span>{p.score ?? 0}</span>
-              <button onClick={() => votePost(p.post_id, -1)} className="px-1">
-                ⬇️
-              </button>
-            </div>
-          </div>
-        ))
+        <div className="flex flex-col gap-2">
+          {posts.map((p) => (
+            <PostCard key={p.post_id} post={p} handleVote={handleVote} />
+          ))}
+        </div>
       )}
     </div>
   );

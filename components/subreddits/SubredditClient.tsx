@@ -11,7 +11,7 @@ interface SubredditClientProps {
   subredditId: string;
   subredditName: string;
   initialPosts: Post[];
-  user: User | null;
+  user: User;
 }
 
 export default function SubredditClient({
@@ -23,9 +23,7 @@ export default function SubredditClient({
   const [posts, setPosts] = useState<Post[]>(initialPosts);
   const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
 
-  const votePost = async (postId: string, vote: Vote) => {
-    if (!user) return;
-
+  const handleVote = async (postId: string, vote: Vote) => {
     const currentVote = postVotes[postId];
     const newVote = currentVote === vote ? 0 : vote;
 
@@ -55,26 +53,18 @@ export default function SubredditClient({
   return (
     <div className="p-8">
       <h1 className="text-2xl mb-4">r/{subredditName}</h1>
-      {user && (
-        <CreatePost
-          subredditId={subredditId}
-          userId={user.user_id}
-          onSuccess={refreshPosts}
-        />
-      )}
+      <CreatePost
+        subredditId={subredditId}
+        userId={user.user_id}
+        onSuccess={refreshPosts}
+      />
 
       {posts.length === 0 ? (
         <p>No posts yet.</p>
       ) : (
-        <div>
+        <div className="flex flex-col gap-2">
           {posts.map((p) => (
-            <PostCard
-              key={p.post_id}
-              post={p}
-              currentVote={postVotes[p.post_id]}
-              onVote={user ? votePost : undefined}
-              showVoting={!!user}
-            />
+            <PostCard key={p.post_id} post={p} handleVote={handleVote} />
           ))}
         </div>
       )}

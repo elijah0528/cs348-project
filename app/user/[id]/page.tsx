@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Post, Comment } from "@/components/types";
+import PostCard from "@/components/posts/PostCard";
+import CommentCard from "@/components/posts/CommentCard";
 
 export default function UserPage() {
   const { id } = useParams<{ id: string }>();
@@ -43,16 +45,15 @@ export default function UserPage() {
         {posts.length === 0 ? (
           <p>No posts yet.</p>
         ) : (
-          posts.map((post) => (
-            <div key={post.post_id} className="border p-4 mb-3">
-              <h3 className="text-lg">{post.title}</h3>
-              <p className="text-sm text-stone-600 mb-2">
-                r/{post.subreddit_name} •{" "}
-                {new Date(post.created_at).toLocaleString()}
-              </p>
-              <p>{post.content}</p>
-            </div>
-          ))
+          <div className="space-y-3">
+            {posts.map((post) => (
+              <PostCard
+                key={post.post_id}
+                post={post}
+                handleVote={() => {}} // No voting functionality on user page
+              />
+            ))}
+          </div>
         )}
       </section>
 
@@ -61,15 +62,14 @@ export default function UserPage() {
         {comments.length === 0 ? (
           <p>No comments yet.</p>
         ) : (
-          comments.map((c) => (
-            <div key={c.comment_id} className="border p-4 mb-3">
-              <p className="text-sm text-stone-600 mb-1">
-                On {c.post_title} in r/{c.subreddit_name} •{" "}
-                {new Date(c.created_at).toLocaleString()}
-              </p>
-              <p>{c.content}</p>
-            </div>
-          ))
+          <div className="space-y-3">
+            {comments.map((comment) => (
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+              />
+            ))}
+          </div>
         )}
       </section>
     </div>

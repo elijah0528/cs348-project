@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
-import { User } from "../types";
+import LoginForm from "@/components/auth/LoginForm";
+import SignupForm from "@/components/auth/SignupForm";
+import { User } from "@/components/types";
 import { setUserCookie } from "@/lib/auth";
 
 export default function AuthPage() {
@@ -19,7 +19,7 @@ export default function AuthPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl mb-4">Weddit</h1>
+      <div className="text-2xl">Weddit</div>
 
       <div className="mb-4">
         <button
