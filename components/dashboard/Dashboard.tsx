@@ -115,7 +115,7 @@ export default function Dashboard({ user }: { user: User }) {
         <p>No posts yet.</p>
       ) : (
         posts.map((p) => (
-          <div key={p.post_id} className="border p-4 mb-4">
+          <div key={p.post_id} className="border p-4 mb-4 rounded-md">
             <Link
               href={`/post/${p.post_id}`}
               className="text-lg font-semibold mb-1 block hover:underline"

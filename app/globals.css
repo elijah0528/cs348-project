@@ -124,3 +124,7 @@
 body {
   height: 100dvh;
 }
+
+button, a {
+  @apply cursor-pointer;
+}

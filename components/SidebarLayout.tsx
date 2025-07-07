@@ -101,7 +101,7 @@ export default async function SidebarLayout({
       </div>
 
       <div className="flex-1 p-1.5">
-        <div className="size-full overflow-y-auto bg-white border border-stone-200 rounded-lg">
+        <div className="size-full overflow-y-auto bg-white border border-stone-200 rounded-xl">
           {children}
         </div>
       </div>
