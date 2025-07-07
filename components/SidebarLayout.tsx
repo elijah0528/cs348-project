@@ -1,51 +1,21 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import CreateSubreddit from "@/components/subreddits/CreateSubreddit";
 import { Subreddit } from "@/components/types";
-import { Plus, Minus, Trash2 } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { Button } from "./ui/button";
 import Image from "next/image";
+import { getUser } from "@/lib/auth";
+import { getSubreddits, getUserMembership } from "@/lib/subreddit-data";
+import LogoutButton from "@/components/sidebar/LogoutButton";
+import SubredditActionButton from "@/components/sidebar/SubredditActionButton";
+import CreateSubredditWrapper from "@/components/sidebar/CreateSubredditWrapper";
 
-export default function SidebarLayout({
+export default async function SidebarLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [user, setUser] = useState<{
-    user_id: string;
-    username: string;
-  } | null>(null);
-  const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
-  const [myIds, setMyIds] = useState<string[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("weddit_user");
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {}
-    }
-  }, []);
-
-  const fetchSubreddits = async () => {
-    const res = await fetch("/api/reddit/subreddits");
-    const data = await res.json();
-    setSubreddits(data.subreddits || []);
-  };
-
-  const fetchMembership = async (uid: string) => {
-    const res = await fetch(`/api/reddit/membership/${uid}`);
-    const data = await res.json();
-    setMyIds(data.subredditIds || []);
-  };
-
-  useEffect(() => {
-    fetchSubreddits();
-    if (user) fetchMembership(user.user_id);
-  }, [user]);
+  // Server-side data fetching
+  const user = await getUser();
+  const subreddits = await getSubreddits();
+  const myIds = user ? await getUserMembership(user.user_id) : [];
 
   const mySubs = subreddits.filter(
     (s) =>
@@ -64,15 +34,7 @@ export default function SidebarLayout({
             <Image src="/goose.png" alt="Logo" width={40} height={30} />
           </Link>
 
-          {user && (
-            <CreateSubreddit
-              userId={user.user_id}
-              onSuccess={() => {
-                fetchSubreddits();
-                fetchMembership(user.user_id);
-              }}
-            />
-          )}
+          {user && <CreateSubredditWrapper userId={user.user_id} />}
 
           {mySubs.length > 0 && (
             <div className="flex flex-col gap-1.5 w-full">
@@ -86,71 +48,12 @@ export default function SidebarLayout({
                     subreddit={s}
                     actionButton={
                       user && (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button
-                              onClick={async (e) => {
-                                e.preventDefault();
-                                if (s.username === user.username) {
-                                  // Delete subreddit if user owns it
-                                  await fetch(
-                                    `/api/reddit/subreddits/${s.subreddit_id}`,
-                                    {
-                                      method: "DELETE",
-                                      headers: {
-                                        "Content-Type": "application/json",
-                                      },
-                                      body: JSON.stringify({
-                                        user_id: user.user_id,
-                                      }),
-                                    }
-                                  );
-                                  fetchSubreddits();
-                                  fetchMembership(user.user_id);
-                                } else {
-                                  // Leave subreddit if user is just a member
-                                  await fetch(
-                                    `/api/reddit/subreddits/${s.subreddit_id}/leave`,
-                                    {
-                                      method: "DELETE",
-                                      headers: {
-                                        "Content-Type": "application/json",
-                                      },
-                                      body: JSON.stringify({
-                                        user_id: user.user_id,
-                                      }),
-                                    }
-                                  );
-                                  fetchMembership(user.user_id);
-                                }
-                                if (
-                                  window.location.pathname.startsWith(
-                                    `/subreddit/${s.subreddit_id}`
-                                  )
-                                ) {
-                                  window.location.href = "/";
-                                }
-                              }}
-                              className={`flex cursor-pointer items-center justify-center size-6 rounded-md ${
-                                s.username === user.username
-                                  ? "hover:bg-red-200"
-                                  : "hover:bg-stone-300/50"
-                              }`}
-                            >
-                              {s.username === user.username ? (
-                                <Trash2 className="size-3.5 text-red-700" />
-                              ) : (
-                                <Minus className="size-3.5" />
-                              )}
-                            </button>
-                          </TooltipTrigger>
-
-                          <TooltipContent side="right" sideOffset={6}>
-                            {s.username === user.username
-                              ? "Delete Subreddit"
-                              : "Leave Subreddit"}
-                          </TooltipContent>
-                        </Tooltip>
+                        <SubredditActionButton
+                          subredditId={s.subreddit_id}
+                          userId={user.user_id}
+                          isOwner={s.username === user.username}
+                          isMember={true}
+                        />
                       )
                     }
                   />
@@ -170,50 +73,17 @@ export default function SidebarLayout({
                     subreddit={s}
                     actionButton={
                       user && (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <button
-                              onClick={async () => {
-                                await fetch(
-                                  `/api/reddit/subreddits/${s.subreddit_id}/join`,
-                                  {
-                                    method: "POST",
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                    },
-                                    body: JSON.stringify({
-                                      user_id: user.user_id,
-                                    }),
-                                  }
-                                );
-                                fetchMembership(user.user_id);
-                              }}
-                              className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-300/50"
-                            >
-                              <Plus className="size-3.5" />
-                            </button>
-                          </TooltipTrigger>
-
-                          <TooltipContent side="right" sideOffset={6}>
-                            Join Subreddit
-                          </TooltipContent>
-                        </Tooltip>
+                        <SubredditActionButton
+                          subredditId={s.subreddit_id}
+                          userId={user.user_id}
+                          isOwner={false}
+                          isMember={false}
+                        />
                       )
                     }
                   />
                 ))}
               </div>
-              {/* {user && (
-                <div className="mt-6">
-                  <CreateSubreddit
-                    userId={user.user_id}
-                    onSuccess={() => {
-                      fetchSubreddits();
-                      fetchMembership(user.user_id);
-                    }}
-                  />
-                </div>
-              )} */}
             </div>
           )}
         </div>
@@ -225,15 +95,7 @@ export default function SidebarLayout({
             >
               u/{user.username}
             </Link>
-            <button
-              onClick={() => {
-                localStorage.removeItem("weddit_user");
-                window.location.reload();
-              }}
-              className="text-xs text-stone-600"
-            >
-              Logout
-            </button>
+            <LogoutButton />
           </div>
         )}
       </div>
