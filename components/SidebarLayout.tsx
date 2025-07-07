@@ -5,6 +5,7 @@ import Link from "next/link";
 import CreateSubreddit from "@/components/subreddits/CreateSubreddit";
 import { Subreddit } from "@/components/types";
 import { Plus, Minus } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function SidebarLayout({
   children,
@@ -132,26 +133,34 @@ export default function SidebarLayout({
                     subreddit={s}
                     actionButton={
                       user && (
-                        <button
-                          onClick={async () => {
-                            await fetch(
-                              `/api/reddit/subreddits/${s.subreddit_id}/join`,
-                              {
-                                method: "POST",
-                                headers: {
-                                  "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                  user_id: user.user_id,
-                                }),
-                              }
-                            );
-                            fetchMembership(user.user_id);
-                          }}
-                          className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
-                        >
-                          <Plus className="size-3.5" />
-                        </button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              onClick={async () => {
+                                await fetch(
+                                  `/api/reddit/subreddits/${s.subreddit_id}/join`,
+                                  {
+                                    method: "POST",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                      user_id: user.user_id,
+                                    }),
+                                  }
+                                );
+                                fetchMembership(user.user_id);
+                              }}
+                              className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
+                            >
+                              <Plus className="size-3.5" />
+                            </button>
+                          </TooltipTrigger>
+
+                          <TooltipContent side="right" sideOffset={4}>
+                            Join Subreddit
+                          </TooltipContent>
+                        </Tooltip>
                       )
                     }
                   />
