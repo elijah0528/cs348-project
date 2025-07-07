@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import CreatePost from "../posts/CreatePost";
@@ -5,13 +7,7 @@ import { User, Subreddit, Post } from "../types";
 
 type Vote = -1 | 1;
 
-export default function Dashboard({
-  user,
-  onLogout,
-}: {
-  user: User;
-  onLogout: () => void;
-}) {
+export default function Dashboard({ user }: { user: User }) {
   const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
   const [myIds, setMyIds] = useState<string[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);

@@ -1,14 +1,21 @@
+"use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import { User } from "../types";
+import { setUserCookie } from "@/lib/auth";
 
-type AuthTypes = {
-  onUserLogin: (user: User) => void;
-};
-
-export default function AuthPage({ onUserLogin }: AuthTypes) {
+export default function AuthPage() {
   const [authMode, setAuthMode] = useState<"login" | "signup">("login");
+  const router = useRouter();
+
+  const handleUserLogin = async (user: User) => {
+    // Set the user cookie and refresh the page
+    await setUserCookie(user);
+    router.refresh();
+  };
 
   return (
     <div className="p-8">
@@ -34,9 +41,9 @@ export default function AuthPage({ onUserLogin }: AuthTypes) {
       </div>
 
       {authMode === "login" ? (
-        <LoginForm onSuccess={onUserLogin} />
+        <LoginForm onSuccess={handleUserLogin} />
       ) : (
-        <SignupForm onSuccess={onUserLogin} />
+        <SignupForm onSuccess={handleUserLogin} />
       )}
     </div>
   );

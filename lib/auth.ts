@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 export interface User {
   user_id: string;
   username: string;
+  email: string;
 }
 
 export async function getUser(): Promise<User | null> {
