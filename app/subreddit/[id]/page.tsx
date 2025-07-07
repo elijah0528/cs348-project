@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { Post } from "@/components/types";
 import CreatePost from "@/components/posts/CreatePost";
 import Link from "next/link";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 type Vote = -1 | 1;
 
@@ -17,6 +18,7 @@ export default function SubredditPage() {
     user_id: string;
     username: string;
   } | null>(null);
+  const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
 
   useEffect(() => {
     if (!id) return;
@@ -49,15 +51,20 @@ export default function SubredditPage() {
 
   const votePost = async (postId: string, vote: Vote) => {
     if (!user) return;
+    
+    const currentVote = postVotes[postId];
+    const newVote = currentVote === vote ? 0 : vote;
+    
     const res = await fetch(`/api/reddit/posts/${postId}/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: user.user_id, vote_type: vote }),
+      body: JSON.stringify({ user_id: user.user_id, vote_type: newVote }),
     });
     const data = await res.json();
     setPosts((prev) =>
       prev.map((p) => (p.post_id === postId ? { ...p, score: data.score } : p))
     );
+    setPostVotes(prev => ({ ...prev, [postId]: newVote === 0 ? null : newVote as Vote }));
   };
 
   const voteComment = async (commentId: string, vote: Vote) => {
@@ -105,9 +112,22 @@ export default function SubredditPage() {
                 <span>Posted by {p.username}</span>
                 <span>{p.comments_count ?? 0} comments</span>
                 <div className="flex items-center space-x-1">
-                  <button onClick={() => votePost(p.post_id, 1)}>⬆️</button>
+                  <button 
+                  onClick={() => votePost(p.post_id, 1)} 
+                  className={` ${
+                    postVotes[p.post_id] === 1 ? 'text-red-500 hover:text-red-700' : 'text-gray-500 hover:text-gray-700'
+                  }`}>
+                    <ChevronUp />
+                  </button>
                   <span>{p.score ?? 0}</span>
-                  <button onClick={() => votePost(p.post_id, -1)}>⬇️</button>
+                  <button
+                    onClick={() => votePost(p.post_id, -1)}
+                    className={` ${
+                        postVotes[p.post_id] === -1 ? 'text-blue-500 hover:text-blue-700' : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    <ChevronDown />
+                  </button>
                 </div>
               </div>
             </div>
