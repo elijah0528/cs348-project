@@ -25,7 +25,7 @@ Run the initial migration
 ```bash
 cd lib/sql
 npm run sql -- --file=migrations/reddit_init.sql
-````
+```
 
 Run the seed file to populate the database with sample data
 
@@ -63,4 +63,3 @@ We also implemented the ability to select, create and delete a subreddit, which 
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/bc916cbd-f0c2-44b1-bbc3-17e6d030b1ae" />
 <img width="500" alt="IMG_3171" src="https://github.com/user-attachments/assets/96546c7a-4013-4c49-8bab-abbda453ac1a" />
-

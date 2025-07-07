@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const pwHash = crypto.createHash('sha256').update(password).digest('hex');
+    const pwHash = crypto.createHash("sha256").update(password).digest("hex");
 
     const result = await db.query(
       "INSERT INTO profiles (username, email, pw_hash) VALUES ($1, $2, $3)",
@@ -22,12 +22,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       message: "User created successfully",
-      user: result.rows[0]
+      user: result.rows[0],
     });
   } catch (error: any) {
+    console.error("Register error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     );
   }
-} 
+}

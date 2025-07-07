@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -46,7 +46,10 @@ export default function UserPage() {
           posts.map((post) => (
             <div key={post.post_id} className="border p-4 mb-3">
               <h3 className="text-lg">{post.title}</h3>
-              <p className="text-sm text-gray-600 mb-2">r/{post.subreddit_name} • {new Date(post.created_at).toLocaleString()}</p>
+              <p className="text-sm text-stone-600 mb-2">
+                r/{post.subreddit_name} •{" "}
+                {new Date(post.created_at).toLocaleString()}
+              </p>
               <p>{post.content}</p>
             </div>
           ))
@@ -60,7 +63,10 @@ export default function UserPage() {
         ) : (
           comments.map((c) => (
             <div key={c.comment_id} className="border p-4 mb-3">
-              <p className="text-sm text-gray-600 mb-1">On {c.post_title} in r/{c.subreddit_name} • {new Date(c.created_at).toLocaleString()}</p>
+              <p className="text-sm text-stone-600 mb-1">
+                On {c.post_title} in r/{c.subreddit_name} •{" "}
+                {new Date(c.created_at).toLocaleString()}
+              </p>
               <p>{c.content}</p>
             </div>
           ))
@@ -68,4 +74,4 @@ export default function UserPage() {
       </section>
     </div>
   );
-} 
+}

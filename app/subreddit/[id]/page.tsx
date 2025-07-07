@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -13,11 +13,17 @@ export default function SubredditPage() {
   const [name, setName] = useState<string>("");
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<{ user_id: string; username: string } | null>(null);
+  const [user, setUser] = useState<{
+    user_id: string;
+    username: string;
+  } | null>(null);
 
   useEffect(() => {
     if (!id) return;
-    const stored = typeof window !== "undefined" ? localStorage.getItem("weddit_user") : null;
+    const stored =
+      typeof window !== "undefined"
+        ? localStorage.getItem("weddit_user")
+        : null;
     if (stored) {
       try {
         setUser(JSON.parse(stored));
@@ -49,7 +55,9 @@ export default function SubredditPage() {
       body: JSON.stringify({ user_id: user.user_id, vote_type: vote }),
     });
     const data = await res.json();
-    setPosts((prev) => prev.map((p) => (p.post_id === postId ? { ...p, score: data.score } : p)));
+    setPosts((prev) =>
+      prev.map((p) => (p.post_id === postId ? { ...p, score: data.score } : p))
+    );
   };
 
   const voteComment = async (commentId: string, vote: Vote) => {
@@ -64,16 +72,20 @@ export default function SubredditPage() {
     <div className="p-8">
       <h1 className="text-2xl mb-4">r/{name}</h1>
       {user && (
-        <CreatePost subredditId={id as string} userId={user.user_id} onSuccess={() => {
-          const fetchAgain = async () => {
-            const res = await fetch(`/api/reddit/subreddits/${id}`);
-            if (res.ok) {
-              const data = await res.json();
-              setPosts(data.posts || []);
-            }
-          };
-          fetchAgain();
-        }} />
+        <CreatePost
+          subredditId={id as string}
+          userId={user.user_id}
+          onSuccess={() => {
+            const fetchAgain = async () => {
+              const res = await fetch(`/api/reddit/subreddits/${id}`);
+              if (res.ok) {
+                const data = await res.json();
+                setPosts(data.posts || []);
+              }
+            };
+            fetchAgain();
+          }}
+        />
       )}
 
       {posts.length === 0 ? (
@@ -82,11 +94,14 @@ export default function SubredditPage() {
         <div>
           {posts.map((p) => (
             <div key={p.post_id} className="border p-4 mb-4">
-              <Link href={`/post/${p.post_id}`} className="text-xl mb-2 text-blue-600 underline block">
+              <Link
+                href={`/post/${p.post_id}`}
+                className="text-xl mb-2 text-blue-600 underline block"
+              >
                 {p.title}
               </Link>
               <p className="mb-2">{p.content}</p>
-              <div className="flex items-center text-sm text-gray-600 space-x-4">
+              <div className="flex items-center text-sm text-stone-600 space-x-4">
                 <span>Posted by {p.username}</span>
                 <span>{p.comments_count ?? 0} comments</span>
                 <div className="flex items-center space-x-1">
@@ -101,4 +116,4 @@ export default function SubredditPage() {
       )}
     </div>
   );
-} 
+}

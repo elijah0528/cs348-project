@@ -1,12 +1,20 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import CreateSubreddit from "@/components/subreddits/CreateSubreddit";
 import { Subreddit } from "@/components/types";
+import { Plus, Minus } from "lucide-react";
 
-export default function SidebarLayout({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<{ user_id: string; username: string } | null>(null);
+export default function SidebarLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [user, setUser] = useState<{
+    user_id: string;
+    username: string;
+  } | null>(null);
   const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
   const [myIds, setMyIds] = useState<string[]>([]);
 
@@ -36,16 +44,139 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
     if (user) fetchMembership(user.user_id);
   }, [user]);
 
-  const mySubs = subreddits.filter((s) => myIds.includes(s.subreddit_id) || (user && s.username === user.username));
+  const mySubs = subreddits.filter(
+    (s) =>
+      myIds.includes(s.subreddit_id) || (user && s.username === user.username)
+  );
   const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <aside className="w-64 border-r p-4 overflow-y-auto">
+    <div className="flex h-full bg-stone-100">
+      <div className="w-64 py-4 px-2 max-h-full flex flex-col justify-between">
+        <div className="flex flex-col overflow-y-auto gap-6">
+          {mySubs.length > 0 && (
+            <div className="flex flex-col gap-1.5">
+              <div className="font-medium text-[13px] text-stone-500 px-2">
+                Your Subreddits
+              </div>
+              <div className="flex flex-col gap-0.5 text-sm">
+                {mySubs.map((s) => (
+                  <SubredditButton
+                    key={s.subreddit_id}
+                    subreddit={s}
+                    actionButton={
+                      user && (
+                        <button
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            if (s.username === user.username) {
+                              // Delete subreddit if user owns it
+                              await fetch(
+                                `/api/reddit/subreddits/${s.subreddit_id}`,
+                                {
+                                  method: "DELETE",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    user_id: user.user_id,
+                                  }),
+                                }
+                              );
+                              fetchSubreddits();
+                              fetchMembership(user.user_id);
+                            } else {
+                              // Leave subreddit if user is just a member
+                              await fetch(
+                                `/api/reddit/subreddits/${s.subreddit_id}/leave`,
+                                {
+                                  method: "DELETE",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    user_id: user.user_id,
+                                  }),
+                                }
+                              );
+                              fetchMembership(user.user_id);
+                            }
+                            if (
+                              window.location.pathname.startsWith(
+                                `/subreddit/${s.subreddit_id}`
+                              )
+                            ) {
+                              window.location.href = "/";
+                            }
+                          }}
+                          className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
+                        >
+                          <Minus className="size-3.5" />
+                        </button>
+                      )
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {otherSubs.length > 0 && (
+            <div className="flex flex-col gap-1.5">
+              <div className="font-medium text-[13px] text-stone-500 px-2">
+                All Subreddits
+              </div>
+              <div className="flex flex-col gap-0.5 text-sm">
+                {otherSubs.map((s) => (
+                  <SubredditButton
+                    key={s.subreddit_id}
+                    subreddit={s}
+                    actionButton={
+                      user && (
+                        <button
+                          onClick={async () => {
+                            await fetch(
+                              `/api/reddit/subreddits/${s.subreddit_id}/join`,
+                              {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                  user_id: user.user_id,
+                                }),
+                              }
+                            );
+                            fetchMembership(user.user_id);
+                          }}
+                          className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
+                        >
+                          <Plus className="size-3.5" />
+                        </button>
+                      )
+                    }
+                  />
+                ))}
+              </div>
+              {user && (
+                <div className="mt-6">
+                  <CreateSubreddit
+                    userId={user.user_id}
+                    onSuccess={() => {
+                      fetchSubreddits();
+                      fetchMembership(user.user_id);
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         {user && (
-          <div className="mb-6 border-b pb-4 flex items-center justify-between">
-            <Link href={`/user/${user.user_id}`} className="text-sm font-medium underline">
+          <div className="flex items-center justify-between">
+            <Link
+              href={`/user/${user.user_id}`}
+              className="text-sm font-medium underline"
+            >
               u/{user.username}
             </Link>
             <button
@@ -53,103 +184,41 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                 localStorage.removeItem("weddit_user");
                 window.location.reload();
               }}
-              className="text-xs text-gray-600"
+              className="text-xs text-stone-600"
             >
               Logout
             </button>
           </div>
         )}
-        <h2 className="text-lg font-semibold mb-4">Subreddits</h2>
-        <div className="mb-6">
-          <h3 className="font-medium mb-2">Your Subreddits</h3>
-          {mySubs.map((s) => (
-            <div key={s.subreddit_id} className="flex items-center justify-between mb-1">
-              <Link
-                href={`/subreddit/${s.subreddit_id}`}
-                className="flex-1 px-2 py-1 rounded hover:bg-gray-200 text-left"
-              >
-                r/{s.subreddit_name}
-              </Link>
-              {user && s.username === user.username ? (
-                <button
-                  onClick={async () => {
-                    await fetch(`/api/reddit/subreddits/${s.subreddit_id}`, {
-                      method: "DELETE",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ user_id: user.user_id }),
-                    });
-                    fetchSubreddits();
-                    fetchMembership(user.user_id);
-                    if (window.location.pathname.startsWith(`/subreddit/${s.subreddit_id}`)) {
-                      window.location.href = "/";
-                    }
-                  }}
-                  className="text-xs text-red-600 ml-2"
-                >
-                  Delete
-                </button>
-              ) : (
-                <button
-                  onClick={async () => {
-                    if (!user) return;
-                    await fetch(`/api/reddit/subreddits/${s.subreddit_id}/leave`, {
-                      method: "DELETE",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ user_id: user.user_id }),
-                    });
-                    fetchMembership(user.user_id);
-                    if (window.location.pathname.startsWith(`/subreddit/${s.subreddit_id}`)) {
-                      window.location.href = "/";
-                    }
-                  }}
-                  className="text-xs text-gray-600 ml-2"
-                >
-                  Leave
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-        <div>
-          <h3 className="font-medium mb-2">All Subreddits</h3>
-          {otherSubs.map((s) => (
-            <div key={s.subreddit_id} className="flex items-center justify-between mb-1">
-              <Link href={`/subreddit/${s.subreddit_id}`} className="flex-1 px-2 py-1 rounded hover:bg-gray-200 text-left">
-                r/{s.subreddit_name}
-              </Link>
-              {user && (
-                <button
-                  onClick={async () => {
-                    await fetch(`/api/reddit/subreddits/${s.subreddit_id}/join`, {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ user_id: user.user_id }),
-                    });
-                    fetchMembership(user.user_id);
-                  }}
-                  className="text-xs bg-green-500 text-white px-2 py-0.5 rounded ml-2"
-                >
-                  Join
-                </button>
-              )}
-            </div>
-          ))}
-          {user && (
-            <div className="mt-6">
-              <CreateSubreddit
-                userId={user.user_id}
-                onSuccess={() => {
-                  fetchSubreddits();
-                  fetchMembership(user.user_id);
-                }}
-              />
-            </div>
-          )}
-        </div>
-      </aside>
+      </div>
 
-      {/* Content */}
-      <main className="flex-1 overflow-y-auto">{children}</main>
+      <div className="flex-1 p-1.5">
+        <div className="size-full overflow-y-auto bg-white border border-stone-200 rounded-lg">
+          {children}
+        </div>
+      </div>
     </div>
   );
-} 
+}
+
+function SubredditButton({
+  subreddit,
+  actionButton,
+}: {
+  subreddit: Subreddit;
+  actionButton?: React.ReactNode;
+}) {
+  return (
+    <div className="relative h-7">
+      <div className="absolute right-1 top-1/2 -translate-y-1/2">
+        {actionButton}
+      </div>
+      <Link
+        href={`/subreddit/${subreddit.subreddit_id}`}
+        className="flex w-full justify-start items-center h-full px-2 rounded-md hover:bg-stone-200/50 text-left cursor-pointer"
+      >
+        r/{subreddit.subreddit_name}
+      </Link>
+    </div>
+  );
+}

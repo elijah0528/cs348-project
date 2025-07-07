@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -12,11 +12,17 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<{ user_id: string; username: string } | null>(null);
+  const [user, setUser] = useState<{
+    user_id: string;
+    username: string;
+  } | null>(null);
 
   // fetch user from localStorage
   useEffect(() => {
-    const stored = typeof window !== "undefined" ? localStorage.getItem("weddit_user") : null;
+    const stored =
+      typeof window !== "undefined"
+        ? localStorage.getItem("weddit_user")
+        : null;
     if (stored) {
       try {
         setUser(JSON.parse(stored));
@@ -62,7 +68,11 @@ export default function PostPage() {
       body: JSON.stringify({ user_id: user.user_id, vote_type: vote }),
     });
     const data = await res.json();
-    setComments((prev) => prev.map((c) => (c.comment_id === commentId ? { ...c, score: data.score } : c)));
+    setComments((prev) =>
+      prev.map((c) =>
+        c.comment_id === commentId ? { ...c, score: data.score } : c
+      )
+    );
   };
 
   if (error) return <div className="p-8">{error}</div>;
@@ -72,7 +82,7 @@ export default function PostPage() {
     <div className="p-6 overflow-y-auto max-w-2xl mx-auto">
       <h1 className="text-2xl mb-2">{post.title}</h1>
       <p className="mb-4">{post.content}</p>
-      <div className="flex items-center text-sm text-gray-600 mb-6 space-x-2">
+      <div className="flex items-center text-sm text-stone-600 mb-6 space-x-2">
         <span>Posted by {post.username}</span>
         <div className="flex items-center space-x-1">
           <button onClick={() => votePost(1)}>⬆️</button>
@@ -83,7 +93,11 @@ export default function PostPage() {
 
       <h2 className="text-xl mb-4">Comments</h2>
       {user && (
-        <CreateComment postId={post.post_id} userId={user.user_id} onSuccess={refreshPost} />
+        <CreateComment
+          postId={post.post_id}
+          userId={user.user_id}
+          onSuccess={refreshPost}
+        />
       )}
       <div className="mt-6 space-y-4">
         {comments.length === 0 ? (
@@ -92,11 +106,13 @@ export default function PostPage() {
           comments.map((c) => (
             <div key={c.comment_id} className="border p-3">
               <p className="mb-1">{c.content}</p>
-              <div className="text-sm text-gray-600 flex items-center space-x-2">
+              <div className="text-sm text-stone-600 flex items-center space-x-2">
                 <span>{new Date(c.created_at).toLocaleString()}</span>
                 <button onClick={() => voteComment(c.comment_id, 1)}>⬆️</button>
                 <span>{c.score ?? 0}</span>
-                <button onClick={() => voteComment(c.comment_id, -1)}>⬇️</button>
+                <button onClick={() => voteComment(c.comment_id, -1)}>
+                  ⬇️
+                </button>
               </div>
             </div>
           ))
@@ -104,4 +120,4 @@ export default function PostPage() {
       </div>
     </div>
   );
-} 
+}
