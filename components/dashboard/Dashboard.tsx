@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import CreatePost from "../posts/CreatePost";
 import { User, Subreddit, Post } from "../types";
 import PostCard from "../posts/PostCard";
 

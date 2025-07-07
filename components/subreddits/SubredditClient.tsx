@@ -52,12 +52,14 @@ export default function SubredditClient({
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl mb-4">r/{subredditName}</h1>
-      <CreatePost
-        subredditId={subredditId}
-        userId={user.user_id}
-        onSuccess={refreshPosts}
-      />
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold">r/{subredditName}</h1>
+        <CreatePost
+          subredditId={subredditId}
+          userId={user.user_id}
+          onSuccess={refreshPosts}
+        />
+      </div>
 
       {posts.length === 0 ? (
         <p>No posts yet.</p>

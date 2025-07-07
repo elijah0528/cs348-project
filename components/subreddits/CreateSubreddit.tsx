@@ -63,7 +63,7 @@ export default function CreateSubreddit({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="w-full">
+        <Button className="w-full">
           <Plus className="size-3.5" />
           Create Subreddit
         </Button>
