@@ -1,19 +1,39 @@
+"use client";
+
 import { useState } from "react";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Loader2, Plus } from "lucide-react";
 
 type CreateSubredditTypes = {
   userId: string;
   onSuccess: () => void;
 };
 
-export default function CreateSubreddit({ userId, onSuccess }: CreateSubredditTypes) {
+export default function CreateSubreddit({
+  userId,
+  onSuccess,
+}: CreateSubredditTypes) {
   const [name, setName] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    setError(null);
+    setIsLoading(true);
     try {
       const response = await fetch("/api/reddit/subreddits", {
         method: "POST",
@@ -23,37 +43,64 @@ export default function CreateSubreddit({ userId, onSuccess }: CreateSubredditTy
           admin_id: userId,
         }),
       });
+
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "Subreddit creation failed");
+        throw new Error(error.error || "Failed to create subreddit");
       }
+
+      toast.success("Subreddit created successfully!");
       setName("");
+      setOpen(false);
       onSuccess();
     } catch (error: any) {
-      setError(error.message);
+      toast.error(error.message || "Failed to create subreddit");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="mb-8">
-      <h2 className="text-xl mb-4">Create a Subreddit</h2>
-      <form onSubmit={handleSubmit} className="max-w-sm">
-        <div className="mb-4">
-          <label className="block mb-1">Subreddit Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter subreddit name"
-            className="w-full border p-2"
-            required
-          />
-        </div>
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button size="sm" className="w-full">
+          <Plus className="size-3.5" />
           Create Subreddit
-        </button>
-        {error && <p className="text-red-600 mt-2">{error}</p>}
-      </form>
-    </div>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Create New Subreddit</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className="flex flex-col items-start gap-2">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="awesomesubreddit"
+              className="w-full"
+              required
+              disabled={isLoading}
+            />
+          </div>
+          <DialogFooter>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={!name.trim() || isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="size-3.5 animate-spin" />
+              ) : (
+                <Plus className="size-3.5" />
+              )}
+              {isLoading ? "Creating..." : "Create Subreddit"}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
-} 
+}

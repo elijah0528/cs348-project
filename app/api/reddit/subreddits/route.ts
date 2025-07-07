@@ -10,7 +10,7 @@ export async function GET() {
     `);
 
     return NextResponse.json({
-      subreddits: result.rows
+      subreddits: result.rows,
     });
   } catch (error) {
     return NextResponse.json(
@@ -38,14 +38,19 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       message: "Subreddit created successfully",
-      subreddit: subRes.rows[0]
+      subreddit: subRes.rows[0],
     });
   } catch (error: any) {
+    if (error.routine === "_bt_check_unique") {
+      return NextResponse.json(
+        { error: "Subreddit already exists" },
+        { status: 400 }
+      );
+    }
 
-    console.error("Create subreddit error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     );
   }
-} 
+}

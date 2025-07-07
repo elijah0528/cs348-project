@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import CreateSubreddit from "@/components/subreddits/CreateSubreddit";
 import { Subreddit } from "@/components/types";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Trash2 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Button } from "./ui/button";
 
 export default function SidebarLayout({
   children,
@@ -55,6 +56,16 @@ export default function SidebarLayout({
     <div className="flex h-full bg-stone-100">
       <div className="w-64 py-4 px-2 max-h-full flex flex-col justify-between">
         <div className="flex flex-col overflow-y-auto gap-6">
+          {user && (
+            <CreateSubreddit
+              userId={user.user_id}
+              onSuccess={() => {
+                fetchSubreddits();
+                fetchMembership(user.user_id);
+              }}
+            />
+          )}
+
           {mySubs.length > 0 && (
             <div className="flex flex-col gap-1.5">
               <div className="font-medium text-[13px] text-stone-500 px-2">
@@ -67,53 +78,71 @@ export default function SidebarLayout({
                     subreddit={s}
                     actionButton={
                       user && (
-                        <button
-                          onClick={async (e) => {
-                            e.preventDefault();
-                            if (s.username === user.username) {
-                              // Delete subreddit if user owns it
-                              await fetch(
-                                `/api/reddit/subreddits/${s.subreddit_id}`,
-                                {
-                                  method: "DELETE",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  body: JSON.stringify({
-                                    user_id: user.user_id,
-                                  }),
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              onClick={async (e) => {
+                                e.preventDefault();
+                                if (s.username === user.username) {
+                                  // Delete subreddit if user owns it
+                                  await fetch(
+                                    `/api/reddit/subreddits/${s.subreddit_id}`,
+                                    {
+                                      method: "DELETE",
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                      },
+                                      body: JSON.stringify({
+                                        user_id: user.user_id,
+                                      }),
+                                    }
+                                  );
+                                  fetchSubreddits();
+                                  fetchMembership(user.user_id);
+                                } else {
+                                  // Leave subreddit if user is just a member
+                                  await fetch(
+                                    `/api/reddit/subreddits/${s.subreddit_id}/leave`,
+                                    {
+                                      method: "DELETE",
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                      },
+                                      body: JSON.stringify({
+                                        user_id: user.user_id,
+                                      }),
+                                    }
+                                  );
+                                  fetchMembership(user.user_id);
                                 }
-                              );
-                              fetchSubreddits();
-                              fetchMembership(user.user_id);
-                            } else {
-                              // Leave subreddit if user is just a member
-                              await fetch(
-                                `/api/reddit/subreddits/${s.subreddit_id}/leave`,
-                                {
-                                  method: "DELETE",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  body: JSON.stringify({
-                                    user_id: user.user_id,
-                                  }),
+                                if (
+                                  window.location.pathname.startsWith(
+                                    `/subreddit/${s.subreddit_id}`
+                                  )
+                                ) {
+                                  window.location.href = "/";
                                 }
-                              );
-                              fetchMembership(user.user_id);
-                            }
-                            if (
-                              window.location.pathname.startsWith(
-                                `/subreddit/${s.subreddit_id}`
-                              )
-                            ) {
-                              window.location.href = "/";
-                            }
-                          }}
-                          className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
-                        >
-                          <Minus className="size-3.5" />
-                        </button>
+                              }}
+                              className={`flex cursor-pointer items-center justify-center size-7 rounded-md ${
+                                s.username === user.username
+                                  ? "hover:bg-red-100"
+                                  : "hover:bg-stone-200"
+                              }`}
+                            >
+                              {s.username === user.username ? (
+                                <Trash2 className="size-3.5 text-red-700" />
+                              ) : (
+                                <Minus className="size-3.5" />
+                              )}
+                            </button>
+                          </TooltipTrigger>
+
+                          <TooltipContent side="right" sideOffset={4}>
+                            {s.username === user.username
+                              ? "Delete Subreddit"
+                              : "Leave Subreddit"}
+                          </TooltipContent>
+                        </Tooltip>
                       )
                     }
                   />
@@ -151,7 +180,7 @@ export default function SidebarLayout({
                                 );
                                 fetchMembership(user.user_id);
                               }}
-                              className="flex cursor-pointer items-center justify-center size-6 rounded-md hover:bg-stone-200"
+                              className="flex cursor-pointer items-center justify-center size-7 rounded-md hover:bg-stone-200"
                             >
                               <Plus className="size-3.5" />
                             </button>
@@ -166,7 +195,7 @@ export default function SidebarLayout({
                   />
                 ))}
               </div>
-              {user && (
+              {/* {user && (
                 <div className="mt-6">
                   <CreateSubreddit
                     userId={user.user_id}
@@ -176,7 +205,7 @@ export default function SidebarLayout({
                     }}
                   />
                 </div>
-              )}
+              )} */}
             </div>
           )}
         </div>
@@ -218,8 +247,8 @@ function SubredditButton({
   actionButton?: React.ReactNode;
 }) {
   return (
-    <div className="relative h-7">
-      <div className="absolute right-1 top-1/2 -translate-y-1/2">
+    <div className="relative h-8 group">
+      <div className="absolute right-1 top-1/2 -translate-y-1/2 group-hover:opacity-100 opacity-0 transition-opacity">
         {actionButton}
       </div>
       <Link
