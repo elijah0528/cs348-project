@@ -72,6 +72,13 @@ npm run sql -- --file=../../m1/feature1.sql
 
 These are, similarly, in the `m2` folder. There are two types of files, sample and production, each with a sql and out file. The production files have minor modifications for ids and limits for visibility purposes. To view the entire production database, visit `seed_reddit.sql` in the `lib/sql/scripts` folder. This was generated from `gen.py` in the `lib/sql/migrations` folder.
 
+To generate the production database, run the following command:
+
+```bash
+cd lib/sql/migrations
+python3 gen.py seed_reddit.sql
+```
+
 ### Implementation of features
 
 We have `api` endpoints for each core feature seen in the `app/api/reddit` folder. We implemented two of the four features from the milestone 1 list, the ability to create and delete a user. These can be found in `app/api/reddit/auth/register` and `app/api/reddit/auth/delete` respectively.
