@@ -63,4 +63,25 @@ export async function GET(_req: NextRequest, context: { params: Promise<{ id: st
     console.error("Fetch post error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
+}
+
+export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+  try {
+    const { id: postId } = await context.params;
+    const { content } = await req.json();
+
+    if (!content) {
+      return NextResponse.json({ error: "Content is required" }, { status: 400 });
+    }
+
+    await db.query(
+      "UPDATE posts SET content = $1 WHERE post_id = $2", 
+      [content, postId]
+    );
+
+    return NextResponse.json({ message: "Post updated successfully" });
+  } catch (err) {
+    console.error("Update post error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 } 

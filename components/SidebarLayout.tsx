@@ -6,6 +6,7 @@ import { getSubreddits, getUserMembership } from "@/lib/subreddit-data";
 import LogoutButton from "@/components/sidebar/LogoutButton";
 import SubredditActionButton from "@/components/sidebar/SubredditActionButton";
 import CreateSubredditWrapper from "@/components/sidebar/CreateSubredditWrapper";
+import { Button } from "@/components/ui/button";
 
 export default async function SidebarLayout({
   children,

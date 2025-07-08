@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import { Comment, Post, User } from "@/components/types";
 import CreateComment from "@/components/comments/CreateComment";
 import CommentCard from "@/components/posts/CommentCard";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Vote = -1 | 1;
 
@@ -21,10 +22,20 @@ export default function PostClient({
 }: PostClientProps) {
   const [comments, setComments] = useState<Comment[]>(initialComments);
   const [postVote, setPostVote] = useState<Vote | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(post.content);
   const [commentVotes, setCommentVotes] = useState<Record<string, Vote | null>>(
     {}
   );
   const [currentPost, setCurrentPost] = useState<Post>(post);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useLayoutEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [isEditing, editedContent]);
 
   const votePost = async (vote: Vote) => {
     if (!user) return;
@@ -65,6 +76,21 @@ export default function PostClient({
     }));
   };
 
+  const savePost = async () => {
+    if (!user) return;
+
+    const res = await fetch(`/api/reddit/posts/${post.post_id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: editedContent }),
+    });
+
+    if (res.ok) {
+      setCurrentPost({ ...currentPost, content: editedContent });
+      setIsEditing(false);
+    }
+  };
+
   const refreshPost = async () => {
     const res = await fetch(`/api/reddit/posts/${post.post_id}`);
     if (res.ok) {
@@ -76,11 +102,40 @@ export default function PostClient({
   return (
     <div className="p-6 overflow-y-auto max-w-2xl mx-auto">
       <h1 className="text-2xl mb-2">{currentPost.title}</h1>
-      <p className="mb-4">{currentPost.content}</p>
+      <div className="mb-4">
+        {isEditing ? (
+          <textarea
+            ref={textareaRef}
+            value={editedContent}
+            onChange={(e) => setEditedContent(e.target.value)}
+            className="w-full border-2 p-2 rounded-md resize-none overflow-hidden"
+            rows={1}
+          />
+        ) : (
+          <p className="p-2">{currentPost.content}</p>
+        )}
+      </div>
       <div className="flex items-center justify-between text-sm text-stone-600 mb-6">
         <span>Posted by {currentPost.username}</span>
         {user && (
           <div className="flex items-center space-x-2">
+            {isEditing ? (
+              <div className="flex items-center space-x-2">     
+                <Button variant="destructive" className="bg-red-500" onClick={() => {
+                  setIsEditing(false);
+                  setEditedContent(currentPost.content);
+                }}>
+                  Cancel
+                </Button>
+                <Button variant="link" onClick={savePost}>
+                  Save
+                </Button>
+              </div>
+            ) : (
+              <Button variant="link" onClick={() => setIsEditing(true)}>
+                Edit
+              </Button>
+            )}
             <button
               onClick={() => votePost(1)}
               className={`p-2 rounded hover:bg-gray-100 transition-colors ${
