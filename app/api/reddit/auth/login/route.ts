@@ -27,10 +27,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({
-      message: "Login successful",
-      user: result.rows[0]
+    const user = result.rows[0];
+    const res = NextResponse.json({ message: "Login successful", user });
+    res.cookies.set("weddit_user", JSON.stringify(user), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7,
     });
+    return res;
   } catch (error) {
     return NextResponse.json(
       { error: "Internal server error" },

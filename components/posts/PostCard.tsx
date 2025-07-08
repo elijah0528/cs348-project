@@ -26,7 +26,7 @@ export default function PostCard({
       <div className="text-lg font-semibold">{post.title}</div>
       <p className="mb-2">{content}</p>
       <p className="text-xs text-stone-600">
-        r/{post.subreddit_name} • {post.username}
+        r/{post.subreddit_name} • u/{post.username}
       </p>
       <div className="flex items-center mt-2 space-x-2 text-sm">
         <button 

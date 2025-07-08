@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { User } from "../types";
 
 type LoginTypes = {
-  onSuccess: (user: User) => void;
+  onSuccess: () => void;
 };
 
 export default function LoginForm({ onSuccess }: LoginTypes) {
@@ -23,7 +22,7 @@ export default function LoginForm({ onSuccess }: LoginTypes) {
         throw new Error(error.error || "Login failed");
       }
       const data = await response.json();
-      onSuccess(data.user);
+      onSuccess();
     } catch (error: any) {
       setError(error.message);
     }

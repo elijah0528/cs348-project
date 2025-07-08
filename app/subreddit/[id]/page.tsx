@@ -8,7 +8,7 @@ interface SubredditPageProps {
 }
 
 export default async function SubredditPage({ params }: SubredditPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const user = await getUser();
 
   if (!user) {

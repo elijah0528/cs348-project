@@ -42,27 +42,37 @@ export async function GET(
     const { id: subredditId } = await context.params;
 
     const result = await db.query(
-      `SELECT s.subreddit_id, s.subreddit_name, admin.username AS admin_username,
-        p.post_id, p.title, p.content, p.created_at, author.username,
-        SUM(v.vote_type) AS score,
-        COUNT(c.comment_id) AS comments_count
-       FROM subreddits s
-       LEFT JOIN profiles admin ON admin.user_id = s.admin_id
-       LEFT JOIN posts p ON p.subreddit_id = s.subreddit_id
-       LEFT JOIN profiles author ON author.user_id = p.user_id
-       LEFT JOIN votes v ON v.post_id = p.post_id
-       LEFT JOIN comments c ON c.post_id = p.post_id
-       WHERE s.subreddit_id = $1
-       GROUP BY s.subreddit_id, s.subreddit_name, admin.username, p.post_id, author.username
-       ORDER BY p.created_at DESC`,
+      `WITH all_posts AS (
+         SELECT p.post_id, p.user_id, p.title, p.content, p.created_at, s.subreddit_name, pr.username, SUM(v.vote_type) AS vote_score
+         FROM posts p
+         JOIN subreddits s ON s.subreddit_id = p.subreddit_id
+         JOIN profiles pr ON pr.user_id = p.user_id
+         JOIN votes v ON v.post_id = p.post_id
+         WHERE p.subreddit_id = $1
+         GROUP BY p.post_id, p.user_id, p.title, p.content, p.created_at, s.subreddit_name, pr.username
+
+         UNION ALL
+
+         SELECT p.post_id, p.user_id, p.title, p.content, p.created_at, s.subreddit_name, pr.username, 0 AS vote_score
+         FROM posts p
+         JOIN subreddits s ON s.subreddit_id = p.subreddit_id
+         JOIN profiles pr ON pr.user_id = p.user_id
+         WHERE p.subreddit_id = $1
+           AND NOT EXISTS (
+             SELECT 1 FROM votes v WHERE v.post_id = p.post_id
+           )
+       )
+       SELECT *
+       FROM all_posts
+       ORDER BY vote_score DESC, created_at DESC`,
       [subredditId]
     );
 
     if (result.rows.length === 0) {
       // subreddit without posts returns no post rows; fetch meta
       const meta = await db.query(
-        `SELECT s.subreddit_id, s.subreddit_name, p.username AS admin_username
-         FROM subreddits s JOIN profiles p ON s.admin_id = p.user_id WHERE s.subreddit_id = $1`,
+        `SELECT s.subreddit_id, s.subreddit_name
+         FROM subreddits s WHERE s.subreddit_id = $1`,
         [subredditId]
       );
       if (meta.rows.length === 0) {
@@ -74,7 +84,6 @@ export async function GET(
     const subredditInfo = {
       subreddit_id: result.rows[0].subreddit_id,
       subreddit_name: result.rows[0].subreddit_name,
-      admin_username: result.rows[0].admin_username,
     };
 
     const posts = result.rows
@@ -84,10 +93,10 @@ export async function GET(
         title: r.title,
         content: r.content,
         created_at: r.created_at,
-        username: r.username,
-        score: r.score ?? 0,
-        comments_count: r.comments_count,
+        user_id: r.user_id,
+        score: r.vote_score ?? 0,
         subreddit_name: r.subreddit_name,
+        username: r.username,
       }));
 
     return NextResponse.json({ subreddit: subredditInfo, posts });
@@ -98,4 +107,4 @@ export async function GET(
       { status: 500 }
     );
   }
-} 
+}
