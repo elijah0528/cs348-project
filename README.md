@@ -27,14 +27,14 @@ cd lib/sql
 npm run sql -- --file=migrations/reddit_init.sql
 ```
 
-To populate with sample data, run the sample seed file.
+To populate with **sample** data, run the sample seed file.
 
 ```bash
 cd lib/sql
 npm run sql -- --file=scripts/seed_reddit_sample.sql
 ```
 
-To populate with sample data, run the sample seed file.
+To populate with **production** data, run the production seed file.
 
 ```bash
 cd lib/sql
