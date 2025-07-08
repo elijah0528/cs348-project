@@ -42,7 +42,7 @@ export default function Dashboard({ user }: { user: User }) {
     fetchPosts();
     fetchSubreddits();
     fetchMembership();
-  }, []);
+  }, [sort]);
 
   const mySubs = subreddits.filter((s) => myIds.includes(s.subreddit_id));
   const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));

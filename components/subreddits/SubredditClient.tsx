@@ -22,6 +22,7 @@ export default function SubredditClient({
 }: SubredditClientProps) {
   const [posts, setPosts] = useState<Post[]>(initialPosts);
   const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
+  const [sort, setSort] = useState<"popular" | "recent">("popular");
 
   const handleVote = async (postId: string, vote: Vote) => {
     const currentVote = postVotes[postId];
@@ -42,18 +43,40 @@ export default function SubredditClient({
     }));
   };
 
-  const refreshPosts = async () => {
-    const res = await fetch(`/api/reddit/subreddits/${subredditId}`);
+  const refreshPosts = async (sortType?: "popular" | "recent") => {
+    const currentSort = sortType || sort;
+    const res = await fetch(`/api/reddit/subreddits/${subredditId}?sort=${currentSort}`);
     if (res.ok) {
       const data = await res.json();
       setPosts(data.posts || []);
     }
   };
 
+  const handleSortChange = async (newSort: "popular" | "recent") => {
+    setSort(newSort);
+    await refreshPosts(newSort);
+  };
+
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold">r/{subredditName}</h1>
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-semibold">r/{subredditName}</h1>
+          <div className="text-sm space-x-2">
+            <button
+              className={sort === "popular" ? "underline" : ""}
+              onClick={() => handleSortChange("popular")}
+            >
+              Popular
+            </button>
+            <button
+              className={sort === "recent" ? "underline" : ""}
+              onClick={() => handleSortChange("recent")}
+            >
+              Recent
+            </button>
+          </div>
+        </div>
         <CreatePost
           subredditId={subredditId}
           userId={user.user_id}

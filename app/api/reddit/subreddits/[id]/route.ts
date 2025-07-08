@@ -35,11 +35,15 @@ export async function DELETE(
 }
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id: subredditId } = await context.params;
+    const { searchParams } = new URL(request.url);
+    const sort = searchParams.get("sort") === "recent" ? "recent" : "popular";
+    
+    const orderBy = sort === "recent" ? "ORDER BY created_at DESC" : "ORDER BY vote_score DESC, created_at DESC";
 
     const result = await db.query(
       `WITH all_posts AS (
@@ -64,7 +68,7 @@ export async function GET(
        )
        SELECT *
        FROM all_posts
-       ORDER BY vote_score DESC, created_at DESC`,
+       ${orderBy}`,
       [subredditId]
     );
 
