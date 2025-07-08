@@ -4,20 +4,32 @@ import { useRouter } from 'next/navigation';
 import { Button } from '../ui/button';
 import { Trash2 } from 'lucide-react';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip';
+import { User } from '../types';
 
-export default function DeleteAccountButton() {
+export default function DeleteAccountButton({ user }: { user: User | null }) {
   const router = useRouter();
 
   const handleDelete = async () => {
+    if (!user) return;
     try {
       // Call delete API to remove user account
       await fetch('/api/reddit/auth/delete', {
-        method: 'POST',
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_id: user.user_id }),
       });
       
-      // Redirect to home or refresh page
-      router.push('/');
+      // Also log out to clear the session cookie
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      // Redirect to auth page and refresh
+      router.push('/auth');
       router.refresh();
+      
     } catch (error) {
       console.error('Account deletion failed:', error);
       window.location.reload();

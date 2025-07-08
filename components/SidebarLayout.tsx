@@ -98,7 +98,7 @@ export default async function SidebarLayout({
               u/{user.username}
             </Link>
             <div className="flex justify-end gap-2">
-              <DeleteAccountButton />
+              <DeleteAccountButton user={user} />
               <LogoutButton />
             </div>
           </div>
