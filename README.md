@@ -87,6 +87,5 @@ We also implemented the ability to select, create and delete a subreddit, which 
 
 ### Current Interface (will be updated)
 
-<img width="427" alt="image" src="https://github.com/user-attachments/assets/27e71d5a-06ea-47b2-943f-777cdded2792" />
 <img width="1709" alt="image" src="https://github.com/user-attachments/assets/b89669d7-1d5a-4fef-98a0-25fbef5272e9" />
 
