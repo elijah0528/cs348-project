@@ -3,7 +3,7 @@ SELECT * FROM profiles;
 
 -- logic
 DELETE FROM profiles
-WHERE user_id = '4f40832e-41e9-4a23-aec6-dcad8f948399';
+WHERE user_id = '9c9505d3-3358-4757-9892-be8ea3f5477a';
 
 -- also for testing purposes (after)
 SELECT * FROM profiles;
