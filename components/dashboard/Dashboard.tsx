@@ -39,6 +39,7 @@ export default function Dashboard({ user }: { user: User }) {
   };
 
   useEffect(() => {
+    fetchPosts();
     fetchSubreddits();
     fetchMembership();
   }, []);
