@@ -1,72 +1,748 @@
-INSERT INTO profiles (user_id, username, email, pw_hash) VALUES
-    ('00000000-0000-0000-0000-000000000001', 'Ian', 'ikorovin@uwaterloo.ca', 'pass'),
-    ('00000000-0000-0000-0000-000000000002', 'Guy', 'guy@uwaterloo.ca', 'guy'),
-    ('00000000-0000-0000-0000-000000000003', 'Elijah', 'ekurien@uwaterloo.ca', 'word'),
-    ('00000000-0000-0000-0000-000000000004', 'Rajan', 'r2agarwal@uwaterloo.ca', 'foo'),
-    ('00000000-0000-0000-0000-000000000005', 'Ishaan', 'i2dey@uwaterloo.ca', 'bar');
 
-INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES
-    ('00000000-0000-0000-0000-100000000000', 'uwaterloo', '00000000-0000-0000-0000-000000000001'),
-    ('00000000-0000-0000-0000-100000000001', 'cs', '00000000-0000-0000-0000-000000000002'),
-    ('00000000-0000-0000-0000-100000000002', 'music', '00000000-0000-0000-0000-000000000003'),
-    ('00000000-0000-0000-0000-100000000003', 'coffee', '00000000-0000-0000-0000-000000000004');
+/* PROFILES */
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'user_01', 'user_01@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'user_02', 'user_02@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'user_03', 'user_03@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'user_04', 'user_04@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'user_05', 'user_05@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'user_06', 'user_06@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'user_07', 'user_07@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'user_08', 'user_08@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'user_09', 'user_09@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', 'user_10', 'user_10@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'user_11', 'user_11@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', 'user_12', 'user_12@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'user_13', 'user_13@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'user_14', 'user_14@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'user_15', 'user_15@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'user_16', 'user_16@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', 'user_17', 'user_17@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'user_18', 'user_18@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'user_19', 'user_19@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'user_20', 'user_20@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'user_21', 'user_21@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'user_22', 'user_22@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'user_23', 'user_23@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'user_24', 'user_24@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'user_25', 'user_25@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'user_26', 'user_26@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'user_27', 'user_27@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', 'user_28', 'user_28@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', 'user_29', 'user_29@example.com', 'hashed_pw');
+INSERT INTO profiles (user_id, username, email, pw_hash) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'user_30', 'user_30@example.com', 'hashed_pw');
 
-INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES
-    ('00000000-0000-0000-0000-200000000001', 
-    '00000000-0000-0000-0000-000000000001', 
-    'Help me get a co-op!', 'I have no job', 
-    '00000000-0000-0000-0000-100000000000'),
-    
-    ('00000000-0000-0000-0000-200000000002', 
-    '00000000-0000-0000-0000-000000000002', 
-    'I love CS348', '10/10 course', 
-    '00000000-0000-0000-0000-100000000001'),
+/* SUBREDDITS */
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('369636c9-71f8-4818-862f-acccbfd394f2', 'topic_01', 'cb39fc9b-7807-48a3-ae83-9fa3c7c0c336');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('9ac09bec-4ff6-430c-9e1c-784732473909', 'topic_02', '83167833-3e16-4ad0-937e-d737474dd6a7');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('90814212-11bc-499b-adfc-ecac8666140b', 'topic_03', '3fee9d83-d0fe-4eae-be2e-c1499f4c5f13');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('9b283bcc-ec20-4ec5-b99f-39f97a0a97fc', 'topic_04', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('1e9b2d0c-2b1d-487a-a1b3-77cd1815f963', 'topic_05', 'dd8a6293-3701-4580-8982-3a9fd7179578');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('ef64ca70-182a-4232-a091-a4b2320431d6', 'topic_06', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('9f885ec1-2cb2-4a93-888b-f9696639c055', 'topic_07', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('86567e67-56df-4ef6-9999-3b35985c3eb2', 'topic_08', '72eb4f08-156a-4ed5-83c7-62e2a5103404');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('dbe5d960-13a3-45d1-81f5-8afc09c2635a', 'topic_09', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO subreddits (subreddit_id, subreddit_name, admin_id) VALUES ('2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9', 'topic_10', '83167833-3e16-4ad0-937e-d737474dd6a7');
 
-    ('00000000-0000-0000-0000-200000000003', 
-    '00000000-0000-0000-0000-000000000004', 
-    'Best EDM songs about databases', '"entity" by DJ 2', 
-    '00000000-0000-0000-0000-100000000002'),
+/* SUBREDDIT MEMBERSHIP */
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '9f885ec1-2cb2-4a93-888b-f9696639c055');
 
-    ('00000000-0000-0000-0000-200000000004', 
-    '00000000-0000-0000-0000-000000000005', 
-    'Best Coffee Shops in Waterloo', 'Lucero probably', 
-    '00000000-0000-0000-0000-100000000003');
+/* POSTS */
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('a6bd3e2e-76c6-4bd4-9eea-05908558ead3', '72eb4f08-156a-4ed5-83c7-62e2a5103404', 'Post #1', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('b6e21043-4559-4867-a6b6-e56c2f83266a', '72eb4f08-156a-4ed5-83c7-62e2a5103404', 'Post #2', 'Lorem ipsum ...', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('c679a6cf-1299-4293-ac53-22bd4acfc618', 'a3653f9b-d679-40b2-8fa6-37e417c28336', 'Post #3', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('d652efe0-2802-4930-9548-dd89b67186f0', 'c9b1c5fd-e3a7-4da8-be21-03c359572500', 'Post #4', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('4a14f7be-2fde-470f-8376-b37243e5240e', 'a3653f9b-d679-40b2-8fa6-37e417c28336', 'Post #5', 'Lorem ipsum ...', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('337d0bb6-08b7-4e8c-85ce-1320244e7dc2', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'Post #6', 'Lorem ipsum ...', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('8640208d-9921-4ee0-a754-4b5b01379660', '3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'Post #7', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('78d7b165-73b0-4833-a24b-11206e956caf', '6b045c73-1ce8-4187-bd8f-01f933180fff', 'Post #8', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('27ce5136-184d-40cf-9f76-9a6e49b4d782', '4fb3335a-22ae-47e5-b190-391749c19572', 'Post #9', 'Lorem ipsum ...', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('e7496dcd-a4f7-4792-a052-477d6acb7056', 'dad0b091-03a5-4812-9acf-4d5389e30108', 'Post #10', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('acd70617-46bb-4fb8-8162-8807d204e51d', 'd90d90be-5c09-46c5-95b4-448760a65337', 'Post #11', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('adb5b590-90d6-44ee-818f-24809541d5f3', '72eb4f08-156a-4ed5-83c7-62e2a5103404', 'Post #12', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('c2cb455d-c080-4add-a535-1ef84e599414', '94ba7602-3269-4ce4-ad28-f0533486df1f', 'Post #13', 'Lorem ipsum ...', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', '82ca4369-f049-461a-ab04-9c9daee66b42', 'Post #14', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('66b60ffe-94d9-46d5-98f6-9966c1606a60', '3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'Post #15', 'Lorem ipsum ...', '9f885ec1-2cb2-4a93-888b-f9696639c055');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('924a47cc-2a60-4260-8796-41cfc7bca2f7', '82ca4369-f049-461a-ab04-9c9daee66b42', 'Post #16', 'Lorem ipsum ...', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('9bb0a2e5-edac-41b2-b983-bd90fe9309a9', '4fb3335a-22ae-47e5-b190-391749c19572', 'Post #17', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('32e4a510-6696-4520-9cff-8eeed184a729', 'c9b1c5fd-e3a7-4da8-be21-03c359572500', 'Post #18', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('db011c38-29bf-4b05-bb80-81bc5c889270', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'Post #19', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('856532b0-a016-44f6-9b85-59d5ab1d847b', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'Post #20', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('59db2024-ee64-4f0d-a688-1d909c76cf2a', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #21', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('09ad9a07-f87b-4e90-b1dd-75218a36989a', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #22', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('d14d3906-4bc1-41b1-93ba-e1657b53e9d2', '83167833-3e16-4ad0-937e-d737474dd6a7', 'Post #23', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('656ddd4e-2be5-480c-8040-73f57645d3d8', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'Post #24', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('54ffe57c-b2b5-4a7c-8a69-75130055a810', '22d28ee3-7413-4d95-b387-838fecab338f', 'Post #25', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('1c0f5812-b1c1-4800-a6d1-48293368847f', 'a3653f9b-d679-40b2-8fa6-37e417c28336', 'Post #26', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('ec373eb2-4b0a-4267-ace7-4be27d0b9caa', '4fb3335a-22ae-47e5-b190-391749c19572', 'Post #27', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', '4fb3335a-22ae-47e5-b190-391749c19572', 'Post #28', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', 'd90d90be-5c09-46c5-95b4-448760a65337', 'Post #29', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 'e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'Post #30', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('02b313e5-5f3c-422d-8648-8f12422402b6', '82ca4369-f049-461a-ab04-9c9daee66b42', 'Post #31', 'Lorem ipsum ...', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('11d97165-370d-42ad-b397-5bd4885b25d1', '72eb4f08-156a-4ed5-83c7-62e2a5103404', 'Post #32', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('908100e0-3ea3-4178-be44-a763215a723e', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #33', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('db7b8d00-5efa-4a5b-bf9d-a619b2584c08', 'c9b1c5fd-e3a7-4da8-be21-03c359572500', 'Post #34', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('69b7bed6-b789-4333-8875-dc046913aaa7', '2365a432-ef17-407d-8235-883e15e351ae', 'Post #35', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', '82ca4369-f049-461a-ab04-9c9daee66b42', 'Post #36', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', '15330474-2a22-4450-9227-65fddc5f36a1', 'Post #37', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('cf333688-e70d-4dc9-896a-a6933db9ae60', '83167833-3e16-4ad0-937e-d737474dd6a7', 'Post #38', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('4da4aec3-7323-45d8-b251-0737fbe8dabf', 'e2f25a1f-c730-4307-a102-6778eee32a85', 'Post #39', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('f1d53686-6aa1-4f7a-81b5-0ffd1d4bc9a8', '6b045c73-1ce8-4187-bd8f-01f933180fff', 'Post #40', 'Lorem ipsum ...', '369636c9-71f8-4818-862f-acccbfd394f2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('1e745b43-0d32-4001-b3e3-0c2f26993031', '6b045c73-1ce8-4187-bd8f-01f933180fff', 'Post #41', 'Lorem ipsum ...', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('0f10a255-d13a-4cd4-84fa-2ac8deb7df55', 'dad0b091-03a5-4812-9acf-4d5389e30108', 'Post #42', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('510fd9cf-3165-47a2-8e09-db301a701e1d', 'a3653f9b-d679-40b2-8fa6-37e417c28336', 'Post #43', 'Lorem ipsum ...', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('58cf41a1-756a-43f0-ac79-d6175aee72e3', 'e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'Post #44', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('b173d0cf-2093-42dc-bed0-97c253bb98e6', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #45', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #46', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('8a8e6531-b6ed-4333-9dcf-e1f8b45667f2', '72eb4f08-156a-4ed5-83c7-62e2a5103404', 'Post #47', 'Lorem ipsum ...', '86567e67-56df-4ef6-9999-3b35985c3eb2');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('2b069986-2c59-4f09-b2cb-427dfd3220bf', 'c9b1c5fd-e3a7-4da8-be21-03c359572500', 'Post #48', 'Lorem ipsum ...', '90814212-11bc-499b-adfc-ecac8666140b');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', 'dd8a6293-3701-4580-8982-3a9fd7179578', 'Post #49', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('8551be65-bee5-4ad3-85af-2e44bb1995d1', 'd90d90be-5c09-46c5-95b4-448760a65337', 'Post #50', 'Lorem ipsum ...', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('3196b432-dd73-4115-81a5-0164d690e3bb', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'Post #51', 'Lorem ipsum ...', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('acc9c35e-91bf-4aa1-b750-f54c3e53ca61', '2365a432-ef17-407d-8235-883e15e351ae', 'Post #52', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('f6aa3d0f-e357-4518-a8d0-0be79bc2dc35', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'Post #53', 'Lorem ipsum ...', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('da465e9b-be98-4e76-827e-b7287b662ff6', 'db582f55-0f27-41fb-82f6-61830b7b8d07', 'Post #54', 'Lorem ipsum ...', '1e9b2d0c-2b1d-487a-a1b3-77cd1815f963');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('e449f2be-9c36-4080-87d7-e870a42e2eab', '3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'Post #55', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', '22d28ee3-7413-4d95-b387-838fecab338f', 'Post #56', 'Lorem ipsum ...', 'dbe5d960-13a3-45d1-81f5-8afc09c2635a');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('390bfa6c-2b56-4505-a460-41c79dcf7b62', '22d28ee3-7413-4d95-b387-838fecab338f', 'Post #57', 'Lorem ipsum ...', '9ac09bec-4ff6-430c-9e1c-784732473909');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('85a56693-3f10-49e8-9f85-6a33f6161f85', '6b045c73-1ce8-4187-bd8f-01f933180fff', 'Post #58', 'Lorem ipsum ...', '9b283bcc-ec20-4ec5-b99f-39f97a0a97fc');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 'dad0b091-03a5-4812-9acf-4d5389e30108', 'Post #59', 'Lorem ipsum ...', 'ef64ca70-182a-4232-a091-a4b2320431d6');
+INSERT INTO posts (post_id, user_id, title, content, subreddit_id) VALUES ('aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', '3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'Post #60', 'Lorem ipsum ...', '2055ad2e-df6d-48bc-bcbe-e5abdd40dcd9');
 
+/* COMMENTS */
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('22770528-4537-44ef-9ad6-da2162ff036b', 'Great post!', 'f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('4e00f140-b5d8-4c70-943a-2cb4e809ab08', 'Great post!', 'cf333688-e70d-4dc9-896a-a6933db9ae60', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('4fd2d654-95d2-4f75-8666-cb677e862d55', 'Great post!', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('06027cb8-bfa8-44b6-9d52-e12a6afcc15f', 'Great post!', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 'cb39fc9b-7807-48a3-ae83-9fa3c7c0c336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('2db3b8e1-6cdb-42e3-b5b4-b0dc328caf22', 'Great post!', 'd652efe0-2802-4930-9548-dd89b67186f0', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('d2c5073e-7455-4a1d-8ef8-faba3189cd40', 'Great post!', '4a14f7be-2fde-470f-8376-b37243e5240e', 'e2f25a1f-c730-4307-a102-6778eee32a85');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('b7785076-74a6-4deb-9aae-72f45f358840', 'Great post!', 'c679a6cf-1299-4293-ac53-22bd4acfc618', 'd90d90be-5c09-46c5-95b4-448760a65337');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('fc665364-fcd4-4ef8-99b1-9f4911f54123', 'Great post!', '09ad9a07-f87b-4e90-b1dd-75218a36989a', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7941d8ee-90ae-4c19-b425-682eeac6ac8b', 'Great post!', '908100e0-3ea3-4178-be44-a763215a723e', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('47b3acdb-29b6-47a1-bbac-51d146cf899d', 'Great post!', '32e4a510-6696-4520-9cff-8eeed184a729', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7e2120e8-4293-49c1-a269-fa0dca6d9ca7', 'Great post!', '11d97165-370d-42ad-b397-5bd4885b25d1', '0c666f44-e355-4183-a6b0-cab5a1a72743');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7b8ea69a-3bf6-4ed2-8ba2-0591e3e53887', 'Great post!', '69b7bed6-b789-4333-8875-dc046913aaa7', '72eb4f08-156a-4ed5-83c7-62e2a5103404');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('5e36c8ec-4524-4937-abe3-619f902d5bc0', 'Great post!', '8a8e6531-b6ed-4333-9dcf-e1f8b45667f2', '2365a432-ef17-407d-8235-883e15e351ae');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('818613e5-331f-44fd-901d-69297c08f3d2', 'Great post!', '390bfa6c-2b56-4505-a460-41c79dcf7b62', '01b5daca-980b-404c-9bfd-86299d00fba9');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('d4eaf527-cda8-461c-8174-83815cae9e2d', 'Great post!', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', '15330474-2a22-4450-9227-65fddc5f36a1');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('dba84ddc-d62f-4162-9a57-5e42d1975db8', 'Great post!', '924a47cc-2a60-4260-8796-41cfc7bca2f7', '94ba7602-3269-4ce4-ad28-f0533486df1f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('ed58398a-72b6-4021-a931-f770d34e0204', 'Great post!', '02b313e5-5f3c-422d-8648-8f12422402b6', '94ba7602-3269-4ce4-ad28-f0533486df1f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('31dc0877-b384-4923-8c8d-dbe9896c532d', 'Great post!', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', '0c666f44-e355-4183-a6b0-cab5a1a72743');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('f4443bc1-aa1b-4829-9d86-6f8f6a27e85f', 'Great post!', '8640208d-9921-4ee0-a754-4b5b01379660', '83167833-3e16-4ad0-937e-d737474dd6a7');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('9793dc18-0a38-449c-ae67-a840193a8976', 'Great post!', '510fd9cf-3165-47a2-8e09-db301a701e1d', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('efec3964-7fdc-41d8-a6d1-0cdb7ed3de36', 'Great post!', 'd14d3906-4bc1-41b1-93ba-e1657b53e9d2', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('3c740790-11bc-4e58-82fd-8dd3b1bfb83b', 'Great post!', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', '22d28ee3-7413-4d95-b387-838fecab338f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('036e22dd-3567-46bc-ba1d-e1bf9ead971c', 'Great post!', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('d3fc3743-6c43-455b-b3ad-37882d3dd648', 'Great post!', 'd652efe0-2802-4930-9548-dd89b67186f0', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('0d51607d-9b5d-4beb-bbf5-cb086c9f8f98', 'Great post!', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', 'cb39fc9b-7807-48a3-ae83-9fa3c7c0c336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('34f86dd1-3f98-469f-8198-6868dd39bf64', 'Great post!', '8640208d-9921-4ee0-a754-4b5b01379660', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('362006d5-1ebb-4cdd-87e5-7a85eb9c1f05', 'Great post!', '1c0f5812-b1c1-4800-a6d1-48293368847f', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('18f1cdb5-dfc2-4a3f-ac18-623192854acb', 'Great post!', '09ad9a07-f87b-4e90-b1dd-75218a36989a', '94ba7602-3269-4ce4-ad28-f0533486df1f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('06c93118-525d-400a-a7cb-1dda0c992aa1', 'Great post!', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', '83167833-3e16-4ad0-937e-d737474dd6a7');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7fd2b4dc-b054-4531-8be2-03f559d71e7d', 'Great post!', '924a47cc-2a60-4260-8796-41cfc7bca2f7', '0c666f44-e355-4183-a6b0-cab5a1a72743');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('a73e6573-813b-4540-854b-238894112d66', 'Great post!', 'c2cb455d-c080-4add-a535-1ef84e599414', 'c9b1c5fd-e3a7-4da8-be21-03c359572500');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7704233a-acca-47ab-ad22-3b0fbdd41dbf', 'Great post!', 'dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', '72eb4f08-156a-4ed5-83c7-62e2a5103404');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('6f00b398-66b6-40dd-9afe-ec239253c66c', 'Great post!', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', 'b7b539d7-2bc7-4589-ae5c-d6cfba57dd29');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('cb4c27b7-6d5f-4d74-9bfd-e730cb4acf0e', 'Great post!', '32e4a510-6696-4520-9cff-8eeed184a729', '22d28ee3-7413-4d95-b387-838fecab338f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('35a604a7-4ffe-42d9-9c6c-baa3ba9c89b4', 'Great post!', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 'd90d90be-5c09-46c5-95b4-448760a65337');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('46caf0e6-6365-4fb0-bbd7-aac921daead2', 'Great post!', 'aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('56e4f803-2971-4456-af32-bdf690b3dc76', 'Great post!', 'dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', '94ba7602-3269-4ce4-ad28-f0533486df1f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('091b4ab2-870c-4452-a7e6-effcc802c551', 'Great post!', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 'd90d90be-5c09-46c5-95b4-448760a65337');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('205ac65c-6a32-4eac-bae3-05962c1cdcfb', 'Great post!', 'f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', '83167833-3e16-4ad0-937e-d737474dd6a7');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('c3beaa29-462d-46f4-8657-815c3cdff09b', 'Great post!', 'd652efe0-2802-4930-9548-dd89b67186f0', 'cb39fc9b-7807-48a3-ae83-9fa3c7c0c336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('994c6704-2dfd-479b-b01f-3ecdf7ae3886', 'Great post!', '69b7bed6-b789-4333-8875-dc046913aaa7', 'e25e0dc0-6bee-4262-8310-cf5105cf9e06');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('7fd0b5d5-22c8-4b55-b858-9a7a46839984', 'Great post!', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('fef9b78a-82d5-4799-bd39-0753e68aaea6', 'Great post!', 'aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', 'bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('0476246f-2359-4ab1-9971-9fbdb356a616', 'Great post!', 'e449f2be-9c36-4080-87d7-e870a42e2eab', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('af9812f4-7235-4a07-8040-134ca9e82123', 'Great post!', 'acd70617-46bb-4fb8-8162-8807d204e51d', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('718f28f5-ce32-4c1e-98e6-c8c43e270799', 'Great post!', '11d97165-370d-42ad-b397-5bd4885b25d1', '15330474-2a22-4450-9227-65fddc5f36a1');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('8c966c2f-c8d5-4fb5-a22e-235424fd1e56', 'Great post!', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', 'd90d90be-5c09-46c5-95b4-448760a65337');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('3ede430b-8ad2-4142-96a8-f2787e35e84c', 'Great post!', '1c0f5812-b1c1-4800-a6d1-48293368847f', 'e2f25a1f-c730-4307-a102-6778eee32a85');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('bb11d2d0-c6ae-40fb-a026-09e34ef39c17', 'Great post!', 'd652efe0-2802-4930-9548-dd89b67186f0', 'b7b539d7-2bc7-4589-ae5c-d6cfba57dd29');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('48e1e0f1-9a3c-4354-bf42-f6b9c603ab59', 'Great post!', '54ffe57c-b2b5-4a7c-8a69-75130055a810', '3fee9d83-d0fe-4eae-be2e-c1499f4c5f13');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('e561ded7-e2b8-498d-a857-270e1203f10f', 'Great post!', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 'dd8a6293-3701-4580-8982-3a9fd7179578');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('cc41d4e1-7ba3-494f-b1b8-df7d6da82f9a', 'Great post!', 'aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', '94ba7602-3269-4ce4-ad28-f0533486df1f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('ac8640b8-7f84-418d-957b-9848e850ebeb', 'Great post!', '3196b432-dd73-4115-81a5-0164d690e3bb', '22d28ee3-7413-4d95-b387-838fecab338f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('8e1fe369-4076-40a7-a1ff-7e23669468dc', 'Great post!', 'db011c38-29bf-4b05-bb80-81bc5c889270', 'c4a88f0a-8c54-47e2-baf3-b53994b185b4');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('16009bbe-88c3-4056-9aa0-a19f08661576', 'Great post!', 'b173d0cf-2093-42dc-bed0-97c253bb98e6', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('3fc4883b-209a-4564-a8ac-a711c2f8a74d', 'Great post!', '3196b432-dd73-4115-81a5-0164d690e3bb', 'c9b1c5fd-e3a7-4da8-be21-03c359572500');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('77e63b4f-25ca-4460-bac0-c6cbc9fc2d97', 'Great post!', '510fd9cf-3165-47a2-8e09-db301a701e1d', 'db582f55-0f27-41fb-82f6-61830b7b8d07');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('a945e6b7-38dc-43be-829b-914c9955765b', 'Great post!', '11d97165-370d-42ad-b397-5bd4885b25d1', '72eb4f08-156a-4ed5-83c7-62e2a5103404');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('1753fe8c-ba11-4454-bf38-40110abb404b', 'Great post!', 'c2cb455d-c080-4add-a535-1ef84e599414', 'c77efec2-2526-4309-89b6-03ef9dc02cfd');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('64eb0572-b137-4f67-9772-afd7f845e97e', 'Great post!', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('91c32fa4-dd39-48db-ad3d-5931768d48c3', 'Great post!', 'cf333688-e70d-4dc9-896a-a6933db9ae60', 'a3653f9b-d679-40b2-8fa6-37e417c28336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('252198e7-0418-4783-8eb1-352362a4d5bf', 'Great post!', '69b7bed6-b789-4333-8875-dc046913aaa7', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('da2c5a73-237c-49b4-a30b-fafe892bb8a2', 'Great post!', '2b069986-2c59-4f09-b2cb-427dfd3220bf', 'e2b22c3f-b670-4e5c-9fc3-8a822621563b');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('75c30e89-1d47-46c4-943a-6f1017dde258', 'Great post!', 'd652efe0-2802-4930-9548-dd89b67186f0', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('f733f68d-b33c-4b59-b15b-cb186001c151', 'Great post!', 'cf333688-e70d-4dc9-896a-a6933db9ae60', '15330474-2a22-4450-9227-65fddc5f36a1');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('5916cfdd-ba30-41a7-afc2-7fe603ef9cf6', 'Great post!', '908100e0-3ea3-4178-be44-a763215a723e', '2365a432-ef17-407d-8235-883e15e351ae');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('e3b0d0c8-8bad-499f-987b-0d9cfe4e942e', 'Great post!', 'e449f2be-9c36-4080-87d7-e870a42e2eab', '4fb3335a-22ae-47e5-b190-391749c19572');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('4c8506b1-9f3d-4290-a668-b360de055a48', 'Great post!', 'acd70617-46bb-4fb8-8162-8807d204e51d', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('4f835923-ef6f-4147-aa48-390b7d21269e', 'Great post!', '908100e0-3ea3-4178-be44-a763215a723e', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('fceab6ce-3e46-4673-8542-4d18340144a8', 'Great post!', 'e449f2be-9c36-4080-87d7-e870a42e2eab', 'b7b539d7-2bc7-4589-ae5c-d6cfba57dd29');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('820a8981-0246-4238-9d96-668a91160d6b', 'Great post!', '4a14f7be-2fde-470f-8376-b37243e5240e', '82ca4369-f049-461a-ab04-9c9daee66b42');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('6d6ff807-3b73-4b4d-870a-8b0f3eca3339', 'Great post!', '4a14f7be-2fde-470f-8376-b37243e5240e', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('4ea52907-f0ef-4e0c-aa0d-daf657c8cfd5', 'Great post!', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', '6b045c73-1ce8-4187-bd8f-01f933180fff');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('675623d5-0ee1-44dc-8139-d3d1d8d033b0', 'Great post!', '1c0f5812-b1c1-4800-a6d1-48293368847f', '83167833-3e16-4ad0-937e-d737474dd6a7');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('cd2417e5-5bc8-42a7-a533-fcf465eac502', 'Great post!', '390bfa6c-2b56-4505-a460-41c79dcf7b62', '01b5daca-980b-404c-9bfd-86299d00fba9');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('710adfbe-5c21-4990-9667-6229b39a46f3', 'Great post!', '924a47cc-2a60-4260-8796-41cfc7bca2f7', '01b5daca-980b-404c-9bfd-86299d00fba9');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('6978d773-190a-4441-b120-4fd401dc3da3', 'Great post!', '4da4aec3-7323-45d8-b251-0737fbe8dabf', '21a9e9df-c075-4095-85e2-2139a672f846');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('5a4094bb-1cff-482f-9a56-f1f73ecb01fd', 'Great post!', 'f1d53686-6aa1-4f7a-81b5-0ffd1d4bc9a8', 'dad0b091-03a5-4812-9acf-4d5389e30108');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('9a3dd0ff-cc08-4d83-ad14-52b0cd5f97a3', 'Great post!', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('28b6759c-fcc9-4974-a962-02b8b7f8ee73', 'Great post!', 'cf333688-e70d-4dc9-896a-a6933db9ae60', '01b5daca-980b-404c-9bfd-86299d00fba9');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('93a5fc67-38b4-4cd7-b5f0-bff62eafdf8c', 'Great post!', 'db7b8d00-5efa-4a5b-bf9d-a619b2584c08', 'e2b22c3f-b670-4e5c-9fc3-8a822621563b');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('de394fc6-379c-42e2-ad0d-7ef1d9bdfa4d', 'Great post!', 'aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', 'dd8a6293-3701-4580-8982-3a9fd7179578');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('c981356c-d8b5-4184-9d80-e3ce5bee9f42', 'Great post!', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', '92ad9e90-2df7-4b4e-8569-27535a3a4bc0');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('2a5686af-14bd-43bd-afee-76ddfb26491a', 'Great post!', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 'e2b22c3f-b670-4e5c-9fc3-8a822621563b');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('dc180b3d-ca41-45c3-8f3b-57348d4c55a9', 'Great post!', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 'dd8a6293-3701-4580-8982-3a9fd7179578');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('752b51e6-a698-4e04-9e95-7a2e103188ac', 'Great post!', '1c0f5812-b1c1-4800-a6d1-48293368847f', '72eb4f08-156a-4ed5-83c7-62e2a5103404');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('cafa62e2-99fc-4deb-80c8-3b51d7c11e2a', 'Great post!', '510fd9cf-3165-47a2-8e09-db301a701e1d', 'cb39fc9b-7807-48a3-ae83-9fa3c7c0c336');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('79b55100-38b0-4905-b43e-53c484c1491d', 'Great post!', '856532b0-a016-44f6-9b85-59d5ab1d847b', '22d28ee3-7413-4d95-b387-838fecab338f');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('17db6877-c98b-4e1f-8a9c-8942f4962320', 'Great post!', '59db2024-ee64-4f0d-a688-1d909c76cf2a', '2365a432-ef17-407d-8235-883e15e351ae');
+INSERT INTO comments (comment_id, content, post_id, user_id) VALUES ('23ac5b52-e636-4ffa-9f70-f3f1ed7230ff', 'Great post!', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', '2365a432-ef17-407d-8235-883e15e351ae');
 
-INSERT INTO comments (comment_id, content, post_id, user_id) VALUES
-    ('00000000-0000-0000-0000-300000000001', 'Have you tried applying to Google?', 
-        '00000000-0000-0000-0000-200000000001', 
-        '00000000-0000-0000-0000-000000000002'),
-    
-    ('00000000-0000-0000-0000-300000000002', 'Same here, best course ever!', 
-        '00000000-0000-0000-0000-200000000002', 
-        '00000000-0000-0000-0000-000000000001'),
-    
-    ('00000000-0000-0000-0000-300000000003', 'Check out "foreign key" by DJ 3', 
-        '00000000-0000-0000-0000-200000000003', 
-        '00000000-0000-0000-0000-000000000003'),
-    
-    ('00000000-0000-0000-0000-300000000004', 'Balzacs is great!', 
-        '00000000-0000-0000-0000-200000000004', 
-        '00000000-0000-0000-0000-000000000004');
+/* POST VOTES */
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '8640208d-9921-4ee0-a754-4b5b01379660', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '908100e0-3ea3-4178-be44-a763215a723e', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'd14d3906-4bc1-41b1-93ba-e1657b53e9d2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '856532b0-a016-44f6-9b85-59d5ab1d847b', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'f6aa3d0f-e357-4518-a8d0-0be79bc2dc35', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '27ce5136-184d-40cf-9f76-9a6e49b4d782', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '8640208d-9921-4ee0-a754-4b5b01379660', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '32e4a510-6696-4520-9cff-8eeed184a729', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '1e745b43-0d32-4001-b3e3-0c2f26993031', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'e449f2be-9c36-4080-87d7-e870a42e2eab', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '1e745b43-0d32-4001-b3e3-0c2f26993031', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '2b069986-2c59-4f09-b2cb-427dfd3220bf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '4a14f7be-2fde-470f-8376-b37243e5240e', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '85a56693-3f10-49e8-9f85-6a33f6161f85', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'da465e9b-be98-4e76-827e-b7287b662ff6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'e7496dcd-a4f7-4792-a052-477d6acb7056', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '856532b0-a016-44f6-9b85-59d5ab1d847b', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '3196b432-dd73-4115-81a5-0164d690e3bb', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '85a56693-3f10-49e8-9f85-6a33f6161f85', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '924a47cc-2a60-4260-8796-41cfc7bca2f7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '8551be65-bee5-4ad3-85af-2e44bb1995d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'e7496dcd-a4f7-4792-a052-477d6acb7056', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'b6e21043-4559-4867-a6b6-e56c2f83266a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '09ad9a07-f87b-4e90-b1dd-75218a36989a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '3196b432-dd73-4115-81a5-0164d690e3bb', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '66b60ffe-94d9-46d5-98f6-9966c1606a60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '3196b432-dd73-4115-81a5-0164d690e3bb', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'b6e21043-4559-4867-a6b6-e56c2f83266a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '09ad9a07-f87b-4e90-b1dd-75218a36989a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '8551be65-bee5-4ad3-85af-2e44bb1995d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '908100e0-3ea3-4178-be44-a763215a723e', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '69b7bed6-b789-4333-8875-dc046913aaa7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '78d7b165-73b0-4833-a24b-11206e956caf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'adb5b590-90d6-44ee-818f-24809541d5f3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'c679a6cf-1299-4293-ac53-22bd4acfc618', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'd14d3906-4bc1-41b1-93ba-e1657b53e9d2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '78d7b165-73b0-4833-a24b-11206e956caf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'c2cb455d-c080-4add-a535-1ef84e599414', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'db7b8d00-5efa-4a5b-bf9d-a619b2584c08', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '58cf41a1-756a-43f0-ac79-d6175aee72e3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '2b069986-2c59-4f09-b2cb-427dfd3220bf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '510fd9cf-3165-47a2-8e09-db301a701e1d', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '85a56693-3f10-49e8-9f85-6a33f6161f85', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'b173d0cf-2093-42dc-bed0-97c253bb98e6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'c2cb455d-c080-4add-a535-1ef84e599414', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '58cf41a1-756a-43f0-ac79-d6175aee72e3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'f1d53686-6aa1-4f7a-81b5-0ffd1d4bc9a8', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', 'db011c38-29bf-4b05-bb80-81bc5c889270', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'cf333688-e70d-4dc9-896a-a6933db9ae60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '85a56693-3f10-49e8-9f85-6a33f6161f85', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'acd70617-46bb-4fb8-8162-8807d204e51d', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '908100e0-3ea3-4178-be44-a763215a723e', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '09ad9a07-f87b-4e90-b1dd-75218a36989a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '924a47cc-2a60-4260-8796-41cfc7bca2f7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'c679a6cf-1299-4293-ac53-22bd4acfc618', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'f1d53686-6aa1-4f7a-81b5-0ffd1d4bc9a8', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'e7496dcd-a4f7-4792-a052-477d6acb7056', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '85a56693-3f10-49e8-9f85-6a33f6161f85', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '390bfa6c-2b56-4505-a460-41c79dcf7b62', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '66b60ffe-94d9-46d5-98f6-9966c1606a60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'db7b8d00-5efa-4a5b-bf9d-a619b2584c08', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '924a47cc-2a60-4260-8796-41cfc7bca2f7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '4da4aec3-7323-45d8-b251-0737fbe8dabf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '85a56693-3f10-49e8-9f85-6a33f6161f85', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '8a8e6531-b6ed-4333-9dcf-e1f8b45667f2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'da465e9b-be98-4e76-827e-b7287b662ff6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '85a56693-3f10-49e8-9f85-6a33f6161f85', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '02b313e5-5f3c-422d-8648-8f12422402b6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '1e745b43-0d32-4001-b3e3-0c2f26993031', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'db7b8d00-5efa-4a5b-bf9d-a619b2584c08', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '32e4a510-6696-4520-9cff-8eeed184a729', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'db011c38-29bf-4b05-bb80-81bc5c889270', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '59db2024-ee64-4f0d-a688-1d909c76cf2a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '27ce5136-184d-40cf-9f76-9a6e49b4d782', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'cf333688-e70d-4dc9-896a-a6933db9ae60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'e449f2be-9c36-4080-87d7-e870a42e2eab', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '856532b0-a016-44f6-9b85-59d5ab1d847b', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '85a56693-3f10-49e8-9f85-6a33f6161f85', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '69b7bed6-b789-4333-8875-dc046913aaa7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'da465e9b-be98-4e76-827e-b7287b662ff6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'f1d53686-6aa1-4f7a-81b5-0ffd1d4bc9a8', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '1c0f5812-b1c1-4800-a6d1-48293368847f', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'b6e21043-4559-4867-a6b6-e56c2f83266a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '27ce5136-184d-40cf-9f76-9a6e49b4d782', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'd652efe0-2802-4930-9548-dd89b67186f0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '9bb0a2e5-edac-41b2-b983-bd90fe9309a9', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'b6e21043-4559-4867-a6b6-e56c2f83266a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'd14d3906-4bc1-41b1-93ba-e1657b53e9d2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'c679a6cf-1299-4293-ac53-22bd4acfc618', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'c2cb455d-c080-4add-a535-1ef84e599414', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'e7496dcd-a4f7-4792-a052-477d6acb7056', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '656ddd4e-2be5-480c-8040-73f57645d3d8', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '2b069986-2c59-4f09-b2cb-427dfd3220bf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'f6aa3d0f-e357-4518-a8d0-0be79bc2dc35', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '8640208d-9921-4ee0-a754-4b5b01379660', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '856532b0-a016-44f6-9b85-59d5ab1d847b', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'c2cb455d-c080-4add-a535-1ef84e599414', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'da465e9b-be98-4e76-827e-b7287b662ff6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'b173d0cf-2093-42dc-bed0-97c253bb98e6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '58cf41a1-756a-43f0-ac79-d6175aee72e3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '3196b432-dd73-4115-81a5-0164d690e3bb', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'c679a6cf-1299-4293-ac53-22bd4acfc618', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '1e745b43-0d32-4001-b3e3-0c2f26993031', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '8a8e6531-b6ed-4333-9dcf-e1f8b45667f2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '32e4a510-6696-4520-9cff-8eeed184a729', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '69b7bed6-b789-4333-8875-dc046913aaa7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '4ea6d085-1c8c-478f-a0a1-ebbe2ad657b0', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '32e4a510-6696-4520-9cff-8eeed184a729', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'da465e9b-be98-4e76-827e-b7287b662ff6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '390bfa6c-2b56-4505-a460-41c79dcf7b62', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'e449f2be-9c36-4080-87d7-e870a42e2eab', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '3f40d4fc-7bb5-45db-9d1b-52a27e9ac4f4', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '09ad9a07-f87b-4e90-b1dd-75218a36989a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'b173d0cf-2093-42dc-bed0-97c253bb98e6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '337d0bb6-08b7-4e8c-85ce-1320244e7dc2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '3196b432-dd73-4115-81a5-0164d690e3bb', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '66b60ffe-94d9-46d5-98f6-9966c1606a60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '856532b0-a016-44f6-9b85-59d5ab1d847b', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '02b313e5-5f3c-422d-8648-8f12422402b6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '66b60ffe-94d9-46d5-98f6-9966c1606a60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '59db2024-ee64-4f0d-a688-1d909c76cf2a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'adb5b590-90d6-44ee-818f-24809541d5f3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '02b313e5-5f3c-422d-8648-8f12422402b6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'c2cb455d-c080-4add-a535-1ef84e599414', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', 'adb5b590-90d6-44ee-818f-24809541d5f3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '69b7bed6-b789-4333-8875-dc046913aaa7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'd652efe0-2802-4930-9548-dd89b67186f0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '27ce5136-184d-40cf-9f76-9a6e49b4d782', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '9bb0a2e5-edac-41b2-b983-bd90fe9309a9', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '78d7b165-73b0-4833-a24b-11206e956caf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '11d97165-370d-42ad-b397-5bd4885b25d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '58cf41a1-756a-43f0-ac79-d6175aee72e3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '337d0bb6-08b7-4e8c-85ce-1320244e7dc2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'f68e1ff9-4c1d-4051-bd58-fb60d1f0e1a2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '4da4aec3-7323-45d8-b251-0737fbe8dabf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '8551be65-bee5-4ad3-85af-2e44bb1995d1', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', 'cf333688-e70d-4dc9-896a-a6933db9ae60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '7ec36e7a-1a42-44a4-a0c8-69218dc10bc9', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '9bb0a2e5-edac-41b2-b983-bd90fe9309a9', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'acd70617-46bb-4fb8-8162-8807d204e51d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'b173d0cf-2093-42dc-bed0-97c253bb98e6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', 'c679a6cf-1299-4293-ac53-22bd4acfc618', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '66b60ffe-94d9-46d5-98f6-9966c1606a60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '3196b432-dd73-4115-81a5-0164d690e3bb', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'c2cb455d-c080-4add-a535-1ef84e599414', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '66b60ffe-94d9-46d5-98f6-9966c1606a60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '32e4a510-6696-4520-9cff-8eeed184a729', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'd652efe0-2802-4930-9548-dd89b67186f0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '4da4aec3-7323-45d8-b251-0737fbe8dabf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '1c0f5812-b1c1-4800-a6d1-48293368847f', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '69b7bed6-b789-4333-8875-dc046913aaa7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '4da4aec3-7323-45d8-b251-0737fbe8dabf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '2b069986-2c59-4f09-b2cb-427dfd3220bf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'b6e21043-4559-4867-a6b6-e56c2f83266a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'da465e9b-be98-4e76-827e-b7287b662ff6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'b6e21043-4559-4867-a6b6-e56c2f83266a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'adb5b590-90d6-44ee-818f-24809541d5f3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'dd9e7c57-4a90-4ffd-8d42-87a80a9635f4', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'cf333688-e70d-4dc9-896a-a6933db9ae60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '02b313e5-5f3c-422d-8648-8f12422402b6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '8640208d-9921-4ee0-a754-4b5b01379660', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'f6aa3d0f-e357-4518-a8d0-0be79bc2dc35', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '59db2024-ee64-4f0d-a688-1d909c76cf2a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '1c0f5812-b1c1-4800-a6d1-48293368847f', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'db7b8d00-5efa-4a5b-bf9d-a619b2584c08', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'd652efe0-2802-4930-9548-dd89b67186f0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '27ce5136-184d-40cf-9f76-9a6e49b4d782', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '390bfa6c-2b56-4505-a460-41c79dcf7b62', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'b6e21043-4559-4867-a6b6-e56c2f83266a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'acc9c35e-91bf-4aa1-b750-f54c3e53ca61', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '856532b0-a016-44f6-9b85-59d5ab1d847b', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'ec373eb2-4b0a-4267-ace7-4be27d0b9caa', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'aa1753a4-9f43-4ef0-919e-15ba9cd04fd3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '02b313e5-5f3c-422d-8648-8f12422402b6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'c2cb455d-c080-4add-a535-1ef84e599414', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '2b069986-2c59-4f09-b2cb-427dfd3220bf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '4a14f7be-2fde-470f-8376-b37243e5240e', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'e449f2be-9c36-4080-87d7-e870a42e2eab', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '32e4a510-6696-4520-9cff-8eeed184a729', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '8a8e6531-b6ed-4333-9dcf-e1f8b45667f2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'cf333688-e70d-4dc9-896a-a6933db9ae60', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '02b313e5-5f3c-422d-8648-8f12422402b6', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '54ffe57c-b2b5-4a7c-8a69-75130055a810', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'e449f2be-9c36-4080-87d7-e870a42e2eab', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '59db2024-ee64-4f0d-a688-1d909c76cf2a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '510fd9cf-3165-47a2-8e09-db301a701e1d', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'e7496dcd-a4f7-4792-a052-477d6acb7056', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '27ce5136-184d-40cf-9f76-9a6e49b4d782', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '09ad9a07-f87b-4e90-b1dd-75218a36989a', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', 'e449f2be-9c36-4080-87d7-e870a42e2eab', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', 'fa0b3f4a-5a9d-4bd0-9a64-6499290e0bdf', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'ede4db85-dd18-4ae7-84e5-b9d2f1fd5e19', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '4a14f7be-2fde-470f-8376-b37243e5240e', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '0f10a255-d13a-4cd4-84fa-2ac8deb7df55', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'e449f2be-9c36-4080-87d7-e870a42e2eab', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '1e745b43-0d32-4001-b3e3-0c2f26993031', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '69b7bed6-b789-4333-8875-dc046913aaa7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '924a47cc-2a60-4260-8796-41cfc7bca2f7', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'db011c38-29bf-4b05-bb80-81bc5c889270', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '337d0bb6-08b7-4e8c-85ce-1320244e7dc2', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'af46ebc7-cc6d-4493-b1d6-3d1d42a158fd', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'acd70617-46bb-4fb8-8162-8807d204e51d', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', 'b6e21043-4559-4867-a6b6-e56c2f83266a', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'd652efe0-2802-4930-9548-dd89b67186f0', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '58cf41a1-756a-43f0-ac79-d6175aee72e3', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', 'adb5b590-90d6-44ee-818f-24809541d5f3', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '54ffe57c-b2b5-4a7c-8a69-75130055a810', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'cf333688-e70d-4dc9-896a-a6933db9ae60', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '1e745b43-0d32-4001-b3e3-0c2f26993031', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '510fd9cf-3165-47a2-8e09-db301a701e1d', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'da7b40d0-920d-4d29-867f-14eb1f2e5cdd', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '69b7bed6-b789-4333-8875-dc046913aaa7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'd14d3906-4bc1-41b1-93ba-e1657b53e9d2', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '1e745b43-0d32-4001-b3e3-0c2f26993031', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '9bb0a2e5-edac-41b2-b983-bd90fe9309a9', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', 'c2cb455d-c080-4add-a535-1ef84e599414', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '924a47cc-2a60-4260-8796-41cfc7bca2f7', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '89411d3d-ff3f-493b-bf18-cb0c8fbd6c65', 1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'da465e9b-be98-4e76-827e-b7287b662ff6', -1);
+INSERT INTO votes (user_id, post_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'a6bd3e2e-76c6-4bd4-9eea-05908558ead3', 1);
 
-INSERT INTO subreddit_membership (user_id, subreddit_id) VALUES
-    ('00000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-100000000000'),
-    ('00000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-100000000001'),
-    ('00000000-0000-0000-0000-000000000003', '00000000-0000-0000-0000-100000000002'),
-    ('00000000-0000-0000-0000-000000000004', '00000000-0000-0000-0000-100000000003'),
-    ('00000000-0000-0000-0000-000000000005', '00000000-0000-0000-0000-100000000003');
+/* COMMENT VOTES */
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'b7785076-74a6-4deb-9aae-72f45f358840', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '75c30e89-1d47-46c4-943a-6f1017dde258', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e2f25a1f-c730-4307-a102-6778eee32a85', '56e4f803-2971-4456-af32-bdf690b3dc76', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '5a4094bb-1cff-482f-9a56-f1f73ecb01fd', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'de394fc6-379c-42e2-ad0d-7ef1d9bdfa4d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', 'cafa62e2-99fc-4deb-80c8-3b51d7c11e2a', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'dc180b3d-ca41-45c3-8f3b-57348d4c55a9', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '93a5fc67-38b4-4cd7-b5f0-bff62eafdf8c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', '77e63b4f-25ca-4460-bac0-c6cbc9fc2d97', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', 'ed58398a-72b6-4021-a931-f770d34e0204', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '7fd0b5d5-22c8-4b55-b858-9a7a46839984', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('b7b539d7-2bc7-4589-ae5c-d6cfba57dd29', '34f86dd1-3f98-469f-8198-6868dd39bf64', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '8c966c2f-c8d5-4fb5-a22e-235424fd1e56', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '35a604a7-4ffe-42d9-9c6c-baa3ba9c89b4', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '252198e7-0418-4783-8eb1-352362a4d5bf', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '0476246f-2359-4ab1-9971-9fbdb356a616', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '47b3acdb-29b6-47a1-bbac-51d146cf899d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'cafa62e2-99fc-4deb-80c8-3b51d7c11e2a', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '6d6ff807-3b73-4b4d-870a-8b0f3eca3339', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'e561ded7-e2b8-498d-a857-270e1203f10f', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'dba84ddc-d62f-4162-9a57-5e42d1975db8', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'cafa62e2-99fc-4deb-80c8-3b51d7c11e2a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'de394fc6-379c-42e2-ad0d-7ef1d9bdfa4d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'cafa62e2-99fc-4deb-80c8-3b51d7c11e2a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '28b6759c-fcc9-4974-a962-02b8b7f8ee73', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '7fd0b5d5-22c8-4b55-b858-9a7a46839984', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '64eb0572-b137-4f67-9772-afd7f845e97e', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '2a5686af-14bd-43bd-afee-76ddfb26491a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', 'd2c5073e-7455-4a1d-8ef8-faba3189cd40', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c77efec2-2526-4309-89b6-03ef9dc02cfd', '75c30e89-1d47-46c4-943a-6f1017dde258', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '4f835923-ef6f-4147-aa48-390b7d21269e', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '3ede430b-8ad2-4142-96a8-f2787e35e84c', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '23ac5b52-e636-4ffa-9f70-f3f1ed7230ff', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '710adfbe-5c21-4990-9667-6229b39a46f3', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '8e1fe369-4076-40a7-a1ff-7e23669468dc', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'da2c5a73-237c-49b4-a30b-fafe892bb8a2', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '2db3b8e1-6cdb-42e3-b5b4-b0dc328caf22', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '77e63b4f-25ca-4460-bac0-c6cbc9fc2d97', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '8c966c2f-c8d5-4fb5-a22e-235424fd1e56', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '3ede430b-8ad2-4142-96a8-f2787e35e84c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '718f28f5-ce32-4c1e-98e6-c8c43e270799', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '0d51607d-9b5d-4beb-bbf5-cb086c9f8f98', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '1753fe8c-ba11-4454-bf38-40110abb404b', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', 'b7785076-74a6-4deb-9aae-72f45f358840', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'ed58398a-72b6-4021-a931-f770d34e0204', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '7941d8ee-90ae-4c19-b425-682eeac6ac8b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '362006d5-1ebb-4cdd-87e5-7a85eb9c1f05', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '7fd2b4dc-b054-4531-8be2-03f559d71e7d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '6978d773-190a-4441-b120-4fd401dc3da3', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', 'f4443bc1-aa1b-4829-9d86-6f8f6a27e85f', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '6f00b398-66b6-40dd-9afe-ec239253c66c', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'dc180b3d-ca41-45c3-8f3b-57348d4c55a9', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '4e00f140-b5d8-4c70-943a-2cb4e809ab08', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('94ba7602-3269-4ce4-ad28-f0533486df1f', 'a73e6573-813b-4540-854b-238894112d66', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '036e22dd-3567-46bc-ba1d-e1bf9ead971c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', 'd4eaf527-cda8-461c-8174-83815cae9e2d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', 'a945e6b7-38dc-43be-829b-914c9955765b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '710adfbe-5c21-4990-9667-6229b39a46f3', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '06c93118-525d-400a-a7cb-1dda0c992aa1', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', 'dc180b3d-ca41-45c3-8f3b-57348d4c55a9', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '252198e7-0418-4783-8eb1-352362a4d5bf', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '79b55100-38b0-4905-b43e-53c484c1491d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', '77e63b4f-25ca-4460-bac0-c6cbc9fc2d97', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '7fd0b5d5-22c8-4b55-b858-9a7a46839984', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'ed58398a-72b6-4021-a931-f770d34e0204', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', 'cd2417e5-5bc8-42a7-a533-fcf465eac502', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'bb11d2d0-c6ae-40fb-a026-09e34ef39c17', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '091b4ab2-870c-4452-a7e6-effcc802c551', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '3fc4883b-209a-4564-a8ac-a711c2f8a74d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'd4eaf527-cda8-461c-8174-83815cae9e2d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '820a8981-0246-4238-9d96-668a91160d6b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '3fc4883b-209a-4564-a8ac-a711c2f8a74d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'ac8640b8-7f84-418d-957b-9848e850ebeb', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', 'cc41d4e1-7ba3-494f-b1b8-df7d6da82f9a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '994c6704-2dfd-479b-b01f-3ecdf7ae3886', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '6f00b398-66b6-40dd-9afe-ec239253c66c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '79b55100-38b0-4905-b43e-53c484c1491d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '7b8ea69a-3bf6-4ed2-8ba2-0591e3e53887', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '3fc4883b-209a-4564-a8ac-a711c2f8a74d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '3ede430b-8ad2-4142-96a8-f2787e35e84c', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', 'fc665364-fcd4-4ef8-99b1-9f4911f54123', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '6d6ff807-3b73-4b4d-870a-8b0f3eca3339', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'ac8640b8-7f84-418d-957b-9848e850ebeb', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '16009bbe-88c3-4056-9aa0-a19f08661576', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', 'b7785076-74a6-4deb-9aae-72f45f358840', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'c3beaa29-462d-46f4-8657-815c3cdff09b', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'f733f68d-b33c-4b59-b15b-cb186001c151', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '252198e7-0418-4783-8eb1-352362a4d5bf', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'af9812f4-7235-4a07-8040-134ca9e82123', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', 'd4eaf527-cda8-461c-8174-83815cae9e2d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '06c93118-525d-400a-a7cb-1dda0c992aa1', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '6d6ff807-3b73-4b4d-870a-8b0f3eca3339', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '28b6759c-fcc9-4974-a962-02b8b7f8ee73', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '6d6ff807-3b73-4b4d-870a-8b0f3eca3339', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', 'dc180b3d-ca41-45c3-8f3b-57348d4c55a9', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '06027cb8-bfa8-44b6-9d52-e12a6afcc15f', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'c3beaa29-462d-46f4-8657-815c3cdff09b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('fe6131dc-58b6-44f0-8684-9b243d0b5880', '22770528-4537-44ef-9ad6-da2162ff036b', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('72eb4f08-156a-4ed5-83c7-62e2a5103404', '4ea52907-f0ef-4e0c-aa0d-daf657c8cfd5', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'f4443bc1-aa1b-4829-9d86-6f8f6a27e85f', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3fee9d83-d0fe-4eae-be2e-c1499f4c5f13', '7b8ea69a-3bf6-4ed2-8ba2-0591e3e53887', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', 'bb11d2d0-c6ae-40fb-a026-09e34ef39c17', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', 'efec3964-7fdc-41d8-a6d1-0cdb7ed3de36', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('a3653f9b-d679-40b2-8fa6-37e417c28336', '7fd0b5d5-22c8-4b55-b858-9a7a46839984', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '6978d773-190a-4441-b120-4fd401dc3da3', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '9793dc18-0a38-449c-ae67-a840193a8976', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', 'b7785076-74a6-4deb-9aae-72f45f358840', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '77e63b4f-25ca-4460-bac0-c6cbc9fc2d97', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('15330474-2a22-4450-9227-65fddc5f36a1', '5a4094bb-1cff-482f-9a56-f1f73ecb01fd', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dd8a6293-3701-4580-8982-3a9fd7179578', '18f1cdb5-dfc2-4a3f-ac18-623192854acb', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', 'd4eaf527-cda8-461c-8174-83815cae9e2d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', '710adfbe-5c21-4990-9667-6229b39a46f3', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('92ad9e90-2df7-4b4e-8569-27535a3a4bc0', 'c3beaa29-462d-46f4-8657-815c3cdff09b', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', '6978d773-190a-4441-b120-4fd401dc3da3', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '205ac65c-6a32-4eac-bae3-05962c1cdcfb', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '31dc0877-b384-4923-8c8d-dbe9896c532d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', '22770528-4537-44ef-9ad6-da2162ff036b', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c4a88f0a-8c54-47e2-baf3-b53994b185b4', '036e22dd-3567-46bc-ba1d-e1bf9ead971c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('c9b1c5fd-e3a7-4da8-be21-03c359572500', '7fd2b4dc-b054-4531-8be2-03f559d71e7d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', '752b51e6-a698-4e04-9e95-7a2e103188ac', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', 'e561ded7-e2b8-498d-a857-270e1203f10f', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('21a9e9df-c075-4095-85e2-2139a672f846', '3fc4883b-209a-4564-a8ac-a711c2f8a74d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '47b3acdb-29b6-47a1-bbac-51d146cf899d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', '16009bbe-88c3-4056-9aa0-a19f08661576', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('db582f55-0f27-41fb-82f6-61830b7b8d07', 'de394fc6-379c-42e2-ad0d-7ef1d9bdfa4d', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('83167833-3e16-4ad0-937e-d737474dd6a7', 'cc41d4e1-7ba3-494f-b1b8-df7d6da82f9a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e2b22c3f-b670-4e5c-9fc3-8a822621563b', '3c740790-11bc-4e58-82fd-8dd3b1bfb83b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '1753fe8c-ba11-4454-bf38-40110abb404b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('2365a432-ef17-407d-8235-883e15e351ae', '8c966c2f-c8d5-4fb5-a22e-235424fd1e56', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('d90d90be-5c09-46c5-95b4-448760a65337', '818613e5-331f-44fd-901d-69297c08f3d2', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'cc41d4e1-7ba3-494f-b1b8-df7d6da82f9a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('3898b9f3-5e1d-4ed8-a5a9-95d8502b33fe', 'c3beaa29-462d-46f4-8657-815c3cdff09b', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', 'fef9b78a-82d5-4799-bd39-0753e68aaea6', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('dad0b091-03a5-4812-9acf-4d5389e30108', '5916cfdd-ba30-41a7-afc2-7fe603ef9cf6', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('4fb3335a-22ae-47e5-b190-391749c19572', '5916cfdd-ba30-41a7-afc2-7fe603ef9cf6', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', 'af9812f4-7235-4a07-8040-134ca9e82123', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('e25e0dc0-6bee-4262-8310-cf5105cf9e06', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('6b045c73-1ce8-4187-bd8f-01f933180fff', '818613e5-331f-44fd-901d-69297c08f3d2', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('0c666f44-e355-4183-a6b0-cab5a1a72743', '036e22dd-3567-46bc-ba1d-e1bf9ead971c', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '2a5686af-14bd-43bd-afee-76ddfb26491a', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '93a5fc67-38b4-4cd7-b5f0-bff62eafdf8c', 1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('bd6d0d8d-2f96-4efb-8df0-1eba0a80f1e2', '4ea52907-f0ef-4e0c-aa0d-daf657c8cfd5', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('22d28ee3-7413-4d95-b387-838fecab338f', '79b55100-38b0-4905-b43e-53c484c1491d', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('01b5daca-980b-404c-9bfd-86299d00fba9', 'c981356c-d8b5-4184-9d80-e3ce5bee9f42', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('82ca4369-f049-461a-ab04-9c9daee66b42', '7fd0b5d5-22c8-4b55-b858-9a7a46839984', -1);
+INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES ('cb39fc9b-7807-48a3-ae83-9fa3c7c0c336', '994c6704-2dfd-479b-b01f-3ecdf7ae3886', 1);
 
-INSERT INTO votes (user_id, post_id, vote_type) VALUES
-    ('00000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-200000000001', 1),
-    ('00000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-200000000002', 1),
-    ('00000000-0000-0000-0000-000000000003', '00000000-0000-0000-0000-200000000003', 1),
-    ('00000000-0000-0000-0000-000000000004', '00000000-0000-0000-0000-200000000004', 1),
-    ('00000000-0000-0000-0000-000000000005', '00000000-0000-0000-0000-200000000001', -1);
-
-INSERT INTO votes_comments (user_id, comment_id, vote_type) VALUES
-    ('00000000-0000-0000-0000-000000000001', '00000000-0000-0000-0000-300000000001', 1),
-    ('00000000-0000-0000-0000-000000000002', '00000000-0000-0000-0000-300000000002', 1),
-    ('00000000-0000-0000-0000-000000000003', '00000000-0000-0000-0000-300000000003', 1),
-    ('00000000-0000-0000-0000-000000000004', '00000000-0000-0000-0000-300000000004', 1),
-    ('00000000-0000-0000-0000-000000000005', '00000000-0000-0000-0000-300000000001', -1);
+/* Uncomment to verify counts
+SELECT
+  (SELECT count(*) FROM profiles)             AS users,
+  (SELECT count(*) FROM subreddits)           AS subreddits,
+  (SELECT count(*) FROM subreddit_membership) AS memberships,
+  (SELECT count(*) FROM posts)                AS posts,
+  (SELECT count(*) FROM comments)             AS comments,
+  (SELECT count(*) FROM votes)                AS post_votes,
+  (SELECT count(*) FROM votes_comments)       AS comment_votes;
+*/
