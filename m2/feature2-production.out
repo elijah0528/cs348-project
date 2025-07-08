@@ -1,0 +1,75 @@
+
+> cs348-project@0.1.0 sql
+> tsx lib/sql/exec.ts --file=../../m2/feature2-production.sql
+
+postgres url:  undefined
+┌─────────┬────────────────────────────────────────┬─────────────────┬──────────────────────────────┬─────────────┬──────────────────────────┐
+│ (index) │                user_id                 │    username     │            email             │   pw_hash   │        created_at        │
+├─────────┼────────────────────────────────────────┼─────────────────┼──────────────────────────────┼─────────────┼──────────────────────────┤
+│    0    │ 'f2d6a748-ac41-4e81-87d1-ec85d8d0ea97' │    'user_01'    │    'user_01@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.665Z │
+│    1    │ 'c266e590-1349-4e48-aa8e-9151993828ae' │    'user_02'    │    'user_02@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.682Z │
+│    2    │ '73607506-d6a7-4ec8-85e0-7509c2009979' │    'user_03'    │    'user_03@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.682Z │
+│    3    │ 'b065171d-f8d6-4328-8dc1-56784afa1f2f' │    'user_04'    │    'user_04@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    4    │ 'f1ce963a-4a40-4420-9400-91dd300ba630' │    'user_05'    │    'user_05@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    5    │ '7dac832e-18f3-4de7-aa3f-2367d3c79541' │    'user_06'    │    'user_06@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    6    │ '4c746013-9978-4fd7-b5bb-9f9ded741b58' │    'user_07'    │    'user_07@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.684Z │
+│    7    │ 'b05070db-8239-4c2f-95a6-37393023b445' │    'user_08'    │    'user_08@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.684Z │
+│    8    │ '6c17ebcf-d543-4685-a828-ef49e1bbb231' │    'user_09'    │    'user_09@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.685Z │
+│    9    │ '9265b01c-beee-48c8-b130-883c8734bf9e' │    'user_10'    │    'user_10@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.685Z │
+│   10    │ '8e7eac74-7a93-4967-9a46-9b7bb30c9109' │    'user_11'    │    'user_11@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   11    │ 'd99fed3d-ca20-430a-a53f-f0b482a445a6' │    'user_12'    │    'user_12@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   12    │ '4719832c-8cc6-4daf-b122-ae29230c4b97' │    'user_13'    │    'user_13@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   13    │ '349f39de-5408-4925-989a-26c7b5be7cdc' │    'user_14'    │    'user_14@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.687Z │
+│   14    │ '059504f6-4c7c-4209-8162-d4ada245d391' │    'user_15'    │    'user_15@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.687Z │
+│   15    │ 'd936bc34-58ed-4ad5-b366-c9bc62294fef' │    'user_16'    │    'user_16@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   16    │ '8fcce804-9120-4376-a725-feeee058eea4' │    'user_17'    │    'user_17@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   17    │ '19498ffc-70fc-44fe-992c-d7e0ec113a22' │    'user_18'    │    'user_18@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   18    │ 'fbc8d3b6-aa83-4ceb-8e71-26088078caf9' │    'user_19'    │    'user_19@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.689Z │
+│   19    │ 'fb5bc235-73c3-4b30-a8c0-1c3d0b963056' │    'user_20'    │    'user_20@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.689Z │
+│   20    │ 'a03bcea1-0cc1-447f-93c4-a65c5dbffeda' │    'user_21'    │    'user_21@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.690Z │
+│   21    │ '5eb9d3c7-d282-45e7-8af5-ddb92358780d' │    'user_22'    │    'user_22@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.692Z │
+│   22    │ 'cf282aef-320c-4ac8-8bb7-ae1edc528099' │    'user_23'    │    'user_23@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.692Z │
+│   23    │ '4303eed0-a3c4-4958-909a-d1c4ef6b8ec3' │    'user_24'    │    'user_24@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.693Z │
+│   24    │ '72f3a570-6231-417c-b6e3-096bd9c9f05a' │    'user_25'    │    'user_25@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.694Z │
+│   25    │ 'c7d76ffc-03b2-4ce2-961d-2d1137577bff' │    'user_26'    │    'user_26@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.694Z │
+│   26    │ '53ae4c88-ae15-4b8d-baea-1912727aa355' │    'user_27'    │    'user_27@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   27    │ '32b10190-f2d5-495d-859c-5008cff0e5c5' │    'user_28'    │    'user_28@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   28    │ '3108eb2b-0899-4149-b2eb-31f2820895be' │    'user_29'    │    'user_29@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   29    │ '10309284-f6c3-4658-8aca-dd2289cc7d84' │    'user_30'    │    'user_30@example.com'     │ 'hashed_pw' │ 2025-07-08T20:31:34.696Z │
+│   30    │ '4f40832e-41e9-4a23-aec6-dcad8f948399' │ 'Rajan Agarwal' │ 'rajan.agarwal@uwaterloo.ca' │  'newpass'  │ 2025-07-08T20:31:38.820Z │
+└─────────┴────────────────────────────────────────┴─────────────────┴──────────────────────────────┴─────────────┴──────────────────────────┘
+No rows returned
+┌─────────┬────────────────────────────────────────┬───────────┬───────────────────────┬─────────────┬──────────────────────────┐
+│ (index) │                user_id                 │ username  │         email         │   pw_hash   │        created_at        │
+├─────────┼────────────────────────────────────────┼───────────┼───────────────────────┼─────────────┼──────────────────────────┤
+│    0    │ 'f2d6a748-ac41-4e81-87d1-ec85d8d0ea97' │ 'user_01' │ 'user_01@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.665Z │
+│    1    │ 'c266e590-1349-4e48-aa8e-9151993828ae' │ 'user_02' │ 'user_02@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.682Z │
+│    2    │ '73607506-d6a7-4ec8-85e0-7509c2009979' │ 'user_03' │ 'user_03@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.682Z │
+│    3    │ 'b065171d-f8d6-4328-8dc1-56784afa1f2f' │ 'user_04' │ 'user_04@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    4    │ 'f1ce963a-4a40-4420-9400-91dd300ba630' │ 'user_05' │ 'user_05@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    5    │ '7dac832e-18f3-4de7-aa3f-2367d3c79541' │ 'user_06' │ 'user_06@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.683Z │
+│    6    │ '4c746013-9978-4fd7-b5bb-9f9ded741b58' │ 'user_07' │ 'user_07@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.684Z │
+│    7    │ 'b05070db-8239-4c2f-95a6-37393023b445' │ 'user_08' │ 'user_08@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.684Z │
+│    8    │ '6c17ebcf-d543-4685-a828-ef49e1bbb231' │ 'user_09' │ 'user_09@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.685Z │
+│    9    │ '9265b01c-beee-48c8-b130-883c8734bf9e' │ 'user_10' │ 'user_10@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.685Z │
+│   10    │ '8e7eac74-7a93-4967-9a46-9b7bb30c9109' │ 'user_11' │ 'user_11@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   11    │ 'd99fed3d-ca20-430a-a53f-f0b482a445a6' │ 'user_12' │ 'user_12@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   12    │ '4719832c-8cc6-4daf-b122-ae29230c4b97' │ 'user_13' │ 'user_13@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.686Z │
+│   13    │ '349f39de-5408-4925-989a-26c7b5be7cdc' │ 'user_14' │ 'user_14@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.687Z │
+│   14    │ '059504f6-4c7c-4209-8162-d4ada245d391' │ 'user_15' │ 'user_15@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.687Z │
+│   15    │ 'd936bc34-58ed-4ad5-b366-c9bc62294fef' │ 'user_16' │ 'user_16@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   16    │ '8fcce804-9120-4376-a725-feeee058eea4' │ 'user_17' │ 'user_17@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   17    │ '19498ffc-70fc-44fe-992c-d7e0ec113a22' │ 'user_18' │ 'user_18@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.688Z │
+│   18    │ 'fbc8d3b6-aa83-4ceb-8e71-26088078caf9' │ 'user_19' │ 'user_19@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.689Z │
+│   19    │ 'fb5bc235-73c3-4b30-a8c0-1c3d0b963056' │ 'user_20' │ 'user_20@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.689Z │
+│   20    │ 'a03bcea1-0cc1-447f-93c4-a65c5dbffeda' │ 'user_21' │ 'user_21@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.690Z │
+│   21    │ '5eb9d3c7-d282-45e7-8af5-ddb92358780d' │ 'user_22' │ 'user_22@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.692Z │
+│   22    │ 'cf282aef-320c-4ac8-8bb7-ae1edc528099' │ 'user_23' │ 'user_23@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.692Z │
+│   23    │ '4303eed0-a3c4-4958-909a-d1c4ef6b8ec3' │ 'user_24' │ 'user_24@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.693Z │
+│   24    │ '72f3a570-6231-417c-b6e3-096bd9c9f05a' │ 'user_25' │ 'user_25@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.694Z │
+│   25    │ 'c7d76ffc-03b2-4ce2-961d-2d1137577bff' │ 'user_26' │ 'user_26@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.694Z │
+│   26    │ '53ae4c88-ae15-4b8d-baea-1912727aa355' │ 'user_27' │ 'user_27@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   27    │ '32b10190-f2d5-495d-859c-5008cff0e5c5' │ 'user_28' │ 'user_28@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   28    │ '3108eb2b-0899-4149-b2eb-31f2820895be' │ 'user_29' │ 'user_29@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.695Z │
+│   29    │ '10309284-f6c3-4658-8aca-dd2289cc7d84' │ 'user_30' │ 'user_30@example.com' │ 'hashed_pw' │ 2025-07-08T20:31:34.696Z │
+└─────────┴────────────────────────────────────────┴───────────┴───────────────────────┴─────────────┴──────────────────────────┘
