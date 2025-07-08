@@ -27,10 +27,25 @@ cd lib/sql
 npm run sql -- --file=migrations/reddit_init.sql
 ```
 
-Run the seed file to populate the database with sample data
+To populate with sample data, run the sample seed file.
 
 ```bash
 cd lib/sql
+npm run sql -- --file=scripts/seed_reddit_sample.sql
+```
+
+To populate with sample data, run the sample seed file.
+
+```bash
+cd lib/sql
+npm run sql -- --file=scripts/seed_reddit.sql
+```
+
+If you wish to switch between sample and production data, you should first init again, then seed again. For example,
+
+```bash
+cd lib/sql
+npm run sql -- --file=migrations/reddit_init.sql
 npm run sql -- --file=scripts/seed_reddit.sql
 ```
 
@@ -52,6 +67,10 @@ To test a SQL feature, run the following command:
 ```bash
 npm run sql -- --file=../../m1/feature1.sql
 ```
+
+## Milestone 2 Features
+
+These are, similarly, in the `m2` folder. There are two types of files, sample and production, each with a sql and out file. The production files have minor modifications for ids and limits for visibility purposes. To view the entire production database, visit `seed_reddit.sql` in the `lib/sql/scripts` folder. This was generated from `gen.py` in the `lib/sql/migrations` folder.
 
 ### Implementation of features
 
