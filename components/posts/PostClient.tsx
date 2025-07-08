@@ -120,23 +120,26 @@ export default function PostClient({
         <span>Posted by {currentPost.username}</span>
         {user && (
           <div className="flex items-center space-x-2">
-            {isEditing ? (
-              <div className="flex items-center space-x-2">     
-                <Button variant="destructive" className="bg-red-500" onClick={() => {
-                  setIsEditing(false);
-                  setEditedContent(currentPost.content);
-                }}>
-                  Cancel
+            {user.username === currentPost.username && <div>
+              {isEditing && user.username === currentPost.username ? (
+                <div className="flex items-center space-x-2">     
+                  <Button variant="destructive" className="bg-red-500" onClick={() => {
+                    setIsEditing(false);
+                    setEditedContent(currentPost.content);
+                  }}>
+                    Cancel
+                  </Button>
+                  <Button variant="link" onClick={savePost}>
+                    Save
+                  </Button>
+                </div>
+              ) : (
+                <Button variant="link" onClick={() => setIsEditing(true)}>
+                  Edit
                 </Button>
-                <Button variant="link" onClick={savePost}>
-                  Save
-                </Button>
-              </div>
-            ) : (
-              <Button variant="link" onClick={() => setIsEditing(true)}>
-                Edit
-              </Button>
-            )}
+              )}
+            </div>
+            }
             <button
               onClick={() => votePost(1)}
               className={`p-2 rounded hover:bg-gray-100 transition-colors ${
