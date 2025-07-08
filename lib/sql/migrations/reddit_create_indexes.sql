@@ -7,3 +7,4 @@ CREATE INDEX IF NOT EXISTS index_subreddits_admin_id ON subreddits (admin_id);
 CREATE INDEX IF NOT EXISTS index_posts_subreddit_id ON posts (subreddit_id);
 CREATE INDEX IF NOT EXISTS index_posts_subreddit_created_at_desc ON posts (subreddit_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS index_votes_post_id_vote_type ON votes (post_id, vote_type);
+CREATE INDEX IF NOT EXISTS index_profiles_user_id ON profiles (user_id);

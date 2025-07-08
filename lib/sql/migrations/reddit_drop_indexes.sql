@@ -7,3 +7,4 @@ DROP INDEX IF EXISTS index_subreddits_admin_id;
 DROP INDEX IF EXISTS index_posts_subreddit_id;
 DROP INDEX IF EXISTS index_posts_subreddit_created_at_desc;
 DROP INDEX IF EXISTS index_votes_post_id_vote_type;
+DROP INDEX IF EXISTS index_profiles_user_id;
