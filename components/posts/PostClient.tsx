@@ -96,6 +96,7 @@ export default function PostClient({
     if (res.ok) {
       const data = await res.json();
       setComments(data.comments || []);
+      if (data.post) setCurrentPost(data.post);
     }
   };
 

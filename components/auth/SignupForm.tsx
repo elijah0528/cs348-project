@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { User } from "../types";
 
 type SignupTypes = {
-  onSuccess: (user: User) => void;
+  onSuccess: () => void;
 };
 
 export default function SignupForm({ onSuccess }: SignupTypes) {
@@ -23,7 +22,7 @@ export default function SignupForm({ onSuccess }: SignupTypes) {
         throw new Error(error.error || "Signup failed");
       }
       const data = await response.json();
-      onSuccess(data.user);
+      onSuccess();
     } catch (error: any) {
       setError(error.message);
     }

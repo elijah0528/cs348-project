@@ -5,15 +5,14 @@ import { useRouter } from "next/navigation";
 import LoginForm from "@/components/auth/LoginForm";
 import SignupForm from "@/components/auth/SignupForm";
 import { User } from "@/components/types";
-import { setUserCookie } from "@/lib/auth";
 
 export default function AuthPage() {
   const [authMode, setAuthMode] = useState<"login" | "signup">("login");
   const router = useRouter();
 
-  const handleUserLogin = async (user: User) => {
-    // Set the user cookie and refresh the page
-    await setUserCookie(user);
+  const handleUserLogin = async () => {
+    // Cookie is already set by API; navigate to home to get RSC with user
+    router.push('/');
     router.refresh();
   };
 
