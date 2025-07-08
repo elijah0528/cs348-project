@@ -1,16 +1,17 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { LogOut } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Trash2 } from 'lucide-react';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip';
 
-export default function LogoutButton() {
+export default function DeleteAccountButton() {
   const router = useRouter();
 
-  const handleLogout = async () => {
+  const handleDelete = async () => {
     try {
-      // Call logout API to clear server-side cookie
-      await fetch('/api/auth/logout', {
+      // Call delete API to remove user account
+      await fetch('/api/reddit/auth/delete', {
         method: 'POST',
       });
       
@@ -18,8 +19,7 @@ export default function LogoutButton() {
       router.push('/');
       router.refresh();
     } catch (error) {
-      console.error('Logout failed:', error);
-      // Fallback: just refresh the page
+      console.error('Account deletion failed:', error);
       window.location.reload();
     }
   };
@@ -28,11 +28,11 @@ export default function LogoutButton() {
     <Tooltip>
       <TooltipTrigger asChild>
         <button
-          onClick={handleLogout}
+          onClick={handleDelete}
           className="text-xs text-stone-600 hover:text-stone-800 transition-colors rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-stone-400"
-          aria-label="Logout"
+          aria-label="Delete Account"
         >
-          <LogOut className="w-4 h-4" />
+          <Trash2 className="w-4 h-4" />
         </button>
       </TooltipTrigger>
       <TooltipContent
@@ -46,8 +46,8 @@ export default function LogoutButton() {
         }}
       >
         <span className="flex items-center gap-1">
-          <LogOut className="w-3.5 h-3.5 mr-1 opacity-80" />
-          Logout
+          <Trash2 className="w-3.5 h-3.5 mr-1 opacity-80" />
+          Delete Account
         </span>
       </TooltipContent>
     </Tooltip>

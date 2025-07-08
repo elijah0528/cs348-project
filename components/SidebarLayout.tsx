@@ -7,6 +7,7 @@ import LogoutButton from "@/components/sidebar/LogoutButton";
 import SubredditActionButton from "@/components/sidebar/SubredditActionButton";
 import CreateSubredditWrapper from "@/components/sidebar/CreateSubredditWrapper";
 import { Button } from "@/components/ui/button";
+import DeleteAccountButton from "./sidebar/DeleteAccountButton";
 
 export default async function SidebarLayout({
   children,
@@ -96,7 +97,10 @@ export default async function SidebarLayout({
             >
               u/{user.username}
             </Link>
-            <LogoutButton />
+            <div className="flex justify-end gap-2">
+              <DeleteAccountButton />
+              <LogoutButton />
+            </div>
           </div>
         )}
       </div>
