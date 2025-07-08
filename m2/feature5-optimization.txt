@@ -1,0 +1,11 @@
+BEFORE INDEXING
+
+rajanagarwal@MacBookPro sql % time npm run sql -- --file=../../m2/feature5-production.sql > ../../m2/feature5-production.out
+npm run sql -- --file=../../m2/feature5-production.sql >   0.47s user 0.14s system 41% cpu 1.454 total
+
+AFTER INDEXING
+
+rajanagarwal@MacBookPro sql % time npm run sql -- --file=../../m2/feature5-production.sql > ../../m2/feature5-production.out
+npm run sql -- --file=../../m2/feature5-production.sql >   0.43s user 0.17s system 45% cpu 1.390 total
+
+This is a ~9% boost on average.
