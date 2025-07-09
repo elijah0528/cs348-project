@@ -72,6 +72,8 @@ npm run sql -- --file=../../m1/feature1.sql
 
 These are, similarly, in the `m2` folder. There are two types of files, sample and production, each with a sql and out file. The production files have minor modifications for ids and limits for visibility purposes. To view the entire production database, visit `seed_reddit.sql` in the `lib/sql/scripts` folder. This was generated from `gen.py` in the `lib/sql/migrations` folder.
 
+This auto-generates 10,000 users, 100 subreddits, 3 memberships per user, 10,000 posts, 15,000 comments, and 50,000 votes on posts and 25,000 votes on comments, randomly assigning the foreign relations between the tables.
+
 To generate the production database, run the following command:
 
 ```bash
