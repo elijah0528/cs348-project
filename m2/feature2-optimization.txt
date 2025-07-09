@@ -1,3 +1,5 @@
+This is on deletion of a random user from the production database, with posts, comments, votes and is the owner of a subreddit.
+
 BEFORE INDEXING
 
 rajanagarwal@MacBookPro sql % time npm run sql -- --file=../../m2/feature2-production.sql > ../../m2/feature2-production.out
@@ -6,6 +8,6 @@ npm run sql -- --file=../../m2/feature2-production.sql >   0.49s user 0.18s syst
 AFTER INDEXING
 
 rajanagarwal@MacBookPro sql % time npm run sql -- --file=../../m2/feature2-production.sql > ../../m2/feature2-production.out
-npm run sql -- --file=../../m2/feature2-production.sql >   0.45s user 0.17s system 35% cpu 1.598 total
+npm run sql -- --file=../../m2/feature2-production.sql >   0.43s user 0.17s system 35% cpu 1.293 total
 
-This is a ~7% boost on average. This improvement will increase as more users have more posts/comments/general interactions.
+This is a ~13% boost on average. This improvement is best for users who are the owner of a subreddit/have a lot of interactions.
