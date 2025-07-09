@@ -75,8 +75,8 @@ These are, similarly, in the `m2` folder. There are two types of files, sample a
 To generate the production database, run the following command:
 
 ```bash
-cd lib/sql/migrations
-python3 gen.py seed_reddit.sql
+cd lib/sql/scripts
+python3 gen.py
 ```
 
 ### Implementation of features
