@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/db";
 
-export async function GET(_req: NextRequest, context: { params: Promise<{ id: string }> }) {
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
     const { id: postId } = await context.params;
 
@@ -58,7 +58,25 @@ export async function GET(_req: NextRequest, context: { params: Promise<{ id: st
       [postId]
     );
 
-    return NextResponse.json({ post: postRes.rows[0], comments: commentsRes.rows });
+    const userId = request.nextUrl.searchParams.get("user_id");
+
+    let post = postRes.rows[0];
+    let comments = commentsRes.rows;
+
+    if (userId) {
+      // post vote
+      const pv = await db.query("SELECT vote_type FROM votes WHERE user_id = $1 AND post_id = $2", [userId, postId]);
+      post = { ...post, my_vote: pv.rows[0]?.vote_type ?? 0 };
+      // comment votes
+      if (comments.length) {
+        const commentIds = comments.map((c:any)=>c.comment_id);
+        const cvRes = await db.query("SELECT comment_id, vote_type FROM votes_comments WHERE user_id = $1 AND comment_id = ANY($2)",[userId, commentIds]);
+        const cvMap: Record<string, number> = Object.fromEntries(cvRes.rows.map((v:any)=>[v.comment_id, v.vote_type]));
+        comments = comments.map((c:any)=>({ ...c, my_vote: cvMap[c.comment_id] ?? 0 }));
+      }
+    }
+
+    return NextResponse.json({ post, comments });
   } catch (err) {
     console.error("Fetch post error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

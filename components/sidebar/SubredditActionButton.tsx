@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Plus, Minus, Trash2 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useRouter } from 'next/navigation';
+import { useSidebar } from '@/components/SidebarClient';
 
 interface SubredditActionButtonProps {
   subredditId: string;
@@ -19,7 +19,7 @@ export default function SubredditActionButton({
   isMember,
 }: SubredditActionButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const { refreshSidebar } = useSidebar();
 
   const handleAction = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -61,8 +61,8 @@ export default function SubredditActionButton({
         });
       }
 
-      // Refresh the page to update the sidebar
-      router.refresh();
+      // Refresh sidebar data in context so UI updates without full reload
+      refreshSidebar();
     } catch (error) {
       console.error('Action failed:', error);
     } finally {

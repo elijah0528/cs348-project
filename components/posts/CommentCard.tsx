@@ -25,14 +25,16 @@ export default function CommentCard({
   return (
     <div className="border p-3 rounded-md w-full">
       <div className="text-xs text-stone-600 mb-2">
-        r/{comment.subreddit_name} •{" "}
+        {comment.subreddit_name && `r/${comment.subreddit_name}`}
+        {comment.subreddit_name && " • "}
         <Link
           href={`/post/${comment.post_id}`}
           className="font-semibold hover:underline"
         >
-          {comment.post_title}
+          {comment.post_title || "Comment"}
         </Link>
         {" • "}
+        {comment.username && `u/${comment.username} • `}
         {new Date(comment.created_at).toLocaleString()}
       </div>
       <p className="text-sm mb-2">{content}</p>

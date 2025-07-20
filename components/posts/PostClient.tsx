@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useLayoutEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef, useEffect } from "react";
 import { Comment, Post, User } from "@/components/types";
 import CreateComment from "@/components/comments/CreateComment";
 import CommentCard from "@/components/posts/CommentCard";
@@ -21,14 +21,42 @@ export default function PostClient({
   user,
 }: PostClientProps) {
   const [comments, setComments] = useState<Comment[]>(initialComments);
-  const [postVote, setPostVote] = useState<Vote | null>(null);
+  const [isMember, setIsMember] = useState<boolean>(false);
+  const [postVote, setPostVote] = useState<Vote | null>(
+    (post as any).my_vote && (post as any).my_vote !== 0 ? (post as any).my_vote as Vote : null
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(post.content);
-  const [commentVotes, setCommentVotes] = useState<Record<string, Vote | null>>(
-    {}
-  );
+  const [commentVotes, setCommentVotes] = useState<Record<string, Vote | null>>(()=>{
+    const votes: Record<string, Vote | null> = {};
+    initialComments.forEach((c: any)=>{
+      if (typeof c.my_vote === "number" && c.my_vote !== 0) {
+        votes[c.comment_id] = c.my_vote as Vote;
+      }
+    });
+    return votes;
+  });
   const [currentPost, setCurrentPost] = useState<Post>(post);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Determine if user is a member of the post's subreddit
+  useEffect(() => {
+    const checkMembership = async () => {
+      if (!user) {
+        setIsMember(false);
+        return;
+      }
+      try {
+        const res = await fetch(`/api/reddit/subreddits/${post.subreddit_id}/membership?user_id=${user.user_id}`);
+        const data = await res.json();
+        setIsMember(!!data.isMember);
+      } catch (err) {
+        console.error("Membership check failed", err);
+        setIsMember(false);
+      }
+    };
+    checkMembership();
+  }, [post.subreddit_id, user]);
 
   useLayoutEffect(() => {
     if (textareaRef.current) {
@@ -162,7 +190,7 @@ export default function PostClient({
       </div>
 
       <h2 className="text-xl mb-4">Comments</h2>
-      {user && (
+      {user && isMember && (
         <CreateComment
           postId={currentPost.post_id}
           userId={user.user_id}

@@ -23,7 +23,7 @@ export default async function SubredditPage({ params }: SubredditPageProps) {
     const res = await fetch(
       `${
         process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
-      }/api/reddit/subreddits/${id}`
+      }/api/reddit/subreddits/${id}?user_id=${user.user_id}`
     );
     if (!res.ok) {
       const e = await res.json();

@@ -43,10 +43,10 @@ export default function CreateComment({ postId, userId, onSuccess }: CreateComme
         placeholder="Add a comment"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        className="w-full border p-2 h-24"
+        className="w-full border border-stone-200 p-2 h-24 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         required
       />
-      <button type="submit" disabled={loading} className="bg-blue-500 text-white px-4 py-2 rounded">
+      <button type="submit" disabled={loading} className="bg-black hover:bg-black/80 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
         {loading ? "Posting..." : "Comment"}
       </button>
       {error && <p className="text-red-600">{error}</p>}

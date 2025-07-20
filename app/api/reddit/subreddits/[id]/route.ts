@@ -42,6 +42,7 @@ export async function GET(
     const { id: subredditId } = await context.params;
     const { searchParams } = new URL(request.url);
     const sort = searchParams.get("sort") === "recent" ? "recent" : "popular";
+    const userId = searchParams.get("user_id") || null;
     
     const orderBy = sort === "recent" ? "ORDER BY created_at DESC" : "ORDER BY vote_score DESC, created_at DESC";
 
@@ -90,7 +91,7 @@ export async function GET(
       subreddit_name: result.rows[0].subreddit_name,
     };
 
-    const posts = result.rows
+    let posts = result.rows
       .filter((r) => r.post_id)
       .map((r) => ({
         post_id: r.post_id,
@@ -102,6 +103,17 @@ export async function GET(
         subreddit_name: r.subreddit_name,
         username: r.username,
       }));
+
+    // attach my_vote if userId provided
+    if (userId && posts.length > 0) {
+      const postIds = posts.map((p) => p.post_id);
+      const voteRes = await db.query(
+        "SELECT post_id, vote_type FROM votes WHERE user_id = $1 AND post_id = ANY($2)",
+        [userId, postIds]
+      );
+      const voteMap: Record<string, number> = Object.fromEntries(voteRes.rows.map((v:any)=>[v.post_id, v.vote_type]));
+      posts = posts.map((p:any)=>({ ...p, my_vote: voteMap[p.post_id] ?? 0 }));
+    }
 
     return NextResponse.json({ subreddit: subredditInfo, posts });
   } catch (error) {

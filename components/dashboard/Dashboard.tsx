@@ -3,13 +3,16 @@
 import { useState, useEffect } from "react";
 import { User, Subreddit, Post } from "../types";
 import PostCard from "../posts/PostCard";
+import { useSplitLayout } from "../layout/SplitLayout";
 
 type Vote = -1 | 1;
 
 export default function Dashboard({ user }: { user: User }) {
+  const { selectedPostId } = useSplitLayout();
   const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
   const [myIds, setMyIds] = useState<string[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
   const [sort, setSort] = useState<"recent" | "popular">("recent");
 
   const fetchSubreddits = async () => {
@@ -27,18 +30,46 @@ export default function Dashboard({ user }: { user: User }) {
   const fetchPosts = async (subredditId?: string | null) => {
     if (subredditId) {
       const res = await fetch(
-        `/api/reddit/subreddits/${subredditId}?sort=${sort}`
+        `/api/reddit/subreddits/${subredditId}?sort=${sort}&user_id=${user.user_id}`
       );
       const data = await res.json();
-      setPosts(data.posts || []);
+      const fetched = data.posts || [];
+      setPosts(fetched);
+      const votes: Record<string, Vote | null> = {};
+      fetched.forEach((p: any) => {
+        if (typeof p.my_vote === "number" && p.my_vote !== 0) {
+          votes[p.post_id] = p.my_vote as Vote;
+        }
+      });
+      setPostVotes(votes);
     } else {
       const res = await fetch(`/api/reddit/feed/${user.user_id}?sort=${sort}`);
       const data = await res.json();
-      setPosts(data.posts || []);
+      const fetched = data.posts || [];
+      setPosts(fetched);
+      const votes: Record<string, Vote | null> = {};
+      fetched.forEach((p: any) => {
+        if (typeof p.my_vote === "number" && p.my_vote !== 0) {
+          votes[p.post_id] = p.my_vote as Vote;
+        }
+      });
+      setPostVotes(votes);
     }
   };
 
+  // load saved preference once on mount
   useEffect(() => {
+    const saved = typeof window !== "undefined" ? localStorage.getItem("feedSort") : null;
+    if (saved === "recent" || saved === "popular") {
+      setSort(saved as "recent" | "popular");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("feedSort", sort);
+    }
+
     fetchPosts();
     fetchSubreddits();
     fetchMembership();
@@ -56,16 +87,23 @@ export default function Dashboard({ user }: { user: User }) {
     fetchMembership();
   };
 
-  const handleVote = async (postId: string, vote: Vote | 0) => {
+  const handleVote = async (postId: string, vote: Vote) => {
+    const currentVote = postVotes[postId];
+    const newVote = currentVote === vote ? 0 : vote;
+
     const res = await fetch(`/api/reddit/posts/${postId}/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: user.user_id, vote_type: vote }),
+      body: JSON.stringify({ user_id: user.user_id, vote_type: newVote }),
     });
     const data = await res.json();
     setPosts((prev) =>
       prev.map((p) => (p.post_id === postId ? { ...p, score: data.score } : p))
     );
+    setPostVotes((prev) => ({
+      ...prev,
+      [postId]: newVote === 0 ? null : (newVote as Vote),
+    }));
   };
 
   return (
@@ -92,9 +130,9 @@ export default function Dashboard({ user }: { user: User }) {
       {posts.length === 0 ? (
         <p>No posts yet.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className={`grid gap-4 ${selectedPostId ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`} style={{ minWidth: selectedPostId ? '400px' : 'auto' }}>
           {posts.map((p) => (
-            <PostCard key={p.post_id} post={p} handleVote={handleVote} />
+            <PostCard key={p.post_id} post={p} handleVote={handleVote} postVote={postVotes[p.post_id]} />
           ))}
         </div>
       )}

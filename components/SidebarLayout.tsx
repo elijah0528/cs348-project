@@ -8,6 +8,7 @@ import SubredditActionButton from "@/components/sidebar/SubredditActionButton";
 import CreateSubredditWrapper from "@/components/sidebar/CreateSubredditWrapper";
 import { Button } from "@/components/ui/button";
 import DeleteAccountButton from "./sidebar/DeleteAccountButton";
+import AppLayout from "./AppLayout";
 
 export default async function SidebarLayout({
   children,
@@ -26,91 +27,13 @@ export default async function SidebarLayout({
   const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));
 
   return (
-    <div className="flex h-full bg-stone-100">
-      <div className="w-64 py-4 px-2 max-h-full flex flex-col justify-between">
-        <div className="flex flex-col overflow-y-auto gap-6 items-start">
-          <Link href="/" className="flex items-center gap-1 select-none">
-            <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-[#81745C]">
-              Weddit
-            </div>
-            <Image src="/goose.png" alt="Logo" width={40} height={30} />
-          </Link>
-
-          {user && <CreateSubredditWrapper userId={user.user_id} />}
-
-          {mySubs.length > 0 && (
-            <div className="flex flex-col gap-1.5 w-full">
-              <div className="font-medium text-[13px] text-stone-500 px-2">
-                Your Subreddits
-              </div>
-              <div className="flex flex-col gap-0.5 text-sm">
-                {mySubs.map((s) => (
-                  <SubredditButton
-                    key={s.subreddit_id}
-                    subreddit={s}
-                    actionButton={
-                      user && (
-                        <SubredditActionButton
-                          subredditId={s.subreddit_id}
-                          userId={user.user_id}
-                          isOwner={s.username === user.username}
-                          isMember={true}
-                        />
-                      )
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-          {otherSubs.length > 0 && (
-            <div className="flex flex-col gap-1.5 w-full">
-              <div className="font-medium text-[13px] text-stone-500 px-2">
-                All Subreddits
-              </div>
-              <div className="flex flex-col gap-0.5 text-sm">
-                {otherSubs.map((s) => (
-                  <SubredditButton
-                    key={s.subreddit_id}
-                    subreddit={s}
-                    actionButton={
-                      user && (
-                        <SubredditActionButton
-                          subredditId={s.subreddit_id}
-                          userId={user.user_id}
-                          isOwner={false}
-                          isMember={false}
-                        />
-                      )
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-        {user && (
-          <div className="flex items-center justify-between">
-            <Link
-              href={`/user/${user.user_id}`}
-              className="text-sm font-medium underline"
-            >
-              u/{user.username}
-            </Link>
-            <div className="flex justify-end gap-2">
-              <DeleteAccountButton user={user} />
-              <LogoutButton />
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="flex-1 p-1.5">
-            <div className="size-full overflow-y-auto bg-white border border-stone-200 rounded-xl">
-          {children}
-        </div>
-      </div>
-    </div>
+    <AppLayout
+      user={user}
+      initialSubreddits={subreddits}
+      initialMyIds={myIds}
+    >
+      {children}
+    </AppLayout>
   );
 }
 

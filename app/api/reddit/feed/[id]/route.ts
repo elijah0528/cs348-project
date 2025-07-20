@@ -52,7 +52,24 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
     const queryToRun = sort === "popular" ? popularQuery : recentQuery;
 
     const res = await db.query(queryToRun, [userId]);
-    const posts = res.rows.map((r:any)=>({ ...r, score: r.vote_score ?? 0 }));
+    const rows = res.rows;
+    const postIds = rows.map((r:any)=>r.post_id);
+
+    // fetch current user's vote for these posts
+    let voteMap: Record<string, number> = {};
+    if (postIds.length > 0) {
+      const voteRes = await db.query(
+        "SELECT post_id, vote_type FROM votes WHERE user_id = $1 AND post_id = ANY($2)",
+        [userId, postIds]
+      );
+      voteMap = Object.fromEntries(voteRes.rows.map((v:any)=>[v.post_id, v.vote_type]));
+    }
+
+    const posts = rows.map((r:any)=>({
+      ...r,
+      score: r.vote_score ?? 0,
+      my_vote: voteMap[r.post_id] ?? 0
+    }));
     return NextResponse.json({ posts });
   } catch (err) {
     console.error("feed error", err);
