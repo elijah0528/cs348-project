@@ -32,22 +32,27 @@ interface SidebarClientProps {
 export default function SidebarClient({ user, subreddits: initialSubreddits, myIds: initialMyIds }: SidebarClientProps) {
   const [subreddits, setSubreddits] = useState<Subreddit[]>(initialSubreddits);
   const [myIds, setMyIds] = useState<string[]>(initialMyIds);
+  const [recommended, setRecommended] = useState<Subreddit[]>([]);
+  const [showMoreOthers, setShowMoreOthers] = useState(false);
 
   const refreshSidebar = async () => {
     if (!user) return;
     
     try {
       // Fetch updated subreddits and membership
-      const [subredditsRes, membershipRes] = await Promise.all([
+      const [subredditsRes, membershipRes, recommendedRes] = await Promise.all([
         fetch("/api/reddit/subreddits"),
-        fetch(`/api/reddit/membership/${user.user_id}`)
+        fetch(`/api/reddit/membership/${user.user_id}`),
+        fetch(`/api/reddit/recommended?userId=${user.user_id}`)
       ]);
       
       const subredditsData = await subredditsRes.json();
       const membershipData = await membershipRes.json();
+      const recommendedData = await recommendedRes.json();
       
       setSubreddits(subredditsData.subreddits || []);
       setMyIds(membershipData.subredditIds || []);
+      setRecommended(recommendedData.recommended || []);
     } catch (error) {
       console.error("Failed to refresh sidebar:", error);
     }
@@ -57,7 +62,16 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
     (s) =>
       myIds.includes(s.subreddit_id) || (user && s.username === user.username)
   );
-  const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));
+  // fetch latest sidebar data on initial mount
+  useEffect(() => {
+    refreshSidebar();
+  }, []);
+
+  // duplicate declaration removed
+  const recommendedSubs = recommended.slice(0, 10);
+  const recommendedIds = new Set(recommendedSubs.map((s) => s.subreddit_id));
+  const otherSubs = subreddits.filter((s: Subreddit) => !myIds.includes(s.subreddit_id) && !recommendedIds.has(s.subreddit_id));
+  const displayedOthers = showMoreOthers ? otherSubs : otherSubs.slice(0, 10);
 
   return (
     <SidebarContext.Provider value={{ refreshSidebar }}>
@@ -97,13 +111,13 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
               </div>
             </div>
           )}
-          {otherSubs.length > 0 && (
+          {recommendedSubs.length > 0 && (
             <div className="flex flex-col gap-1.5 w-full">
               <div className="font-medium text-[13px] text-stone-500 px-2">
-                All Subreddits
+                Recommended
               </div>
               <div className="flex flex-col gap-0.5 text-sm">
-                {otherSubs.map((s) => (
+                {recommendedSubs.map((s) => (
                   <SubredditButton
                     key={s.subreddit_id}
                     subreddit={s}
@@ -119,6 +133,40 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
                     }
                   />
                 ))}
+              </div>
+            </div>
+          )}
+
+          {displayedOthers.length > 0 && (
+            <div className="flex flex-col gap-1.5 w-full">
+              <div className="font-medium text-[13px] text-stone-500 px-2">
+                All Subreddits
+              </div>
+              <div className="flex flex-col gap-0.5 text-sm">
+                {displayedOthers.map((s: Subreddit) => (
+                  <SubredditButton
+                    key={s.subreddit_id}
+                    subreddit={s}
+                    actionButton={
+                      user && (
+                        <SubredditActionButton
+                          subredditId={s.subreddit_id}
+                          userId={user.user_id}
+                          isOwner={false}
+                          isMember={false}
+                        />
+                      )
+                    }
+                  />
+                ))}
+                {!showMoreOthers && otherSubs.length > displayedOthers.length && (
+                  <button
+                    onClick={() => setShowMoreOthers(true)}
+                    className="text-xs text-blue-600 px-2 py-1 self-start"
+                  >
+                    Show more
+                  </button>
+                )}
               </div>
             </div>
           )}
