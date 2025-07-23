@@ -28,10 +28,6 @@ async function main() {
 
   try {
     const sql = fs.readFileSync(filePath, "utf-8");
-
-    // Execute the entire file at once so that PL/pgSQL blocks (which contain
-    // many internal semicolons) are sent to the server intact. PostgreSQL will
-    // happily execute multiple commands in a single query string.
     const result = await db.query(sql);
 
     if (result?.rows?.length) {
