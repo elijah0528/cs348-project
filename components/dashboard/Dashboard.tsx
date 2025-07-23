@@ -13,7 +13,7 @@ export default function Dashboard({ user }: { user: User }) {
   const [myIds, setMyIds] = useState<string[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
-  const [sort, setSort] = useState<"recent" | "popular">("recent");
+  const [sort, setSort] = useState<"recent" | "popular" | "trending">("recent");
 
   const fetchSubreddits = async () => {
     const res = await fetch("/api/reddit/subreddits");
@@ -60,8 +60,8 @@ export default function Dashboard({ user }: { user: User }) {
   // load saved preference once on mount
   useEffect(() => {
     const saved = typeof window !== "undefined" ? localStorage.getItem("feedSort") : null;
-    if (saved === "recent" || saved === "popular") {
-      setSort(saved as "recent" | "popular");
+    if (saved === "recent" || saved === "popular" || saved === "trending") {
+      setSort(saved as "recent" | "popular" | "trending");
     }
   }, []);
 
@@ -122,6 +122,12 @@ export default function Dashboard({ user }: { user: User }) {
             onClick={() => setSort("popular")}
           >
             Popular
+          </button>
+          <button
+            className={sort === "trending" ? "underline" : ""}
+            onClick={() => setSort("trending")}
+          >
+            Trending
           </button>
         </div>
       </div>
