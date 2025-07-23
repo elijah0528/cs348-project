@@ -91,3 +91,27 @@ We also implemented the ability to select, create and delete a subreddit, which 
 
 <img width="1709" alt="image" src="https://github.com/user-attachments/assets/b89669d7-1d5a-4fef-98a0-25fbef5272e9" />
 
+## Final Milestone
+
+**Migrations**
+
+We have a `migrations` folder in the `lib/sql` folder that contains the SQL files for the migrations. These are used to create the database schema. Within this is `rate_limiting_trigger.sql` which is a trigger that 
+
+
+## Features in M2
+
+### Feature 1: User Registration
+Add new users to the system
+
+### Feature 2: User Deletion
+Remove a user and all associated data with the user. Indexing was used to improve performance by ~13%(m2/feature2-optimization.txt).
+
+### Feature 3: Subreddit Feed with Vote Sorting
+Display posts in a subreddit sorted by vote score, then by creation date in descending order. Indexing was used to improve performance by ~15%(m2/feature3-optimization.txt).
+
+### Feature 4: Post Content Update
+Allow users to edit their own posts with proper authorization checks if they are the author of the post.
+
+### Feature 5: Personalized User Feed
+Show posts from subreddits where the user is either a member or the admin/owner. Ordered by either votes or posted date. Limits to 100 posts. Indexing optimies performance by ~9%(m2/feature5-optimization.txt).
+
