@@ -17,6 +17,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Post created", post_id: result.rows[0].post_id });
   } catch (err) {
     console.error("Create post error:", err);
+    if ((err as any)?.code === "P0001") {
+      return NextResponse.json({ error: "Rate limit" }, { status: 429 });
+    }
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 } 
