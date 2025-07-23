@@ -7,16 +7,16 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
 
     const postRes = await db.query(
       `WITH voted AS (
-         SELECT p.post_id, p.title, p.content, p.created_at, pr.username,
+         SELECT p.post_id, p.subreddit_id, p.title, p.content, p.created_at, pr.username,
                 SUM(v.vote_type) AS score
          FROM posts p
          JOIN votes v ON v.post_id = p.post_id
          JOIN profiles pr ON pr.user_id = p.user_id
          WHERE p.post_id = $1
-         GROUP BY p.post_id, pr.username
+         GROUP BY p.post_id, p.subreddit_id, pr.username
        ),
        novote AS (
-         SELECT p.post_id, p.title, p.content, p.created_at, pr.username,
+         SELECT p.post_id, p.subreddit_id, p.title, p.content, p.created_at, pr.username,
                 0 AS score
          FROM posts p
          JOIN profiles pr ON pr.user_id = p.user_id
