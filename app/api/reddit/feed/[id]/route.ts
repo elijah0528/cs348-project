@@ -59,14 +59,14 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
        FROM posts p
        JOIN subreddits s ON s.subreddit_id = p.subreddit_id
        JOIN profiles pr ON pr.user_id = p.user_id
-       LEFT JOIN votes v ON v.post_id = p.post_id
+       JOIN votes v ON v.post_id = p.post_id
        WHERE (
          p.subreddit_id IN (SELECT subreddit_id FROM subreddit_membership WHERE user_id = $1)
          OR p.subreddit_id IN (SELECT subreddit_id FROM subreddits WHERE admin_id = $1)
        )
        GROUP BY p.post_id, p.user_id, p.title, p.content, p.created_at, s.subreddit_name, pr.username
     )
-    SELECT *, CASE WHEN vote_score = 0 THEN 0 ELSE vote_score / POWER(age_days + 0.5, 1.5) END AS trending_score
+    SELECT *, vote_score / POWER(age_days + 0.5, 1.5) AS trending_score
     FROM all_posts
     ORDER BY trending_score DESC`;
 
