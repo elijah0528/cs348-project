@@ -97,8 +97,7 @@ We also implemented the ability to select, create and delete a subreddit, which 
 
 We have a `migrations` folder in the `lib/sql` folder that contains the SQL files for the migrations. These are used to create the database schema. Within this is `rate_limiting_trigger.sql` which is a trigger that 
 
-
-## Features in M2
+## Features in M2 (Production)
 
 ### Feature 1: User Registration
 Add new users to the system
@@ -115,3 +114,46 @@ Allow users to edit their own posts with proper authorization checks if they are
 ### Feature 5: Personalized User Feed
 Show posts from subreddits where the user is either a member or the admin/owner. Ordered by either votes or posted date. Limits to 100 posts. Indexing optimies performance by ~9%(m2/feature5-optimization.txt).
 
+## API Routes
+
+### `/api/reddit/auth`
+- `POST /login` - Logs the user in
+- `POST /register` - Creates a new user account (updates db) 
+- `DELETE /delete` - Deletes a user account (updates db)
+
+### `/api/reddit/posts`
+- `POST /` - Creates new post (updates db)
+- `GET /[id]` - Gets post with comments + votes
+- `PATCH /[id]` - Updates post content (updates db existing row) 
+- `POST /[id]/vote` - Votes on post (-1, 0, 1) (updates db)
+
+### `/api/reddit/comments`
+- `POST /` - Creates new comment (updates db)
+- `POST /[id]/vote` - Votes on comment (-1, 0, 1) (updates db)
+
+### `/api/reddit/subreddits`
+- `GET /` - Lists all subreddits
+- `POST /` - Creates new subreddit (updates db)
+- `GET /[id]` - Gets subreddit posts (with sorting)
+- `DELETE /[id]` - Deletes subreddit (admin only)
+- `POST /[id]/join` - Joins subreddit (updates db membership table)
+- `DELETE /[id]/leave` - Leave subreddit (updates db membership table)
+- `GET /[id]/membership` - Checks membership status
+
+### `/api/reddit/user`
+- `GET /[id]` - Get user profile with posts/comments
+
+### `/api/reddit/feed`
+- `GET /[id]` - Get personalized feed (recent/popular/trending)
+
+### `/api/reddit/membership`
+- `GET /[id]` - Get user's subreddit memberships
+
+### `/api/reddit/recommended`
+- `GET /` - Get recommended subreddits based on similar users
+
+### `/api/auth`
+- `POST /logout` - Logs out user (clears cookie)
+
+### `/api/test`
+- `GET /` - Test endpoint
