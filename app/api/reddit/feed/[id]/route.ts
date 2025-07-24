@@ -52,10 +52,9 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
      ORDER BY vote_score DESC, created_at DESC`;
 
     // Trending: score = vote_score / pow(age_days+0.5, 1.5)
-    // vote_score = upvotes - downvotes (0 if none). age_days = days since creation.
     const trendingQuery = `WITH all_posts AS (
        SELECT p.post_id, p.user_id, p.title, p.content, p.created_at, s.subreddit_name, pr.username,
-              (COUNT(*) FILTER (WHERE v.vote_type = 1) - COUNT(*) FILTER (WHERE v.vote_type = -1)) AS vote_score,
+              COALESCE(SUM(v.vote_type), 0) AS vote_score,
               EXTRACT(EPOCH FROM NOW() - p.created_at)/86400 AS age_days
        FROM posts p
        JOIN subreddits s ON s.subreddit_id = p.subreddit_id

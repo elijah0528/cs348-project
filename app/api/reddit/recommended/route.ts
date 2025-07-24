@@ -1,17 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/db";
 
-/**
- * GET /api/reddit/recommended?userId=<uuid>
- *
- * Returns a list of recommended subreddits for the given user based on collaborative filtering:
- * 1. Find posts the user has up-voted.
- * 2. Find other users who have also up-voted those posts.
- * 3. Collect the subreddits those users belong to that the current user is **not** a member of.
- *
- * The query uses several CTEs as specified by the requirements and an EXCEPT clause to
- * exclude subreddits the user already belongs to.
- */
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get("userId");

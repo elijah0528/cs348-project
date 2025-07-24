@@ -10,14 +10,9 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
   if (![ -1, 0, 1].includes(vote_type)) {
     return NextResponse.json({ error: "vote_type must be -1, 0, or 1" }, { status: 400 });
   }
-  // Start transaction to ensure atomic vote update
   try {
     await db.query('BEGIN');
-
-    // remove any existing vote
     await db.query("DELETE FROM votes WHERE user_id = $1 AND post_id = $2", [user_id, postId]);
-
-    // insert new vote if not removing (vote_type !== 0)
     if (vote_type !== 0) {
       await db.query("INSERT INTO votes (user_id, post_id, vote_type) VALUES ($1, $2, $3)", [user_id, postId, vote_type]);
     }
