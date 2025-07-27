@@ -1,0 +1,3 @@
+INSERT 0 1
+psql:m3/queries/advanced5-sample.sql:36: ERROR:  Rate limit exceeded
+CONTEXT:  PL/pgSQL function enforce_post_rate_limit() line 9 at RAISE
