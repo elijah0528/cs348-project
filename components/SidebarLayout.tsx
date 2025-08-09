@@ -33,20 +33,35 @@ export default async function SidebarLayout({
       initialMyIds={myIds}
     >
       <div className="sidebar">
-        <div className="user-actions">
-          <LogoutButton />
-          <DeleteAccountButton />
+        <div className="sidebar-header">
+          <h1>Welcome, {user ? user.username : "Guest"}</h1>
+          <div className="user-actions flex space-x-2">
+            <LogoutButton />
+            <DeleteAccountButton />
+          </div>
         </div>
         <CreateSubredditWrapper />
         <div className="subreddits">
           <h2>My Subreddits</h2>
-          {mySubs.map((subreddit) => (
-            <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} actionButton={<SubredditActionButton subreddit={subreddit} />} />
-          ))}
+          {mySubs.length > 0 ? (
+            mySubs.map((subreddit) => (
+              <SubredditButton
+                key={subreddit.subreddit_id}
+                subreddit={subreddit}
+                actionButton={<SubredditActionButton subreddit={subreddit} />}
+              />
+            ))
+          ) : (
+            <p>No subreddits found. Join or create one!</p>
+          )}
           <h2>Other Subreddits</h2>
-          {otherSubs.map((subreddit) => (
-            <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} />
-          ))}
+          {otherSubs.length > 0 ? (
+            otherSubs.map((subreddit) => (
+              <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} />
+            ))
+          ) : (
+            <p>No other subreddits available.</p>
+          )}
         </div>
       </div>
       {children}
