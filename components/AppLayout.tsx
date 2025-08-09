@@ -44,6 +44,6 @@ export default function AppLayout({ children, user, initialSubreddits, initialMy
       setMyIds(memData.subredditIds || []);
       setRefreshTrigger((p) => p + 1);
     } catch (err) {
-      console.error("Error: Unable to refresh the sidebar due to a network issue. Please verify your connection and try again.", err);
+      console.error("Error: Unable to refresh the sidebar. Please check your internet connection and try again later.", err);
     }
   };
