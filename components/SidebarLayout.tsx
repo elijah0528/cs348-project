@@ -32,38 +32,47 @@ export default async function SidebarLayout({
       initialSubreddits={subreddits}
       initialMyIds={myIds}
     >
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <h1>Welcome, {user ? user.username : "Guest"}</h1>
-          <div className="user-actions flex space-x-2">
+      <aside className="sidebar p-4 bg-gray-100 rounded-lg shadow-md">
+        <header className="sidebar-header mb-4">
+          <h1 className="text-xl font-bold text-gray-700">Welcome, {user ? user.username : "Guest"}</h1>
+          <div className="user-actions flex space-x-2 mt-2">
             <LogoutButton />
             <DeleteAccountButton />
           </div>
-        </div>
-        <CreateSubredditWrapper />
-        <div className="subreddits">
-          <h2>My Subreddits</h2>
+        </header>
+        <section className="mb-4">
+          <CreateSubredditWrapper />
+        </section>
+        <section className="subreddits">
+          <h2 className="text-lg font-semibold text-gray-600 mb-2">My Subreddits</h2>
           {mySubs.length > 0 ? (
-            mySubs.map((subreddit) => (
-              <SubredditButton
-                key={subreddit.subreddit_id}
-                subreddit={subreddit}
-                actionButton={<SubredditActionButton subreddit={subreddit} />}
-              />
-            ))
+            <ul>
+              {mySubs.map((subreddit) => (
+                <li key={subreddit.subreddit_id} className="mb-1">
+                  <SubredditButton
+                    subreddit={subreddit}
+                    actionButton={<SubredditActionButton subreddit={subreddit} />}
+                  />
+                </li>
+              ))}
+            </ul>
           ) : (
-            <p>No subreddits found. Join or create one!</p>
+            <p className="text-sm text-gray-500">No subreddits found. Join or create one!</p>
           )}
-          <h2>Other Subreddits</h2>
+          <h2 className="text-lg font-semibold text-gray-600 mt-4 mb-2">Other Subreddits</h2>
           {otherSubs.length > 0 ? (
-            otherSubs.map((subreddit) => (
-              <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} />
-            ))
+            <ul>
+              {otherSubs.map((subreddit) => (
+                <li key={subreddit.subreddit_id} className="mb-1">
+                  <SubredditButton subreddit={subreddit} />
+                </li>
+              ))}
+            </ul>
           ) : (
-            <p>No other subreddits available.</p>
+            <p className="text-sm text-gray-500">No other subreddits available.</p>
           )}
-        </div>
-      </div>
+        </section>
+      </aside>
       {children}
     </AppLayout>
   );
@@ -77,13 +86,15 @@ function SubredditButton({
   actionButton?: React.ReactNode;
 }) {
   return (
-    <div className="relative h-8 group">
-      <Link href={`/r/${subreddit.name}`} className="block h-full w-full pl-2">
+    <div className="relative flex items-center h-8 group bg-white rounded-md shadow hover:bg-gray-50 transition">
+      <Link href={`/r/${subreddit.name}`} className="block h-full w-full pl-2 text-gray-700 font-medium">
         {subreddit.name}
       </Link>
-      <div className="absolute right-1 top-1/2 -translate-y-1/2 group-hover:opacity-100 opacity-0 transition-opacity">
-        {actionButton}
-      </div>
+      {actionButton && (
+        <div className="absolute right-1 top-1/2 -translate-y-1/2 group-hover:opacity-100 opacity-0 transition-opacity">
+          {actionButton}
+        </div>
+      )}
     </div>
   );
 }
