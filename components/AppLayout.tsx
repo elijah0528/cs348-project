@@ -44,28 +44,6 @@ export default function AppLayout({ children, user, initialSubreddits, initialMy
       setMyIds(memData.subredditIds || []);
       setRefreshTrigger((p) => p + 1);
     } catch (err) {
-      console.error("Error: Unable to refresh the sidebar. Please check your network connection.", err);
+      console.error("Error: Unable to refresh the sidebar due to a network issue. Please verify your connection and try again.", err);
     }
   };
-
-  return (
-    <AppContext.Provider value={{ refreshSidebar }}>
-      <div className="flex h-full bg-stone-100">
-        <SidebarClient
-          user={user}
-          subreddits={subreddits}
-          myIds={myIds}
-          key={refreshTrigger}
-        />
-        
-        <div className="flex-1 p-1.5">
-          <div className="size-full overflow-hidden bg-white border border-stone-200 rounded-xl">
-            <SplitLayoutProvider user={user}>
-              {children}
-            </SplitLayoutProvider>
-          </div>
-        </div>
-      </div>
-    </AppContext.Provider>
-  );
-}
