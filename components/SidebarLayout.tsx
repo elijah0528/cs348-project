@@ -32,6 +32,23 @@ export default async function SidebarLayout({
       initialSubreddits={subreddits}
       initialMyIds={myIds}
     >
+      <div className="sidebar">
+        <div className="user-actions">
+          <LogoutButton />
+          <DeleteAccountButton />
+        </div>
+        <CreateSubredditWrapper />
+        <div className="subreddits">
+          <h2>My Subreddits</h2>
+          {mySubs.map((subreddit) => (
+            <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} actionButton={<SubredditActionButton subreddit={subreddit} />} />
+          ))}
+          <h2>Other Subreddits</h2>
+          {otherSubs.map((subreddit) => (
+            <SubredditButton key={subreddit.subreddit_id} subreddit={subreddit} />
+          ))}
+        </div>
+      </div>
       {children}
     </AppLayout>
   );
@@ -46,15 +63,12 @@ function SubredditButton({
 }) {
   return (
     <div className="relative h-8 group">
+      <Link href={`/r/${subreddit.name}`} className="block h-full w-full pl-2">
+        {subreddit.name}
+      </Link>
       <div className="absolute right-1 top-1/2 -translate-y-1/2 group-hover:opacity-100 opacity-0 transition-opacity">
         {actionButton}
       </div>
-      <Link
-        href={`/subreddit/${subreddit.subreddit_id}`}
-        className="flex w-full justify-start items-center h-full px-2 rounded-md group-hover:bg-stone-200/50 text-left cursor-pointer"
-      >
-        r/{subreddit.subreddit_name}
-      </Link>
     </div>
   );
 }
