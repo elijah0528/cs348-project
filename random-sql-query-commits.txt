@@ -85,3 +85,6 @@ entry 38.2: random sql edit
 entry 38.3: random sql edit
 entry 39.1: random sql edit
 entry 39.2: random sql edit
+entry 40.1: random sql edit
+entry 40.2: random sql edit
+entry 40.3: random sql edit
