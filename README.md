@@ -1,5 +1,6 @@
 # CS348 Project
 test
+Note: prepended commit before the random README line.
 
 Ishaan, Rajan, Elijah, Ian
 
