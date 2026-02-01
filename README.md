@@ -1,6 +1,8 @@
 # CS348 Project
 test
+Note: prepended commit before the random README line.
 
+Random line: The goose in `public/goose.png` approves this README.
 Ishaan, Rajan, Elijah, Ian
 
 README.txt to describe how to create and load your sample database on your chosen platform.
