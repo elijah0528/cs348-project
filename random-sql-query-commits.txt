@@ -107,3 +107,5 @@ entry 46.1: random sql edit
 entry 46.2: random sql edit
 entry 46.3: random sql edit
 entry 46.4: random sql edit
+entry 47.1: random sql edit
+entry 47.2: random sql edit
