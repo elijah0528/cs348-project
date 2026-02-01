@@ -57,3 +57,5 @@ entry 24.3: random sql edit
 entry 25.1: random sql edit
 entry 25.2: random sql edit
 entry 26.1: random sql edit
+entry 27.1: random sql edit
+entry 27.2: random sql edit
