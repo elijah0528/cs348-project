@@ -72,3 +72,5 @@ entry 31.3: random sql edit
 entry 31.4: random sql edit
 entry 32.1: random sql edit
 entry 33.1: random sql edit
+entry 34.1: random sql edit
+entry 34.2: random sql edit
