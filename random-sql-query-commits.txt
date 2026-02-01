@@ -90,3 +90,6 @@ entry 40.2: random sql edit
 entry 40.3: random sql edit
 entry 41.1: random sql edit
 entry 41.2: random sql edit
+entry 42.1: random sql edit
+entry 42.2: random sql edit
+entry 42.3: random sql edit
