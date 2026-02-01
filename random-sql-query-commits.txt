@@ -10,3 +10,5 @@ entry 3.3: random sql edit
 entry 3.4: random sql edit
 entry 4.1: random sql edit
 entry 5.1: random sql edit
+entry 6.1: random sql edit
+entry 6.2: random sql edit
