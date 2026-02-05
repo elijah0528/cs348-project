@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { User, Subreddit, Post } from "../types";
 import PostCard from "../posts/PostCard";
 import { useSplitLayout } from "../layout/SplitLayout";
@@ -15,19 +15,19 @@ export default function Dashboard({ user }: { user: User }) {
   const [postVotes, setPostVotes] = useState<Record<string, Vote | null>>({});
   const [sort, setSort] = useState<"recent" | "popular" | "trending">("recent");
 
-  const fetchSubreddits = async () => {
+  const fetchSubreddits = useCallback(async () => {
     const res = await fetch("/api/reddit/subreddits");
     const data = await res.json();
     setSubreddits(data.subreddits || []);
-  };
+  }, []);
 
-  const fetchMembership = async () => {
+  const fetchMembership = useCallback(async () => {
     const res = await fetch(`/api/reddit/membership/${user.user_id}`);
     const data = await res.json();
     setMyIds(data.subredditIds || []);
-  };
+  }, [user.user_id]);
 
-  const fetchPosts = async (subredditId?: string | null) => {
+  const fetchPosts = useCallback(async (subredditId?: string | null) => {
     if (subredditId) {
       const res = await fetch(
         `/api/reddit/subreddits/${subredditId}?sort=${sort}&user_id=${user.user_id}`
@@ -55,7 +55,7 @@ export default function Dashboard({ user }: { user: User }) {
       });
       setPostVotes(votes);
     }
-  };
+  }, [sort, user.user_id]);
 
   // load saved preference once on mount
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function Dashboard({ user }: { user: User }) {
     fetchPosts();
     fetchSubreddits();
     fetchMembership();
-  }, [sort]);
+  }, [fetchMembership, fetchPosts, fetchSubreddits, sort]);
 
   const mySubs = subreddits.filter((s) => myIds.includes(s.subreddit_id));
   const otherSubs = subreddits.filter((s) => !myIds.includes(s.subreddit_id));

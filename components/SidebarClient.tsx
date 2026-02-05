@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext, useCallback } from "react";
 import Link from "next/link";
 import { Subreddit, User } from "@/components/types";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
   const [recommended, setRecommended] = useState<Subreddit[]>([]);
   const [showMoreOthers, setShowMoreOthers] = useState(false);
 
-  const refreshSidebar = async () => {
+  const refreshSidebar = useCallback(async () => {
     if (!user) return;
     
     try {
@@ -56,7 +56,7 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
     } catch (error) {
       console.error("Failed to refresh sidebar:", error);
     }
-  };
+  }, [user]);
 
   const mySubs = subreddits.filter(
     (s) =>
@@ -65,7 +65,7 @@ export default function SidebarClient({ user, subreddits: initialSubreddits, myI
   // fetch latest sidebar data on initial mount
   useEffect(() => {
     refreshSidebar();
-  }, []);
+  }, [refreshSidebar]);
 
   // duplicate declaration removed
   const recommendedSubs = recommended.slice(0, 10);

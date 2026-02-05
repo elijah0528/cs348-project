@@ -38,7 +38,7 @@ export default function UserPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl mb-6">u/{username}'s Activity</h1>
+      <h1 className="text-2xl mb-6">u/{username}&apos;s Activity</h1>
 
       <section className="mb-8">
         <h2 className="text-xl mb-4">Posts</h2>

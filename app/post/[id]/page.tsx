@@ -3,7 +3,7 @@ import { getUser } from "@/lib/auth";
 import PostClient from "@/components/posts/PostClient";
 
 interface PostPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function PostPage({ params }: PostPageProps) {
