@@ -4,11 +4,11 @@ import SubredditClient from "@/components/subreddits/SubredditClient";
 import { redirect } from "next/navigation";
 
 interface SubredditPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function SubredditPage({ params }: SubredditPageProps) {
-  const { id } = params;
+  const { id } = await params;
   const user = await getUser();
 
   if (!user) {
