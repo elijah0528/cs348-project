@@ -7,7 +7,7 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { id } = await params;
+  const { id } = params;
   const user = await getUser();
 
   let post: Post | null = null;
