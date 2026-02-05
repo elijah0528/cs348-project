@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Post, User } from "@/components/types";
 import CreatePost from "@/components/posts/CreatePost";
 import PostCard from "@/components/posts/PostCard";
@@ -35,6 +35,7 @@ export default function SubredditClient({
     return votes;
   });
   const [sort, setSort] = useState<"popular" | "recent">("popular");
+  const initializedSubredditRef = useRef<string | null>(null);
 
   const handleVote = async (postId: string, vote: Vote) => {
     const currentVote = postVotes[postId];
@@ -55,7 +56,7 @@ export default function SubredditClient({
     }));
   };
 
-  const refreshPosts = async (sortType?: "popular" | "recent") => {
+  const refreshPosts = useCallback(async (sortType?: "popular" | "recent") => {
     const currentSort = sortType || sort;
     const res = await fetch(`/api/reddit/subreddits/${subredditId}?sort=${currentSort}&user_id=${user.user_id}`);
     if (res.ok) {
@@ -70,18 +71,23 @@ export default function SubredditClient({
       });
       setPostVotes(votes);
     }
-  };
+  }, [sort, subredditId, user.user_id]);
 
   // load saved on mount and check membership
   useEffect(() => {
+    if (initializedSubredditRef.current === subredditId) {
+      return;
+    }
+    initializedSubredditRef.current = subredditId;
     const saved = typeof window !== "undefined" ? localStorage.getItem(`subSort-${subredditId}`) : null;
     if (saved === "recent" || saved === "popular") {
       setSort(saved as "popular" | "recent");
       // refresh posts with the restored sort
       refreshPosts(saved as "popular" | "recent");
     }
-    
-    // check membership
+  }, [refreshPosts, subredditId]);
+
+  useEffect(() => {
     const checkMembership = async () => {
       try {
         const res = await fetch(`/api/reddit/subreddits/${subredditId}/membership?user_id=${user.user_id}`);
@@ -92,7 +98,7 @@ export default function SubredditClient({
         setIsMember(false);
       }
     };
-    
+
     checkMembership();
   }, [subredditId, user.user_id]);
 
