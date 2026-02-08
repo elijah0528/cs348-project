@@ -1,160 +1,154 @@
-# CS348 Project
-test
+# Weddit (CS348 Project)
 
-Ishaan, Rajan, Elijah, Ian
+Weddit is a Reddit-style web app built for the CS348 database systems course. It showcases a
+Postgres-backed schema, SQL migrations and seeds, and a full-stack Next.js UI.
 
-README.txt to describe how to create and load your sample database on your chosen platform.
-You don’t have to use the datasets described in the report. Toy datasets (e.g., a single table) can
-be used.
+## Features
+- User authentication (register, login, logout)
+- Subreddit creation, membership, and moderation
+- Posts and comments with voting
+- Personalized feeds and recommended subreddits
+- User profiles with posts and comments
 
-## Local Development
+## Tech Stack
+- Next.js 15 + React 19 + TypeScript
+- Postgres 17 (`pg`)
+- Tailwind CSS + Radix UI + Sonner
 
-Make sure you have Postgres 17 installed, then create a database called `cs348`:
+## Getting Started
 
+### Prerequisites
+- Node.js (LTS) and npm
+- Postgres 17
+
+### 1) Install dependencies
 ```bash
-psql -U postgres -c "CREATE DATABASE cs348;"
+npm install
 ```
 
-Create a `.env` file in the project root with the following connection string:
+### 2) Configure environment
+Copy `.env.template` to `.env` and set `POSTGRES_URL`.
 
 ```
 POSTGRES_URL="postgres://postgres:@127.0.0.1:5432/cs348"
 ```
 
-Run the initial migration
-
+### 3) Create the database
 ```bash
-cd lib/sql
+psql -U postgres -c "CREATE DATABASE cs348;"
+```
+
+### 4) Run migrations
+```bash
 npm run sql -- --file=migrations/reddit_init.sql
 ```
 
-To populate with **sample** data, run the sample seed file.
-
+### 5) Seed data
+Sample data:
 ```bash
-cd lib/sql
 npm run sql -- --file=scripts/seed_reddit_sample.sql
 ```
 
-To populate with **production** data, run the production seed file.
-
+Production data:
 ```bash
-cd lib/sql
 npm run sql -- --file=scripts/seed_reddit.sql
 ```
 
-If you wish to switch between sample and production data, you should first init again, then seed again. For example,
+If you switch between sample and production data, re-run the migration before seeding again.
 
+### 6) Start the app
 ```bash
-cd lib/sql
-npm run sql -- --file=migrations/reddit_init.sql
-npm run sql -- --file=scripts/seed_reddit.sql
-```
-
-Start the local development server
-
-```bash
-npm i
 npm run dev
 ```
 
-Open `localhost:3000` in your browser. The log in page for Weddit will be displayed.
+Open `http://localhost:3000` (you will be redirected to `/auth`).
 
-## Milestone 1 Features
+## SQL Runner
+Use `npm run sql -- --file=<path>` to execute SQL files. Paths are resolved relative to
+`lib/sql`.
 
-You can view the `m1` folder for the SQl queries for each feature, where features 1, 2 and 4 have before and after logic to show the effect of the feature on the tables. These are in `.out` files.
-
-To test a SQL feature, run the following command:
-
+Common examples:
 ```bash
+npm run sql -- --file=migrations/reddit_init.sql
+npm run sql -- --file=scripts/seed_reddit_sample.sql
 npm run sql -- --file=../../m1/feature1.sql
+npm run sql -- --file=../../m2/feature1-sample.sql
+npm run sql -- --file=../../m3/queries/advanced1-sample.sql
 ```
 
-## Milestone 2 Features
-
-These are, similarly, in the `m2` folder. There are two types of files, sample and production, each with a sql and out file. The production files have minor modifications for ids and limits for visibility purposes. To view the entire production database, visit `seed_reddit.sql` in the `lib/sql/scripts` folder. This was generated from `gen.py` in the `lib/sql/migrations` folder.
-
-This auto-generates 10,000 users, 100 subreddits, 3 memberships per user, 10,000 posts, 15,000 comments, and 50,000 votes on posts and 25,000 votes on comments, randomly assigning the foreign relations between the tables.
-
-To generate the production database, run the following command:
+## Production Seed Generation (Optional)
+To regenerate the large production seed file:
 
 ```bash
-cd lib/sql/scripts
-python3 gen.py
+python3 lib/sql/scripts/gen.py
 ```
 
-### Implementation of features
+This generates `lib/sql/scripts/seed_reddit.sql` with:
+- 10,000 users
+- 100 subreddits
+- 3 memberships per user
+- 10,000 posts
+- 15,000 comments
+- 50,000 post votes + 25,000 comment votes
 
-We have `api` endpoints for each core feature seen in the `app/api/reddit` folder. We implemented two of the four features from the milestone 1 list, the ability to create and delete a user. These can be found in `app/api/reddit/auth/register` and `app/api/reddit/auth/delete` respectively.
-
-We also implemented the ability to select, create and delete a subreddit, which can be found in `app/api/reddit/subreddits/create`. This is the first feature that requires a user to be logged in.
-
-### Current Interface (will be updated)
-
-<img width="1709" alt="image" src="https://github.com/user-attachments/assets/b89669d7-1d5a-4fef-98a0-25fbef5272e9" />
-
-## Final Milestone
-
-**Migrations**
-
-We have a `migrations` folder in the `lib/sql` folder that contains the SQL files for the migrations. These are used to create the database schema. Within this is `rate_limiting_trigger.sql` which is a trigger that 
-
-## Features in M2 (Production)
-
-### Feature 1: User Registration
-Add new users to the system
-
-### Feature 2: User Deletion
-Remove a user and all associated data with the user. Indexing was used to improve performance by ~13%(m2/feature2-optimization.txt).
-
-### Feature 3: Subreddit Feed with Vote Sorting
-Display posts in a subreddit sorted by vote score, then by creation date in descending order. Indexing was used to improve performance by ~15%(m2/feature3-optimization.txt).
-
-### Feature 4: Post Content Update
-Allow users to edit their own posts with proper authorization checks if they are the author of the post.
-
-### Feature 5: Personalized User Feed
-Show posts from subreddits where the user is either a member or the admin/owner. Ordered by either votes or posted date. Limits to 100 posts. Indexing optimies performance by ~9%(m2/feature5-optimization.txt).
+## Scripts
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start the Next.js dev server (Turbopack) |
+| `npm run build` | Create a production build |
+| `npm run start` | Run the production server |
+| `npm run lint` | Run Next.js linting |
+| `npm run sql -- --file=...` | Execute a SQL file via `lib/sql/exec.ts` |
 
 ## API Routes
+### Auth
+- `POST /api/reddit/auth/login`
+- `POST /api/reddit/auth/register`
+- `DELETE /api/reddit/auth/delete`
+- `POST /api/auth/logout`
 
-### `/api/reddit/auth`
-- `POST /login` - Logs the user in
-- `POST /register` - Creates a new user account (updates db) 
-- `DELETE /delete` - Deletes a user account (updates db)
+### Posts
+- `POST /api/reddit/posts`
+- `GET /api/reddit/posts/[id]`
+- `PATCH /api/reddit/posts/[id]`
+- `POST /api/reddit/posts/[id]/vote`
 
-### `/api/reddit/posts`
-- `POST /` - Creates new post (updates db)
-- `GET /[id]` - Gets post with comments + votes
-- `PATCH /[id]` - Updates post content (updates db existing row) 
-- `POST /[id]/vote` - Votes on post (-1, 0, 1) (updates db)
+### Comments
+- `POST /api/reddit/comments`
+- `POST /api/reddit/comments/[id]/vote`
 
-### `/api/reddit/comments`
-- `POST /` - Creates new comment (updates db)
-- `POST /[id]/vote` - Votes on comment (-1, 0, 1) (updates db)
+### Subreddits
+- `GET /api/reddit/subreddits`
+- `POST /api/reddit/subreddits`
+- `GET /api/reddit/subreddits/[id]`
+- `DELETE /api/reddit/subreddits/[id]`
+- `POST /api/reddit/subreddits/[id]/join`
+- `DELETE /api/reddit/subreddits/[id]/leave`
+- `GET /api/reddit/subreddits/[id]/membership`
 
-### `/api/reddit/subreddits`
-- `GET /` - Lists all subreddits
-- `POST /` - Creates new subreddit (updates db)
-- `GET /[id]` - Gets subreddit posts (with sorting)
-- `DELETE /[id]` - Deletes subreddit (admin only)
-- `POST /[id]/join` - Joins subreddit (updates db membership table)
-- `DELETE /[id]/leave` - Leave subreddit (updates db membership table)
-- `GET /[id]/membership` - Checks membership status
+### Feeds & User
+- `GET /api/reddit/feed/[id]`
+- `GET /api/reddit/recommended`
+- `GET /api/reddit/membership/[id]`
+- `GET /api/reddit/user/[id]`
 
-### `/api/reddit/user`
-- `GET /[id]` - Get user profile with posts/comments
+### Misc
+- `GET /api/test`
 
-### `/api/reddit/feed`
-- `GET /[id]` - Get personalized feed (recent/popular/trending)
+## Project Structure
+```
+app/            # Next.js app router (pages + API routes)
+components/     # UI components
+lib/            # DB helpers, auth, utilities
+lib/sql/        # Migrations, seeds, SQL runner
+m1/, m2/, m3/   # Milestone SQL files and outputs
+```
 
-### `/api/reddit/membership`
-- `GET /[id]` - Get user's subreddit memberships
+## UI Snapshot
+![Weddit UI](https://github.com/user-attachments/assets/b89669d7-1d5a-4fef-98a0-25fbef5272e9)
 
-### `/api/reddit/recommended`
-- `GET /` - Get recommended subreddits based on similar users
-
-### `/api/auth`
-- `POST /logout` - Logs out user (clears cookie)
-
-### `/api/test`
-- `GET /` - Test endpoint
+## Team
+- Ishaan
+- Rajan
+- Elijah
+- Ian
